@@ -1,5 +1,6 @@
 // Données de maquette. En production, le catalogue vient du back-office de l'app.
-// Titres traduits depuis les fichiers d'illustration ; résumés et durées à valider par HIKAYA.
+// Titres traduits depuis les fichiers d'illustration, durées 02 à 06 relevées dans l'app.
+// Résumés et durée de l'épisode 01 : à valider par HIKAYA.
 
 export type Episode = {
   id: string;
@@ -31,7 +32,7 @@ export const alAndalus: Episode[] = [
     title: "Les premiers pas d'un nouveau pouvoir",
     summary:
       "Dans les rues de la ville, un nouveau pouvoir s'installe autour de deux promesses : sécurité et justice.",
-    duration: "11 min",
+    duration: "9 min 27 s",
     age: "6-14 ans",
     image: "/episodes/al-andalus-02.webp",
   },
@@ -42,7 +43,7 @@ export const alAndalus: Episode[] = [
     title: "La fin d'un fragile équilibre",
     summary:
       "Les rivalités fissurent les murs du palais. Le gouverneur doit trouver une issue avant qu'il ne soit trop tard.",
-    duration: "13 min",
+    duration: "9 min 2 s",
     age: "6-14 ans",
     image: "/episodes/al-andalus-03.webp",
   },
@@ -53,7 +54,7 @@ export const alAndalus: Episode[] = [
     title: "Une nouvelle étoile sur Cordoue",
     summary:
       "Au coucher du soleil, un prince venu de très loin découvre Cordoue pour la première fois.",
-    duration: "12 min",
+    duration: "11 min 2 s",
     age: "6-14 ans",
     image: "/episodes/al-andalus-04.webp",
   },
@@ -64,7 +65,7 @@ export const alAndalus: Episode[] = [
     title: "Hishām et les promesses d'un nouvel empire",
     summary:
       "Hishām réunit les savants sous les arcades : un empire se construit aussi par le savoir.",
-    duration: "14 min",
+    duration: "11 min 4 s",
     age: "6-14 ans",
     image: "/episodes/al-andalus-05.webp",
   },
@@ -75,7 +76,7 @@ export const alAndalus: Episode[] = [
     title: "Sous le turban du jeune émir",
     summary:
       "Dans le calme du patio, un jeune émir apprend auprès de son maître ce que signifie gouverner.",
-    duration: "9 min 51",
+    duration: "9 min 51 s",
     age: "6-14 ans",
     image: "/episodes/al-andalus-06.webp",
   },

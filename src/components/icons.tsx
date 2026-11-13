@@ -72,3 +72,29 @@ export const Close = (p: P) => (
     <path d="M6 6l12 12M18 6 6 18" />
   </svg>
 );
+
+export const Check = (p: P) => (
+  <svg viewBox="0 0 24 24" width={16} height={16} {...base} strokeWidth={2.2} {...p}>
+    <path d="m5 12.5 4.5 4.5L19 7.5" />
+  </svg>
+);
+
+export const Plus = (p: P) => (
+  <svg viewBox="0 0 24 24" width={18} height={18} {...base} {...p}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+export const Phone = (p: P) => (
+  <svg viewBox="0 0 24 24" width={18} height={18} {...base} {...p}>
+    <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+    <path d="M10.5 18.5h3" />
+  </svg>
+);
+
+export const ShieldCheck = (p: P) => (
+  <svg viewBox="0 0 24 24" width={16} height={16} {...base} {...p}>
+    <path d="M12 3 5 6v5.5c0 4.3 2.9 8 7 9.5 4.1-1.5 7-5.2 7-9.5V6l-7-3Z" />
+    <path d="m9 12 2.2 2.2L15.5 10" />
+  </svg>
+);
