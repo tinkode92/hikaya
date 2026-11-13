@@ -50,7 +50,7 @@ export function EpisodeCarousel({ episodes }: { episodes: Episode[] }) {
 
       <div className="mt-6 flex items-center justify-between">
         <p className="text-sm text-encre/45 tabular-nums">
-          <span className="font-semibold text-encre">{String(index + 1).padStart(2, "0")}</span> /{" "}
+          <span className="font-medium text-encre">{String(index + 1).padStart(2, "0")}</span> /{" "}
           {String(episodes.length).padStart(2, "0")}
         </p>
         <div className="flex gap-2">
@@ -59,7 +59,7 @@ export function EpisodeCarousel({ episodes }: { episodes: Episode[] }) {
             onClick={() => scroll(-1)}
             disabled={edges.start}
             aria-label="Épisodes précédents"
-            className="flex size-12 items-center justify-center rounded-full bg-papier text-encre shadow-sm transition hover:bg-white disabled:opacity-40"
+            className="flex size-12 items-center justify-center rounded-full border border-encre/8 bg-papier text-encre transition-colors hover:bg-white disabled:opacity-40"
           >
             <ChevronLeft />
           </button>
@@ -68,7 +68,7 @@ export function EpisodeCarousel({ episodes }: { episodes: Episode[] }) {
             onClick={() => scroll(1)}
             disabled={edges.end}
             aria-label="Épisodes suivants"
-            className="flex size-12 items-center justify-center rounded-full bg-papier text-encre shadow-sm transition hover:bg-white disabled:opacity-40"
+            className="flex size-12 items-center justify-center rounded-full border border-encre/8 bg-papier text-encre transition-colors hover:bg-white disabled:opacity-40"
           >
             <ChevronRight />
           </button>
@@ -89,20 +89,20 @@ function EpisodeCard({ episode }: { episode: Episode }) {
         alt=""
         fill
         sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 80vw"
-        className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out-soft)] group-hover:scale-[1.06]"
+        className="object-cover"
       />
       {/* Voile vert de la charte : lisibilité du texte sur des illustrations très colorées */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(34_56_38_/_0.85)_0%,rgb(34_56_38_/_0.2)_30%,rgb(34_56_38_/_0.25)_42%,rgb(34_56_38_/_0.88)_66%,rgb(34_56_38_/_0.97)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(34_56_38_/_0.92)_0%,rgb(34_56_38_/_0.55)_24%,rgb(34_56_38_/_0.2)_36%,rgb(34_56_38_/_0.25)_42%,rgb(34_56_38_/_0.88)_66%,rgb(34_56_38_/_0.97)_100%)]" />
 
       <div className="relative flex h-full flex-col p-6 text-white">
-        <p className="text-[11px] font-semibold tracking-[0.16em] text-sable uppercase">
+        <p className="text-[14px] font-medium text-sable">
           {episode.series} · Épisode {episode.number}
         </p>
         <h3 className="mt-2 text-[26px] leading-[1.08] font-normal tracking-[-0.01em] text-balance italic">
           {episode.title}
         </h3>
-        <p className="mt-2 text-[13px] text-white/70">
-          {episode.duration} · {episode.age}
+        <p className="mt-2 text-[14px] text-white/70">
+          {episode.duration ? `${episode.duration} · ${episode.age}` : episode.age}
         </p>
 
         <div className="mt-auto">
@@ -111,9 +111,9 @@ function EpisodeCard({ episode }: { episode: Episode }) {
             type="button"
             onClick={() => toggle(episode)}
             aria-label={`${isPlaying ? "Mettre en pause" : "Écouter l'extrait de"} ${episode.title}`}
-            className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 py-2.5 pr-5 pl-3 text-[14px] font-medium backdrop-blur-md transition-colors hover:bg-white/25"
+            className="mt-5 inline-flex h-11 items-center gap-2 rounded-full bg-papier pr-5 pl-2 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
           >
-            <span className="flex size-7 items-center justify-center rounded-full bg-sable text-vert-deep">
+            <span className="flex size-8 items-center justify-center rounded-full bg-vert text-sable">
               {isPlaying ? <Pause width={13} height={13} /> : <Play width={13} height={13} className="translate-x-px" />}
             </span>
             {isPlaying ? "En écoute" : "Écouter l'extrait"}
@@ -122,7 +122,7 @@ function EpisodeCard({ episode }: { episode: Episode }) {
 
         <span
           aria-hidden
-          className="text-outline pointer-events-none absolute right-5 bottom-1 text-[96px] leading-none font-extralight tracking-[-0.04em]"
+          className="text-outline pointer-events-none absolute right-5 bottom-1 text-[96px] leading-none font-light tracking-[-0.04em]"
         >
           {episode.number}
         </span>

@@ -15,7 +15,7 @@ const values = [
   {
     n: "03",
     title: "Des voix et des sons",
-    text: "Narration, musique et ambiances sonores pour voyager de Cordoue à Bagdad.",
+    text: "Des voix et des sons pour voyager dans l'histoire de l'Islam, de Cordoue à Fès.",
   },
   {
     n: "04",
@@ -28,26 +28,20 @@ export function Values() {
   return (
     <section id="valeurs" className="px-3 sm:px-6">
       <div className="relative mx-auto max-w-[1280px] overflow-hidden rounded-[2.25rem] bg-vert text-white">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_60%_at_85%_0%,rgb(212_163_115_/_0.18),transparent_70%)]"
-        />
         <div className="relative px-6 pt-16 sm:px-12 lg:px-16 lg:pt-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
             <div>
-              <p className="text-[13px] font-medium tracking-[0.18em] text-sable uppercase">
-                Pourquoi HIKAYA
-              </p>
+              <p className="text-[15px] font-medium text-sable">Pourquoi HIKAYA</p>
               <h2 className="mt-5 text-[clamp(2.1rem,4.4vw,3.6rem)] leading-[1.04] font-light tracking-[-0.025em] italic">
                 <span className="block text-sable">La richesse d&apos;une civilisation,</span>
-                <span className="block">racontée à hauteur d&apos;enfant.</span>
+                <span className="block">racontée à hauteur d&apos;enfant</span>
               </h2>
             </div>
 
             <ul className="grid gap-px overflow-hidden rounded-[1.5rem] bg-white/10 sm:grid-cols-2">
               {values.map((v) => (
                 <li key={v.n} className="bg-vert p-6 sm:p-7">
-                  <span className="text-sm font-semibold text-sable tabular-nums">{v.n}</span>
+                  <span className="text-sm font-medium text-sable tabular-nums">{v.n}</span>
                   <h3 className="mt-3 text-xl font-medium">{v.title}</h3>
                   <p className="mt-2 text-[15px] leading-relaxed text-white/70">{v.text}</p>
                 </li>
@@ -56,9 +50,9 @@ export function Values() {
           </div>
 
           <div className="mt-14 flex flex-col items-center lg:mt-16">
-            <p className="max-w-[44ch] text-center text-[15px] text-white/65">
-              Ibn Khaldūn, Fāṭima al-Fihriyya, Ṣalāḥ al-Dīn, Sinān l&apos;architecte… Les grandes
-              figures prennent vie.
+            <p className="max-w-[44ch] text-center text-[15px] text-white/70">
+              Ibn Khaldūn, Fāṭima al-Fihriyya, Ṣalāḥ al-Dīn, Sinān l&apos;architecte et les autres
+              grandes figures
             </p>
             <Image
               src="/characters/group.webp"

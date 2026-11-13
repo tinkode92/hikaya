@@ -1,4 +1,4 @@
-// Titre de section : sur-titre + titre en deux tons (sable puis vert), comme le hero.
+// Titre de section : sur-titre en casse normale + titre en deux tons (sable puis vert), comme le hero.
 export function SectionHeading({
   eyebrow,
   first,
@@ -17,13 +17,7 @@ export function SectionHeading({
   const dark = tone === "dark";
   return (
     <div className={className}>
-      <p
-        className={`text-[13px] font-medium tracking-[0.18em] uppercase ${
-          dark ? "text-sable" : "text-sable-ink"
-        }`}
-      >
-        {eyebrow}
-      </p>
+      <p className={`text-[15px] font-medium ${dark ? "text-sable" : "text-sable-ink"}`}>{eyebrow}</p>
       <Tag className="mt-4 text-[clamp(2.1rem,4.4vw,3.6rem)] leading-[1.04] font-light tracking-[-0.025em] text-balance italic">
         <span className={`block ${dark ? "text-sable" : "text-sable-ink"}`}>{first}</span>
         <span className={`block ${dark ? "text-white" : "text-vert"}`}>{second}</span>

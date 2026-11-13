@@ -44,13 +44,13 @@ export function Pricing() {
           <SectionHeading
             eyebrow="Abonnements"
             first="Un abonnement,"
-            second="toutes les histoires."
+            second="toutes les histoires"
           />
           <p className="mt-6 max-w-[42ch] text-[17px] leading-relaxed text-encre/65">
             Les visiteurs écoutent 1 min 30 de chaque histoire. Avec l&apos;abonnement, vos enfants
             écoutent tout, en entier.
           </p>
-          <ul className="mt-8 space-y-3.5">
+          <ul className="mt-8 space-y-4">
             {included.map((item) => (
               <li key={item} className="flex items-start gap-3 text-[16px] text-encre/80">
                 <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-vert text-sable">
@@ -71,10 +71,10 @@ export function Pricing() {
                 return (
                   <label
                     key={plan.id}
-                    className={`relative flex cursor-pointer items-center gap-5 rounded-[1.75rem] border p-6 transition-all duration-300 sm:p-7 ${
+                    className={`relative flex cursor-pointer items-center gap-5 rounded-[1.75rem] border p-6 transition-colors sm:p-8 ${
                       active
-                        ? "border-vert bg-vert text-white shadow-[0_24px_50px_-24px_rgb(45_71_49_/_0.7)]"
-                        : "border-vert/10 bg-papier text-encre hover:border-vert/30"
+                        ? "border-vert bg-vert text-white shadow-float"
+                        : "border-encre/8 bg-papier text-encre hover:border-vert/30"
                     }`}
                   >
                     <input
@@ -96,9 +96,9 @@ export function Pricing() {
 
                     <span className="min-w-0 flex-1">
                       <span className="flex flex-wrap items-center gap-2">
-                        <span className="text-[19px] font-semibold">{plan.name}</span>
+                        <span className="text-[20px] font-medium">{plan.name}</span>
                         <span
-                          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] uppercase ${
+                          className={`rounded-md px-2 py-1 text-[13px] leading-none font-medium ${
                             active ? "bg-sable text-vert-deep" : "bg-sable-soft text-sable-ink"
                           }`}
                         >
@@ -112,7 +112,7 @@ export function Pricing() {
                           {plan.period}
                         </span>
                       </span>
-                      <span className={`mt-1.5 block text-[15px] ${active ? "text-sable" : "text-sable-ink"}`}>
+                      <span className={`mt-2 block text-[15px] ${active ? "text-sable" : "text-sable-ink"}`}>
                         {plan.note}
                       </span>
                       <span className={`mt-1 block text-[14px] ${active ? "text-white/65" : "text-encre/55"}`}>
@@ -136,14 +136,14 @@ export function Pricing() {
 
           <a
             href="#paiement"
-            className="group mt-5 flex w-full items-center justify-center gap-2.5 rounded-full bg-vert py-4.5 text-[17px] font-medium text-white shadow-[0_14px_30px_-14px_rgb(45_71_49_/_0.8)] transition-colors hover:bg-vert-deep"
+            className="group mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-full bg-vert text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
           >
             Continuer avec l&apos;offre {selected === "annuel" ? "annuelle" : "mensuelle"}
             <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
 
-          <div className="mt-5 flex flex-col items-center gap-2 text-center text-[13px] text-encre/55">
-            <p className="inline-flex items-center gap-1.5">
+          <div className="mt-4 flex flex-col items-center gap-2 text-center text-[14px] text-encre/60">
+            <p className="inline-flex items-center gap-2">
               <ShieldCheck className="text-vert" />
               Paiement sécurisé · Carte, PayPal, Apple Pay, Google Pay
             </p>

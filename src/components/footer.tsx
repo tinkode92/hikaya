@@ -20,11 +20,6 @@ export function Footer() {
   return (
     <footer className="px-3 pt-4 pb-3 sm:px-6 sm:pb-6">
       <div className="relative mx-auto max-w-[1280px] overflow-hidden rounded-[2.25rem] bg-vert-deep text-white">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_60%_at_50%_0%,rgb(212_163_115_/_0.16),transparent_70%)]"
-        />
-
         {/* Dernier appel à l'action */}
         <div className="relative flex flex-col items-center px-6 pt-16 pb-14 text-center sm:pt-20">
           <Image src="/brand/symbole.svg" alt="" width={1060} height={1257} className="h-16 w-auto" />
@@ -34,14 +29,14 @@ export function Footer() {
           </h2>
           <a
             href="#abonnements"
-            className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-sable py-4 pr-6 pl-7 text-[17px] font-medium text-vert-deep transition-colors hover:bg-sable-soft"
+            className="group mt-8 inline-flex h-14 items-center gap-2 rounded-full bg-sable px-7 text-[17px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-sable-soft active:scale-[0.98]"
           >
             Commencer l&apos;aventure
             <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
 
-        <div className="relative mx-6 grid gap-10 border-t border-white/10 py-12 sm:mx-12 md:grid-cols-[1.4fr_repeat(3,1fr)] lg:mx-16">
+        <div className="relative mx-6 grid gap-10 border-t border-white/8 py-12 sm:mx-12 md:grid-cols-[1.4fr_repeat(3,1fr)] lg:mx-16">
           <div>
             <Image src="/brand/typo-blanc.svg" alt="Hikäyä" width={848} height={513} className="h-14 w-auto" />
             <p className="mt-4 max-w-[30ch] text-[15px] leading-relaxed text-white/60">
@@ -50,8 +45,8 @@ export function Footer() {
           </div>
           {columns.map((c) => (
             <div key={c.title}>
-              <p className="text-[12px] font-semibold tracking-[0.16em] text-sable uppercase">{c.title}</p>
-              <ul className="mt-4 space-y-2.5">
+              <p className="text-[15px] font-medium text-sable">{c.title}</p>
+              <ul className="mt-4 space-y-3">
                 {c.links.map((l) => (
                   <li key={l}>
                     <a href="#" className="text-[15px] text-white/70 transition-colors hover:text-white">
@@ -64,7 +59,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="relative mx-6 flex flex-col gap-3 border-t border-white/10 py-6 pb-24 text-[13px] text-white/45 sm:mx-12 sm:flex-row sm:justify-between sm:pb-6 lg:mx-16">
+        <div className="relative mx-6 flex flex-col gap-3 border-t border-white/8 py-6 pb-24 text-[13px] text-white/55 sm:mx-12 sm:flex-row sm:justify-between sm:pb-6 lg:mx-16">
           <p>© 2026 Hikaya Médias · Tous droits réservés</p>
           <p className="flex gap-5">
             <a href="#" className="hover:text-white">

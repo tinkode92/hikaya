@@ -13,7 +13,7 @@ export function MiniPlayer() {
 
   return (
     <div className="fixed inset-x-0 bottom-3 z-50 px-3 sm:bottom-5">
-      <div className="animate-rise mx-auto flex max-w-[560px] items-center gap-3 rounded-full border border-white/10 bg-vert-deep/95 py-2 pr-2 pl-2 text-white shadow-[0_20px_40px_-16px_rgb(0_0_0_/_0.45)] backdrop-blur-xl">
+      <div className="animate-rise mx-auto flex max-w-[560px] items-center gap-3 rounded-full border border-white/8 bg-vert-deep p-2 text-white shadow-object">
         <div className="relative size-11 shrink-0 overflow-hidden rounded-full">
           <Image src={current.image} alt="" fill sizes="44px" className="object-cover" />
         </div>
@@ -26,7 +26,7 @@ export function MiniPlayer() {
           ) : (
             <p className="truncate text-[14px] font-medium">{current.title}</p>
           )}
-          <div className="mt-1.5 flex items-center gap-2.5">
+          <div className="mt-2 flex items-center gap-3">
             <div
               className="relative h-1 flex-1 cursor-pointer rounded-full bg-white/15"
               onClick={(e) => {
@@ -49,7 +49,7 @@ export function MiniPlayer() {
           type="button"
           onClick={() => toggle(current)}
           aria-label={playing ? "Pause" : "Lecture"}
-          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-sable text-vert-deep transition-transform hover:scale-105"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-sable text-vert-deep transition-[background-color,transform] hover:bg-sable-soft active:scale-[0.97]"
         >
           {playing ? <Pause /> : <Play className="translate-x-px" />}
         </button>

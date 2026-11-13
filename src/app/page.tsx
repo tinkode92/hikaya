@@ -29,10 +29,10 @@ export default function Home() {
               <SectionHeading
                 eyebrow="Série · Al-Andalus"
                 first="De Ṭāriq à Cordoue,"
-                second="épisode après épisode."
+                second="épisode après épisode"
               />
               <p className="max-w-[38ch] text-[16px] leading-relaxed text-encre/60">
-                Huit siècles d&apos;histoire racontés comme une grande aventure. Chaque épisode se
+                La série suit al-Andalus depuis l&apos;arrivée de Ṭāriq ibn Ziyād. Chaque épisode se
                 découvre avec un extrait de 1 min 30.
               </p>
             </div>

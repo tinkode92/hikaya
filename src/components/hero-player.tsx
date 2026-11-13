@@ -13,15 +13,15 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
   const isPlaying = isCurrent && playing;
 
   return (
-    <div className="mx-auto w-full max-w-[680px] rounded-[1.75rem] border border-vert/10 bg-white p-2.5 text-left shadow-[0_20px_50px_-24px_rgb(45_71_49_/_0.35)]">
+    <div className="mx-auto w-full max-w-[680px] rounded-[1.75rem] border border-encre/8 bg-white p-3 text-left shadow-float">
       <div className="flex items-center gap-3 sm:gap-4">
-        <div className="relative h-[68px] w-[54px] shrink-0 bg-sable-soft [clip-path:url(#arch)]">
+        <div className="relative h-[68px] w-[52px] shrink-0 bg-sable-soft [clip-path:url(#arch)]">
           <Image src={episode.image} alt="" fill sizes="60px" className="object-cover" />
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-semibold tracking-[0.14em] text-sable-ink uppercase">
-            Extrait · Ép. {episode.number}
+          <p className="text-[13px] font-medium text-sable-ink">
+            Extrait · Épisode {episode.number}
           </p>
           <p className="truncate text-[15px] font-medium text-encre">{episode.title}</p>
           <Waveform
@@ -45,11 +45,8 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
           type="button"
           onClick={() => toggle(episode)}
           aria-label={isPlaying ? "Mettre en pause l'extrait" : "Écouter l'extrait"}
-          className="group relative flex size-14 shrink-0 items-center justify-center rounded-full bg-vert text-sable transition-transform duration-300 hover:scale-105 active:scale-95"
+          className="flex size-14 shrink-0 items-center justify-center rounded-full bg-vert text-sable transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.97]"
         >
-          {isPlaying && (
-            <span className="absolute inset-0 animate-ping rounded-full bg-vert/25 [animation-duration:2s]" />
-          )}
           {isPlaying ? <Pause /> : <Play className="translate-x-px" />}
         </button>
       </div>
@@ -57,13 +54,13 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
       {isCurrent && ended && (
         <a
           href="#abonnements"
-          className="mt-2.5 flex items-center justify-between rounded-2xl bg-creme px-4 py-3 text-sm text-vert"
+          className="mt-3 flex items-center justify-between rounded-2xl bg-creme px-4 py-3 text-sm text-vert"
         >
           <span>
-            <strong className="font-semibold">Fin de l&apos;extrait.</strong> La suite est réservée aux
+            <strong className="font-medium">Fin de l&apos;extrait.</strong> La suite est réservée aux
             abonnés.
           </span>
-          <span className="inline-flex items-center gap-1 font-semibold">
+          <span className="inline-flex items-center gap-1 font-medium">
             Voir les offres <ArrowUpRight />
           </span>
         </a>

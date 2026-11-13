@@ -21,7 +21,7 @@ export const alAndalus: Episode[] = [
     title: "Ṭāriq et la porte d'al-Andalus",
     summary:
       "711. Ṭāriq ibn Ziyād traverse le détroit. Devant lui, une terre inconnue et un choix sans retour.",
-    duration: "12 min",
+    duration: "",
     age: "6-14 ans",
     image: "/episodes/al-andalus-01.webp",
   },

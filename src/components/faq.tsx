@@ -38,7 +38,7 @@ export function Faq() {
     <section id="faq" className="px-3 sm:px-6">
       <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
         <div>
-          <SectionHeading eyebrow="Questions fréquentes" first="Une question ?" second="On vous répond." />
+          <SectionHeading eyebrow="Questions fréquentes" first="Une question ?" second="On vous répond" />
           <p className="mt-6 max-w-[34ch] text-[16px] leading-relaxed text-encre/60">
             Vous ne trouvez pas votre réponse ?{" "}
             <a href="#contact" className="font-medium text-vert underline underline-offset-4 hover:no-underline">
@@ -53,7 +53,7 @@ export function Faq() {
             <details key={item.q} name="faq" open={i === 0} className="group">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-[18px] font-medium text-encre transition-colors hover:text-vert [&::-webkit-details-marker]:hidden">
                 {item.q}
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-papier text-vert transition-transform duration-300 group-open:rotate-45">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-papier text-vert transition-transform group-open:rotate-45">
                   <Plus />
                 </span>
               </summary>

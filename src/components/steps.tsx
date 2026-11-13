@@ -27,7 +27,7 @@ export function Steps() {
           <SectionHeading
             eyebrow="Comment ça marche"
             first="Trois étapes,"
-            second="et l'aventure commence."
+            second="et l'aventure commence"
           />
           <Image
             src="/characters/ibn-khaldun.webp"
@@ -46,7 +46,7 @@ export function Steps() {
                 i > 0 ? "border-t border-vert/10" : "pt-0"
               }`}
             >
-              <span className="text-[56px] leading-none font-extralight tracking-[-0.04em] text-sable tabular-nums sm:text-[72px]">
+              <span className="text-[56px] leading-none font-light tracking-[-0.04em] text-sable-ink tabular-nums sm:text-[72px]">
                 {s.n}
               </span>
               <div className="pt-1 sm:pt-3">

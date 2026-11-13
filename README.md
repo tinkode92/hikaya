@@ -12,6 +12,7 @@ npm run dev
 - Couleurs de la charte (NL Agence, 07/2025) : vert `#2D4731`, sable `#D4A373`. Dérivés web dans `src/app/globals.css` (`sable-ink` pour le texte sable lisible, `creme`, `papier`).
 - Typo : Urbanist (titres en light italique, texte en regular / medium).
 - Forme signature : l'arc outrepassé de Cordoue (`src/components/arch.tsx`).
+- Passe anti « look IA » faite avec [unslop](https://github.com/heydamir/unslop) de Damir Sokolovsky (@heydamir), CC BY 4.0 : pas de halos ni d'effet verre, ombres neutres, sur-titres en casse normale, animations sans boucle, espacements sur une grille de 4 px.
 
 ## À savoir pour le dev
 

@@ -7,7 +7,7 @@ import { SectionHeading } from "./section-heading";
 const themes = [
   {
     name: "Âges de l'Islam",
-    text: "Les grandes époques racontées en séries : Al-Andalus, les califats, les empires.",
+    text: "Les grandes époques racontées en séries, à commencer par Al-Andalus.",
     image: "/episodes/al-andalus-04.webp",
     className: "lg:col-span-1 lg:row-span-2",
     tall: true,
@@ -20,13 +20,13 @@ const themes = [
   },
   {
     name: "Sagesse & Science",
-    text: "Al-Khwārizmī, Ibn al-Haytham… les savants qui ont changé le monde.",
+    text: "Al-Khwārizmī, al-Farghānī, les Banū Mūsā : les savants et leurs découvertes.",
     image: "/themes/sagesse-science.webp",
     className: "",
   },
   {
     name: "Cités & Merveilles",
-    text: "Fès, Cordoue, Bagdad : voyager dans les villes qui ont fait l'histoire.",
+    text: "Fès, Cordoue : voyager dans les villes qui ont fait l'histoire.",
     image: "/themes/cites-merveilles.webp",
     className: "lg:col-span-2",
   },
@@ -40,11 +40,11 @@ export function Themes() {
           <SectionHeading
             eyebrow="Explorer par thème"
             first="Des califes aux savants,"
-            second="chaque histoire a son univers."
+            second="chaque histoire a son univers"
           />
           <a
             href="#catalogue"
-            className="group inline-flex items-center gap-2 self-start rounded-full border border-vert/15 bg-papier px-5 py-3 text-[15px] font-medium text-vert transition-colors hover:bg-white md:self-auto"
+            className="group inline-flex h-12 items-center gap-2 self-start rounded-full border border-encre/8 bg-papier px-5 text-[15px] font-medium text-vert transition-colors hover:bg-white md:self-auto"
           >
             Voir tout le catalogue
             <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -63,10 +63,10 @@ export function Themes() {
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw"
-                className="-z-10 object-cover transition-transform duration-[1.2s] ease-[var(--ease-out-soft)] group-hover:scale-[1.05]"
+                className="-z-10 object-cover"
               />
               <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(34_56_38_/_0)_35%,rgb(34_56_38_/_0.92)_100%)]" />
-              <span className="absolute top-5 right-5 flex size-11 items-center justify-center rounded-full border border-white/25 bg-white/15 backdrop-blur-md transition-colors group-hover:bg-sable group-hover:text-vert-deep">
+              <span className="absolute top-5 right-5 flex size-11 items-center justify-center rounded-full bg-papier text-vert transition-colors group-hover:bg-sable group-hover:text-vert-deep">
                 <ArrowUpRight />
               </span>
               <h3
