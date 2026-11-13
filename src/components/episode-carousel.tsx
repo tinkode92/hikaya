@@ -83,49 +83,47 @@ function EpisodeCard({ episode }: { episode: Episode }) {
   const isPlaying = current?.id === episode.id && playing;
 
   return (
-    <article className="group relative aspect-[3/4] w-[78%] shrink-0 snap-start overflow-hidden rounded-[1.75rem] bg-vert sm:w-[calc((100%-16px)/2)] lg:w-[calc((100%-48px)/4)]">
-      <Image
-        src={episode.image}
-        alt=""
-        fill
-        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 80vw"
-        className="object-cover"
-      />
-      {/* Voile vert de la charte : lisibilité du texte sur des illustrations très colorées */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(34_56_38_/_0.92)_0%,rgb(34_56_38_/_0.55)_24%,rgb(34_56_38_/_0.2)_36%,rgb(34_56_38_/_0.25)_42%,rgb(34_56_38_/_0.88)_66%,rgb(34_56_38_/_0.97)_100%)]" />
+    <article className="flex w-[78%] shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] bg-vert text-white sm:w-[calc((100%-16px)/2)] lg:w-[calc((100%-48px)/4)]">
+      {/* L'illustration reste propre : aucun texte posé dessus */}
+      <div className="relative aspect-[4/3] shrink-0">
+        <Image
+          src={episode.image}
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 80vw"
+          className="object-cover"
+        />
+      </div>
 
-      <div className="relative flex h-full flex-col p-6 text-white">
+      <div className="relative flex flex-1 flex-col p-6">
+        <span
+          aria-hidden
+          className="text-outline pointer-events-none absolute top-4 right-5 text-[64px] leading-none font-light tracking-[-0.04em]"
+        >
+          {episode.number}
+        </span>
         <p className="text-[14px] font-medium text-sable">
           {episode.series} · Épisode {episode.number}
         </p>
-        <h3 className="mt-2 text-[26px] leading-[1.08] font-normal tracking-[-0.01em] text-balance italic">
+        <h3 className="mt-2 pr-16 text-[24px] leading-[1.1] font-normal tracking-[-0.01em] text-balance italic">
           {episode.title}
         </h3>
         <p className="mt-2 text-[14px] text-white/70">
           {episode.duration ? `${episode.duration} · ${episode.age}` : episode.age}
         </p>
+        <p className="mt-4 mb-6 text-[15px] leading-relaxed text-white/85">{episode.summary}</p>
 
-        <div className="mt-auto">
-          <p className="max-w-[30ch] text-[14px] leading-relaxed text-white/90">{episode.summary}</p>
-          <button
-            type="button"
-            onClick={() => toggle(episode)}
-            aria-label={`${isPlaying ? "Mettre en pause" : "Écouter l'extrait de"} ${episode.title}`}
-            className="mt-5 inline-flex h-11 items-center gap-2 rounded-full bg-papier pr-5 pl-2 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
-          >
-            <span className="flex size-8 items-center justify-center rounded-full bg-vert text-sable">
-              {isPlaying ? <Pause width={13} height={13} /> : <Play width={13} height={13} className="translate-x-px" />}
-            </span>
-            {isPlaying ? "En écoute" : "Écouter l'extrait"}
-          </button>
-        </div>
-
-        <span
-          aria-hidden
-          className="text-outline pointer-events-none absolute right-5 bottom-1 text-[96px] leading-none font-light tracking-[-0.04em]"
+        <button
+          type="button"
+          onClick={() => toggle(episode)}
+          aria-label={`${isPlaying ? "Mettre en pause" : "Écouter l'extrait de"} ${episode.title}`}
+          className="mt-auto inline-flex h-11 items-center gap-2 self-start rounded-full bg-papier pr-5 pl-2 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
         >
-          {episode.number}
-        </span>
+          <span className="flex size-8 items-center justify-center rounded-full bg-vert text-sable">
+            {isPlaying ? <Pause width={13} height={13} /> : <Play width={13} height={13} className="translate-x-px" />}
+          </span>
+          {isPlaying ? "En écoute" : "Écouter l'extrait"}
+        </button>
       </div>
     </article>
   );
