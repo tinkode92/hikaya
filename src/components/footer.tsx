@@ -1,18 +1,36 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "./icons";
 
 const columns = [
   {
     title: "Histoires",
-    links: ["Catalogue", "Séries", "Nouveautés", "Thèmes"],
+    links: [
+      { label: "Catalogue", href: "/catalogue" },
+      { label: "Série Al-Andalus", href: "/series/al-andalus" },
+      { label: "Les Âges de l'islam", href: "/categories/ages-de-l-islam" },
+      { label: "Grands Personnages", href: "/categories/grands-personnages" },
+      { label: "Villes de l'Islam", href: "/categories/villes-de-l-islam" },
+    ],
   },
   {
     title: "HIKAYA",
-    links: ["À propos", "Abonnements", "L'app", "Contact"],
+    links: [
+      { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
+      { label: "Abonnements", href: "/abonnements" },
+      { label: "Questions fréquentes", href: "/#faq" },
+      { label: "Contact", href: "#contact" },
+    ],
   },
   {
     title: "Informations",
-    links: ["Mentions légales", "CGV", "CGU", "Confidentialité", "Cookies"],
+    links: [
+      { label: "Mentions légales", href: "#" },
+      { label: "CGV", href: "#" },
+      { label: "CGU", href: "#" },
+      { label: "Confidentialité", href: "#" },
+      { label: "Cookies", href: "#" },
+    ],
   },
 ];
 
@@ -27,13 +45,13 @@ export function Footer() {
             <span className="block text-sable">Prêts pour la première</span>
             <span className="block">histoire ce soir ?</span>
           </h2>
-          <a
-            href="#abonnements"
+          <Link
+            href="/abonnements"
             className="group mt-8 inline-flex h-14 items-center gap-2 rounded-full bg-sable px-7 text-[17px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-sable-soft active:scale-[0.98]"
           >
-            Commencer l&apos;aventure
+            Choisir mon abonnement
             <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
         </div>
 
         <div className="relative mx-6 grid gap-10 border-t border-white/8 py-12 sm:mx-12 md:grid-cols-[1.4fr_repeat(3,1fr)] lg:mx-16">
@@ -48,10 +66,10 @@ export function Footer() {
               <p className="text-[15px] font-medium text-sable">{c.title}</p>
               <ul className="mt-4 space-y-3">
                 {c.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-[15px] text-white/70 transition-colors hover:text-white">
-                      {l}
-                    </a>
+                  <li key={l.label}>
+                    <Link href={l.href} className="text-[15px] text-white/70 transition-colors hover:text-white">
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

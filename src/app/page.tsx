@@ -1,57 +1,77 @@
+import Link from "next/link";
 import { AppDownload } from "@/components/app-download";
-import { ArchDefs } from "@/components/arch";
+import { BookCard } from "@/components/book-card";
 import { EpisodeCarousel } from "@/components/episode-carousel";
 import { Faq } from "@/components/faq";
-import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
-import { MiniPlayer } from "@/components/mini-player";
-import { Nav } from "@/components/nav";
-import { PlayerProvider } from "@/components/player";
+import { ArrowUpRight } from "@/components/icons";
+import { ListenButton } from "@/components/listen-button";
 import { Pricing } from "@/components/pricing";
 import { Reviews } from "@/components/reviews";
 import { SectionHeading } from "@/components/section-heading";
-import { Steps } from "@/components/steps";
 import { Themes } from "@/components/themes";
 import { Values } from "@/components/values";
-import { alAndalus } from "@/lib/episodes";
+import { booksByIds, homeSelection, newReleases } from "@/lib/catalogue";
 
+// Ordre et textes des sections : « Textes_site_HIKAYA » (Drive), partie Accueil.
 export default function Home() {
-  return (
-    <PlayerProvider>
-      <ArchDefs />
-      <Nav />
-      <main className="flex flex-col gap-20 sm:gap-28">
-        <Hero />
+  const selection = booksByIds(homeSelection);
+  const nouveautes = booksByIds(newReleases);
 
-        <section id="histoires" className="scroll-mt-24 px-3 sm:px-6">
-          <div className="mx-auto max-w-[1280px]">
-            <div className="mb-8 flex flex-col gap-4 sm:mb-10 md:flex-row md:items-end md:justify-between">
-              <SectionHeading
-                eyebrow="Série · Al-Andalus"
-                first="De Ṭāriq à Cordoue,"
-                second="épisode après épisode"
-              />
-              <p className="max-w-[38ch] text-[16px] leading-relaxed text-encre/60">
-                La série suit al-Andalus depuis l&apos;arrivée de Ṭāriq ibn Ziyād. Chaque épisode se
-                découvre avec un extrait de 1 min 30.
+  return (
+    <main className="flex flex-col gap-20 sm:gap-28">
+      <Hero />
+
+      {/* Sélection de livres */}
+      <section id="histoires" className="scroll-mt-24 px-3 sm:px-6">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-8 flex flex-col gap-6 sm:mb-10 md:flex-row md:items-end md:justify-between">
+            <div>
+              <SectionHeading eyebrow="Sélection" first="Leur prochaine découverte" second="commence ici" />
+              <p className="mt-6 max-w-[52ch] text-[17px] leading-relaxed text-encre/65">
+                Une ville à explorer, un personnage à rencontrer, une aventure à suivre… Écoutez un
+                extrait et laissez la curiosité faire le reste.
               </p>
             </div>
-            <EpisodeCarousel episodes={alAndalus} />
+            <div className="flex flex-wrap gap-3">
+              <ListenButton book={selection[0]} label="Écouter un extrait" />
+              <Link
+                href="/catalogue"
+                className="group inline-flex h-14 items-center gap-2 rounded-full border border-encre/8 bg-papier px-6 text-[17px] font-medium text-vert transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
+              >
+                Voir tout le catalogue
+                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
           </div>
-        </section>
+          <EpisodeCarousel episodes={selection} />
+        </div>
+      </section>
 
-        <Themes />
-        <Values />
-        <Steps />
-        <Pricing />
-        <Reviews />
-        <AppDownload />
-        <Faq />
-      </main>
-      <div className="mt-20 sm:mt-28">
-        <Footer />
-      </div>
-      <MiniPlayer />
-    </PlayerProvider>
+      {/* Nouveautés */}
+      <section className="px-3 sm:px-6">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-8 sm:mb-10">
+            <SectionHeading eyebrow="Nouveautés" first="De nouvelles histoires" second="à découvrir" />
+            <p className="mt-6 max-w-[52ch] text-[17px] leading-relaxed text-encre/65">
+              Retrouvez les derniers récits qui ont rejoint HIKAYA et choisissez votre prochaine écoute
+              en famille.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {nouveautes.map((b) => (
+              <BookCard key={b.id} book={b} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Themes />
+      <Values />
+      <Pricing />
+      <Reviews />
+      <AppDownload />
+      <Faq />
+    </main>
   );
 }

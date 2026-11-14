@@ -2,18 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ArrowUpRight, Close, Menu, User } from "./icons";
 
 const links = [
-  { href: "#histoires", label: "Catalogue" },
-  { href: "#histoires", label: "Séries" },
-  { href: "#abonnements", label: "Abonnements" },
-  { href: "#valeurs", label: "À propos" },
+  { href: "/catalogue", label: "Catalogue" },
+  { href: "/series/al-andalus", label: "Séries" },
+  { href: "/abonnements", label: "Abonnements" },
+  { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
 ];
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-6">
@@ -35,9 +37,13 @@ export function Nav() {
         <ul className="hidden items-center gap-9 text-[15px] text-encre/70 lg:flex">
           {links.map((l) => (
             <li key={l.label}>
-              <a href={l.href} className="transition-colors hover:text-vert">
+              <Link
+                href={l.href}
+                aria-current={pathname.startsWith(l.href) ? "page" : undefined}
+                className="transition-colors hover:text-vert aria-[current=page]:text-vert"
+              >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -50,13 +56,13 @@ export function Nav() {
           >
             <User />
           </a>
-          <a
-            href="#abonnements"
+          <Link
+            href="/abonnements"
             className="group inline-flex h-11 items-center gap-2 rounded-full bg-vert px-5 text-[15px] font-medium text-white transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
           >
             S&apos;abonner
             <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -74,13 +80,13 @@ export function Nav() {
           <ul className="flex flex-col">
             {[...links, { href: "#connexion", label: "Se connecter" }].map((l) => (
               <li key={l.label}>
-                <a
+                <Link
                   href={l.href}
                   onClick={() => setOpen(false)}
                   className="block rounded-2xl px-4 py-3 text-lg text-encre/80 hover:bg-creme"
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

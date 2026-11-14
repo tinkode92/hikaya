@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
+import { ArchDefs } from "@/components/arch";
+import { Footer } from "@/components/footer";
+import { MiniPlayer } from "@/components/mini-player";
+import { Nav } from "@/components/nav";
+import { PlayerProvider } from "@/components/player";
 import "./globals.css";
 
 const urbanist = Urbanist({
@@ -8,16 +13,32 @@ const urbanist = Urbanist({
   style: ["normal", "italic"],
 });
 
+// Titres et descriptions Google fournis par HIKAYA (Textes_site_HIKAYA, « Référencement des pages »)
 export const metadata: Metadata = {
-  title: "HIKAYA · Les grandes histoires de l'Islam, en audio pour les enfants",
+  metadataBase: new URL("https://www.hikayamedias.com"),
+  title: {
+    default: "HIKAYA | L'histoire de la civilisation musulmane pour les enfants",
+    template: "%s | HIKAYA",
+  },
   description:
-    "Des histoires audio pour les 6-14 ans : Al-Andalus, les grandes figures, les savants. À écouter sur le site et dans l'app.",
+    "Faites découvrir aux enfants l'histoire de la civilisation musulmane. Explorez les livres audio HIKAYA, écoutez des extraits et partagez l'histoire en famille.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" className={`${urbanist.variable} h-full`}>
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        {/* Le lecteur vit dans le layout : la lecture continue pendant la navigation (CDC §03) */}
+        <PlayerProvider>
+          <ArchDefs />
+          <Nav />
+          {children}
+          <div className="mt-20 sm:mt-28">
+            <Footer />
+          </div>
+          <MiniPlayer />
+        </PlayerProvider>
+      </body>
     </html>
   );
 }

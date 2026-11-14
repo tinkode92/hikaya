@@ -34,7 +34,7 @@ const included = [
   "AirPlay et Chromecast pour écouter sur la télé",
 ];
 
-export function Pricing() {
+export function Pricing({ as = "h2" }: { as?: "h1" | "h2" }) {
   const [selected, setSelected] = useState<(typeof plans)[number]["id"]>("annuel");
 
   return (
@@ -42,6 +42,7 @@ export function Pricing() {
       <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
         <div className="lg:pt-6">
           <SectionHeading
+            as={as}
             eyebrow="Abonnements"
             first="Un abonnement,"
             second="toutes les histoires"

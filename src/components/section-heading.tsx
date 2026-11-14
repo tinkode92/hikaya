@@ -11,7 +11,7 @@ export function SectionHeading({
   first: string;
   second: string;
   tone?: "light" | "dark";
-  as?: "h2" | "h3";
+  as?: "h1" | "h2" | "h3";
   className?: string;
 }) {
   const dark = tone === "dark";

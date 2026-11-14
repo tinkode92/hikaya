@@ -22,12 +22,12 @@ export function Reviews({ reviews = [] }: { reviews?: Review[] }) {
   return (
     <section id="avis" className="px-3 sm:px-6">
       <div className="mx-auto max-w-[1280px]">
-        <SectionHeading
-          eyebrow="Avis des familles"
-          first="Ce qu'en disent"
-          second="les familles"
-          className="mb-8 sm:mb-10"
-        />
+        <div className="mb-8 sm:mb-10">
+          <SectionHeading eyebrow="Avis des familles" first="HIKAYA dans" second="leur quotidien" />
+          <p className="mt-6 max-w-[52ch] text-[17px] leading-relaxed text-encre/65">
+            Des parents partagent leurs moments d&apos;écoute et leurs découvertes en famille.
+          </p>
+        </div>
 
         <div className="grid gap-4 lg:grid-cols-[1fr_1.4fr]">
           <div className="flex flex-col justify-between gap-12 rounded-[1.75rem] bg-vert p-8 text-white">

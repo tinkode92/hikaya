@@ -15,8 +15,8 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
   return (
     <div className="mx-auto w-full max-w-[680px] rounded-[1.75rem] border border-encre/8 bg-white p-3 text-left shadow-float">
       <div className="flex items-center gap-3 sm:gap-4">
-        <div className="relative h-[68px] w-[52px] shrink-0 bg-sable-soft [clip-path:url(#arch)]">
-          <Image src={episode.image} alt="" fill sizes="60px" className="object-cover" />
+        <div className="relative h-[84px] w-[64px] shrink-0 bg-sable-soft [clip-path:url(#arch)]">
+          <Image src={episode.image} alt="" fill sizes="192px" className="object-cover object-[50%_40%]" />
         </div>
 
         <div className="min-w-0 flex-1">
@@ -53,7 +53,7 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
 
       {isCurrent && ended && (
         <a
-          href="#abonnements"
+          href="/abonnements"
           className="mt-3 flex items-center justify-between rounded-2xl bg-creme px-4 py-3 text-sm text-vert"
         >
           <span>

@@ -9,15 +9,15 @@ export function AppDownload() {
       {/* Fond sable plein, comme les visuels App Store de HIKAYA */}
       <div className="relative mx-auto grid max-w-[1280px] items-end gap-10 overflow-hidden rounded-[2.25rem] bg-sable px-6 pt-14 sm:px-12 lg:grid-cols-[1.1fr_1fr] lg:px-16 lg:pt-0">
         <div className="relative self-center lg:py-20">
-          <p className="text-[15px] font-medium text-vert">L&apos;app HIKAYA</p>
+          <p className="text-[15px] font-medium text-vert">L&apos;application HIKAYA</p>
           <h2 className="mt-4 text-[clamp(2.1rem,4.4vw,3.6rem)] leading-[1.04] font-light tracking-[-0.025em] text-balance text-vert italic">
-            L&apos;histoire continue
+            À la maison, en voiture
             <br />
-            dans la poche
+            ou avant de dormir
           </h2>
           <p className="mt-6 max-w-[42ch] text-[17px] leading-relaxed text-vert-deep/80">
-            Téléchargez les épisodes pour les écouter hors connexion, en voyage ou chez les
-            grands-parents. Votre abonnement fonctionne sur le site et dans l&apos;app.
+            Retrouvez vos histoires dans l&apos;application HIKAYA. Connectez-vous avec le même compte
+            pour profiter de votre abonnement.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -40,7 +40,7 @@ export function AppDownload() {
             >
               <Phone />
               <span className="text-left leading-tight">
-                <span className="block text-[12px] text-vert-deep/70">Disponible sur</span>
+                <span className="block text-[12px] text-vert-deep/70">Télécharger sur</span>
                 <span className="block text-[16px] font-medium">Google Play</span>
               </span>
             </a>

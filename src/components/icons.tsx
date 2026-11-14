@@ -98,3 +98,10 @@ export const ShieldCheck = (p: P) => (
     <path d="m9 12 2.2 2.2L15.5 10" />
   </svg>
 );
+
+export const Search = (p: P) => (
+  <svg viewBox="0 0 24 24" width={18} height={18} {...base} {...p}>
+    <circle cx="11" cy="11" r="6.5" />
+    <path d="m20 20-4.2-4.2" />
+  </svg>
+);

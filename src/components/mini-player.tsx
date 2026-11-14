@@ -15,12 +15,12 @@ export function MiniPlayer() {
     <div className="fixed inset-x-0 bottom-3 z-50 px-3 sm:bottom-5">
       <div className="animate-rise mx-auto flex max-w-[560px] items-center gap-3 rounded-full border border-white/8 bg-vert-deep p-2 text-white shadow-object">
         <div className="relative size-11 shrink-0 overflow-hidden rounded-full">
-          <Image src={current.image} alt="" fill sizes="44px" className="object-cover" />
+          <Image src={current.image} alt="" fill sizes="132px" className="object-cover" />
         </div>
 
         <div className="min-w-0 flex-1">
           {ended ? (
-            <a href="#abonnements" className="flex items-center gap-1 text-[14px] font-medium text-sable">
+            <a href="/abonnements" className="flex items-center gap-1 text-[14px] font-medium text-sable">
               La suite avec l&apos;abonnement <ArrowUpRight />
             </a>
           ) : (

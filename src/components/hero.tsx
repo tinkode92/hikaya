@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { alAndalus } from "@/lib/episodes";
 import { ArchOutline } from "./arch";
 import { HeroPlayer } from "./hero-player";
-import { ArrowDown, ArrowUpRight, Star } from "./icons";
+import { ArrowUpRight } from "./icons";
 
 export function Hero() {
   return (
@@ -30,53 +31,42 @@ export function Hero() {
         />
 
         <div className="relative px-5 pt-16 pb-10 text-center sm:pt-20 md:pb-28 lg:pt-24 lg:pb-32">
-          <p className="animate-rise text-[15px] font-medium text-sable-ink">
-            Histoires audio de l&apos;Islam · 6-14 ans
-          </p>
-
-          <h1 className="animate-rise mx-auto mt-6 max-w-[15ch] text-[clamp(2.6rem,7vw,5.6rem)] leading-[1.02] font-light tracking-[-0.03em] italic [animation-delay:50ms] sm:max-w-none">
-            <span className="block text-sable-ink">Certaines histoires se racontent.</span>
-            <span className="block text-vert">D&apos;autres se transmettent</span>
+          <h1 className="animate-rise mx-auto max-w-[18ch] text-[clamp(2.4rem,5.6vw,4.6rem)] leading-[1.04] font-light tracking-[-0.03em] text-balance italic sm:max-w-[22ch]">
+            <span className="block text-sable-ink">L&apos;histoire de la civilisation musulmane</span>
+            <span className="block text-vert">à découvrir en famille</span>
           </h1>
 
-          <p className="animate-rise mx-auto mt-6 max-w-[46ch] text-[17px] leading-relaxed text-encre/65 [animation-delay:100ms]">
-            Al-Andalus, les grands savants, les bâtisseurs… Des récits audio pour que vos enfants
-            grandissent avec leur histoire.
+          <p className="animate-rise mx-auto mt-6 max-w-[52ch] text-[17px] leading-relaxed text-encre/65 [animation-delay:50ms]">
+            Des récits pour éveiller la curiosité des enfants, nourrir leur imagination et leur faire
+            rencontrer les femmes et les hommes qui ont marqué cet héritage.
           </p>
 
-          <div className="animate-rise mt-9 flex flex-col items-center justify-center gap-4 [animation-delay:150ms] sm:flex-row sm:gap-7">
-            <a
-              href="#abonnements"
+          <div className="animate-rise mt-9 flex flex-col items-center justify-center gap-4 [animation-delay:100ms] sm:flex-row sm:gap-7">
+            <Link
+              href="/abonnements"
               className="group inline-flex h-14 items-center gap-2 rounded-full bg-vert px-7 text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
             >
-              Commencer l&apos;aventure
+              Choisir mon abonnement
               <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a
-              href="#histoires"
-              className="group inline-flex items-center gap-2 text-[16px] text-encre/60 transition-colors hover:text-vert"
+            </Link>
+            <Link
+              href="/catalogue"
+              className="group inline-flex items-center gap-2 text-[16px] text-encre/65 transition-colors hover:text-vert"
             >
-              Découvrir les histoires
-              <ArrowDown className="transition-transform duration-300 group-hover:translate-y-0.5" />
-            </a>
+              Découvrir les livres audio
+              <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
           </div>
 
-          <p className="animate-rise mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[13px] text-encre/55 [animation-delay:200ms]">
-            <span className="inline-flex items-center gap-1 text-sable-ink">
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <Star className="opacity-50" />
-              <span className="ml-1 font-medium">4,6 sur l&apos;App Store</span>
-            </span>
+          <p className="animate-rise mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[14px] text-encre/60 [animation-delay:150ms]">
+            <span>Pour les 6–14 ans</span>
             <span aria-hidden>·</span>
-            <span>Dès 6,60 €/mois</span>
+            <span>Des extraits à écouter librement</span>
             <span aria-hidden>·</span>
-            <span>Sur le site et dans l&apos;app</span>
+            <span>Un même abonnement sur le site et dans l&apos;application</span>
           </p>
 
-          <div className="animate-rise mt-12 [animation-delay:250ms] md:mt-14">
+          <div className="animate-rise mt-12 [animation-delay:200ms] md:mt-14">
             <HeroPlayer episode={alAndalus[3]} />
           </div>
 
