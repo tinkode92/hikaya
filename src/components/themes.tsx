@@ -7,11 +7,12 @@ import { SectionHeading } from "./section-heading";
 // « Catégories et séries » (textes HIKAYA) : les 3 catégories + la série Al-Andalus.
 export function Themes() {
   const [ages, personnages, villes] = categories;
+  const firstSentence = (t: string) => t.split(". ")[0].replace(/\.$/, "") + ".";
   const andalus = series[0];
   const tiles = [
-    { href: `/categories/${ages.id}`, name: ages.name, text: ages.description, image: ages.image, className: "lg:row-span-2", big: true },
-    { href: `/categories/${personnages.id}`, name: personnages.name, text: personnages.description, image: personnages.image, className: "" },
-    { href: `/categories/${villes.id}`, name: villes.name, text: villes.description, image: villes.image, className: "" },
+    { href: `/categories/${ages.id}`, name: ages.name, text: firstSentence(ages.description), image: ages.image, className: "lg:row-span-2", big: true },
+    { href: `/categories/${personnages.id}`, name: personnages.name, text: firstSentence(personnages.description), image: personnages.image, className: "" },
+    { href: `/categories/${villes.id}`, name: villes.name, text: firstSentence(villes.description), image: villes.image, className: "" },
     {
       href: `/series/${andalus.id}`,
       name: `Série ${andalus.title}`,
@@ -77,7 +78,7 @@ export function Themes() {
               >
                 {t.name}
               </h3>
-              <p className="mt-2 line-clamp-3 max-w-[44ch] text-[15px] leading-relaxed text-white/85">{t.text}</p>
+              <p className="mt-2 max-w-[44ch] text-[15px] leading-relaxed text-white/85">{t.text}</p>
             </Link>
           ))}
         </div>

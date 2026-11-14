@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, Phone, Star } from "./icons";
+import { AppleLogo, GooglePlayLogo } from "./payment-logos";
 
 const APP_STORE = "https://apps.apple.com/fr/app/hikaya/id6754205548";
 
@@ -21,41 +21,30 @@ export function AppDownload() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
+            {/* Badges au format des stores : fond noir, logo officiel, libellés officiels FR */}
             <a
               href={APP_STORE}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex h-14 items-center gap-3 rounded-full bg-vert-deep pr-6 pl-5 text-white transition-[background-color,transform] hover:bg-encre active:scale-[0.98]"
+              className="inline-flex h-14 items-center gap-3 rounded-xl bg-black pr-5 pl-4 text-white transition-[background-color,transform] hover:bg-encre active:scale-[0.98]"
             >
-              <Phone />
+              <AppleLogo className="h-7 w-auto" />
               <span className="text-left leading-tight">
-                <span className="block text-[12px] text-white/70">Télécharger sur</span>
-                <span className="block text-[16px] font-medium">l&apos;App Store</span>
+                <span className="block text-[11px] text-white/80">Télécharger dans</span>
+                <span className="block text-[18px] font-medium tracking-[-0.01em]">l&apos;App Store</span>
               </span>
-              <ArrowUpRight className="ml-1 text-white/60 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="#google-play"
-              className="group inline-flex h-14 items-center gap-3 rounded-full bg-papier pr-6 pl-5 text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
+              className="inline-flex h-14 items-center gap-3 rounded-xl bg-black pr-5 pl-4 text-white transition-[background-color,transform] hover:bg-encre active:scale-[0.98]"
             >
-              <Phone />
+              <GooglePlayLogo className="h-6 w-auto" />
               <span className="text-left leading-tight">
-                <span className="block text-[12px] text-vert-deep/70">Télécharger sur</span>
-                <span className="block text-[16px] font-medium">Google Play</span>
+                <span className="block text-[11px] text-white/80">Disponible sur</span>
+                <span className="block text-[18px] font-medium tracking-[-0.01em]">Google Play</span>
               </span>
             </a>
           </div>
-
-          <p className="mt-6 inline-flex items-center gap-2 text-[14px] text-vert-deep/80">
-            <span className="inline-flex text-vert">
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <Star className="opacity-40" />
-            </span>
-            <strong className="font-medium">4,6</strong> sur l&apos;App Store
-          </p>
         </div>
 
         {/* Téléphone : vraie capture de l'écran d'accueil de l'app */}

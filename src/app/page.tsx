@@ -68,8 +68,8 @@ export default function Home() {
 
       <Themes />
       <Values />
-      <Pricing />
       <Reviews />
+      <Pricing />
       <AppDownload />
       <Faq />
     </main>

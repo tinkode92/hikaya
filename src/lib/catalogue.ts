@@ -297,4 +297,4 @@ export const bookLabel = (b: Book) =>
   b.series ? `${b.series} · Épisode ${b.number}` : (getCategory(b.categoryId)?.name ?? "");
 
 /** « Histoire complète · 12 min 5 s » (texte des cartes fourni par HIKAYA). */
-export const bookMeta = (b: Book) => (b.duration ? `Histoire complète · ${b.duration}` : "Histoire complète");
+export const bookMeta = (b: Book) => (b.duration ? `Histoire complète · ${b.duration}` : `Pour les ${b.age}`);

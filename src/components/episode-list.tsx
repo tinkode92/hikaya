@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { Book } from "@/lib/catalogue";
+import { bookMeta, type Book } from "@/lib/catalogue";
 import { Pause, Play } from "./icons";
 import { usePlayer } from "./player";
 
@@ -37,7 +37,7 @@ export function EpisodeList({ episodes, currentId }: { episodes: Book[]; current
                 {ep.title}
               </Link>
               <p className="mt-1 text-[14px] text-encre/60">
-                {isCurrent ? "Vous êtes ici" : ep.duration ? `Histoire complète · ${ep.duration}` : "Histoire complète"}
+                {isCurrent ? "Vous êtes ici" : bookMeta(ep)}
               </p>
             </div>
             <button

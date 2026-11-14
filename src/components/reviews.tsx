@@ -54,45 +54,40 @@ export function Reviews({ reviews = featuredReviews }: { reviews?: Review[] }) {
   return (
     <section id="avis" className="px-3 sm:px-6">
       <div className="mx-auto max-w-[1280px]">
-        <div className="mb-8 flex flex-col gap-4 sm:mb-10 md:flex-row md:items-end md:justify-between">
+        <div className="mb-8 grid gap-8 sm:mb-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <SectionHeading eyebrow="Avis des familles" first="HIKAYA dans" second="leur quotidien" />
             <p className="mt-6 max-w-[52ch] text-[17px] leading-relaxed text-encre/65">
               Des parents partagent leurs moments d&apos;écoute et leurs découvertes en famille.
             </p>
           </div>
-        </div>
 
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,360px)_1fr]">
-          <div className="flex flex-col justify-between gap-10 rounded-[1.75rem] bg-vert p-8 text-white">
+          {/* Note de l'app : un bandeau compact, pas une colonne vide */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-4 rounded-[1.75rem] bg-vert px-6 py-5 text-white sm:px-8">
+            <p className="text-[56px] leading-none font-light tracking-[-0.04em] tabular-nums">4,6</p>
             <div>
-              <p className="text-[15px] text-white/70">Sur l&apos;App Store</p>
-              <p className="mt-3 text-[72px] leading-none font-light tracking-[-0.04em] tabular-nums">
-                4,6
-                <span className="text-[28px] tracking-normal text-white/55"> / 5</span>
+              <Stars rating={APP_STORE_RATING.value} className="text-sable" />
+              <p className="mt-2 text-[14px] text-white/75">
+                {APP_STORE_RATING.count} notes sur l&apos;App Store
               </p>
-              <Stars rating={APP_STORE_RATING.value} className="mt-4 text-sable" />
-              <p className="mt-4 text-[15px] text-white/70">{APP_STORE_RATING.count} notes · Catégorie Éducation</p>
             </div>
-            <div>
-              <a
-                href={APP_STORE}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-papier px-5 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
-              >
-                Voir la fiche de l&apos;app
-                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </div>
+            <a
+              href={APP_STORE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex h-11 items-center gap-2 rounded-full bg-papier px-5 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
+            >
+              Voir l&apos;app
+              <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
-
-          <ul className="grid gap-4 md:grid-cols-2">
-            {reviews.map((r) => (
-              <ReviewCard key={r.id} review={r} />
-            ))}
-          </ul>
         </div>
+
+        <ul className="grid gap-4 md:grid-cols-2">
+          {reviews.map((r) => (
+            <ReviewCard key={r.id} review={r} />
+          ))}
+        </ul>
       </div>
     </section>
   );

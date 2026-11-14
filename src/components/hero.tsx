@@ -3,7 +3,7 @@ import Link from "next/link";
 import { alAndalus } from "@/lib/episodes";
 import { ArchOutline } from "./arch";
 import { HeroPlayer } from "./hero-player";
-import { ArrowUpRight, Check } from "./icons";
+import { ArrowUpRight, Check, Star } from "./icons";
 
 const promises = [
   "Pour les 6–14 ans",
@@ -64,6 +64,10 @@ export function Hero() {
             </div>
 
             <ul className="animate-rise mx-auto mt-6 flex w-fit max-w-[280px] flex-col items-start gap-x-6 gap-y-2 text-left text-[14px] text-encre/65 [animation-delay:150ms] sm:w-auto sm:max-w-[600px] sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+              <li className="flex items-start gap-2">
+                <Star width={14} height={14} className="mt-[3px] shrink-0 text-sable-ink" />
+                Noté 4,6 sur l&apos;App Store
+              </li>
               {promises.map((p) => (
                 <li key={p} className="flex items-start gap-2">
                   <Check width={14} height={14} className="mt-[3px] shrink-0 text-vert" />
