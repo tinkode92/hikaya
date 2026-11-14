@@ -12,11 +12,25 @@ export const metadata: Metadata = {
     "Annuel ou mensuel : tout le catalogue de livres audio HIKAYA, sur le site et dans l'application, avec le même compte.",
 };
 
-// Ce que chacun peut écouter (cahier des charges §03)
-const access = [
-  { who: "Visiteur sans compte", what: "L'extrait de 1 min 30 de chaque histoire, puis les offres s'affichent." },
-  { who: "Compte sans abonnement", what: "L'extrait de 1 min 30 de chaque histoire, puis les offres s'affichent." },
-  { who: "Abonné", what: "Tout le catalogue, en entier, sur le site et dans l'application.", highlight: true },
+// Ce qu'on écoute sans et avec abonnement (cahier des charges §03)
+const plans = [
+  {
+    title: "Sans abonnement",
+    note: "Sans créer de compte",
+    items: ["L'extrait de 1 min 30 de chaque histoire", "Tout le catalogue à parcourir"],
+  },
+  {
+    title: "Avec l'abonnement",
+    note: "Annuel ou mensuel",
+    highlight: true,
+    items: [
+      "Toutes les histoires en entier",
+      "Les nouveaux récits ajoutés chaque mois",
+      "Sur le site et dans l'application, avec le même compte",
+      "L'écoute reprend là où elle s'était arrêtée",
+      "Le mode hors ligne dans l'application",
+    ],
+  },
 ];
 
 // Questions liées à l'abonnement, reprises de la FAQ fournie par HIKAYA
@@ -37,28 +51,33 @@ export default function AbonnementsPage() {
             second="l'abonnement pour tout écouter"
             className="mb-8 sm:mb-10"
           />
-          <ul className="grid gap-4 md:grid-cols-3">
-            {access.map((a) => (
-              <li
-                key={a.who}
-                className={`flex flex-col rounded-[1.75rem] p-8 ${
-                  a.highlight ? "bg-vert text-white" : "border border-encre/8 bg-papier text-encre"
+          <div className="grid gap-4 md:grid-cols-[1fr_1.4fr]">
+            {plans.map((p) => (
+              <div
+                key={p.title}
+                className={`rounded-[1.75rem] p-8 sm:p-10 ${
+                  p.highlight ? "bg-vert text-white" : "border border-encre/8 bg-papier text-encre"
                 }`}
               >
-                <span
-                  className={`flex size-10 items-center justify-center rounded-full ${
-                    a.highlight ? "bg-sable text-vert-deep" : "bg-creme text-vert"
-                  }`}
-                >
-                  <Check />
-                </span>
-                <h3 className="mt-6 text-[22px] font-medium">{a.who}</h3>
-                <p className={`mt-2 text-[16px] leading-relaxed ${a.highlight ? "text-white/80" : "text-encre/65"}`}>
-                  {a.what}
-                </p>
-              </li>
+                <p className={`text-[15px] ${p.highlight ? "text-sable" : "text-sable-ink"}`}>{p.note}</p>
+                <h3 className="mt-2 text-[28px] leading-tight font-light tracking-[-0.02em] italic">{p.title}</h3>
+                <ul className="mt-6 space-y-4">
+                  {p.items.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-[16px] leading-snug">
+                      <span
+                        className={`mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full ${
+                          p.highlight ? "bg-sable text-vert-deep" : "bg-creme text-vert"
+                        }`}
+                      >
+                        <Check width={13} height={13} />
+                      </span>
+                      <span className={p.highlight ? "text-white/90" : "text-encre/75"}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
           <p className="mt-6 text-[15px] text-encre/60">
             Un abonnement pris dans l&apos;application via l&apos;App Store ou Google Play donne aussi accès
             au site. Sa gestion reste dans le store concerné.

@@ -13,7 +13,7 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
   const isPlaying = isCurrent && playing;
 
   return (
-    <div className="mx-auto w-full max-w-[680px] rounded-[1.75rem] border border-encre/8 bg-white p-3 text-left shadow-float">
+    <div className="mx-auto w-full max-w-[600px] rounded-[1.75rem] border border-encre/8 bg-white p-3 text-left shadow-float">
       <div className="flex items-center gap-3 sm:gap-4">
         <div className="relative h-[84px] w-[64px] shrink-0 bg-sable-soft [clip-path:url(#arch)]">
           <Image src={episode.image} alt="" fill sizes="192px" className="object-cover object-[50%_40%]" />
@@ -23,7 +23,7 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
           <p className="text-[13px] font-medium text-sable-ink">
             Extrait · Épisode {episode.number}
           </p>
-          <p className="truncate text-[15px] font-medium text-encre">{episode.title}</p>
+          <p className="line-clamp-2 text-[15px] leading-snug font-medium text-encre">{episode.title}</p>
           <Waveform
             progress={pos / EXTRACT_SECONDS}
             onSeek={isCurrent ? seek : undefined}
@@ -34,10 +34,10 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
         <Waveform
           progress={pos / EXTRACT_SECONDS}
           onSeek={isCurrent ? seek : undefined}
-          className="hidden w-40 sm:flex"
+          className="hidden w-28 sm:flex"
         />
 
-        <span className="hidden w-[78px] shrink-0 text-right text-[13px] text-encre/55 tabular-nums sm:block">
+        <span className="hidden w-[72px] shrink-0 text-right text-[13px] text-encre/55 tabular-nums sm:block">
           {formatTime(pos)} / {formatTime(EXTRACT_SECONDS)}
         </span>
 

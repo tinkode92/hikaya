@@ -74,7 +74,12 @@ export function BookCard({
           >
             {isPlaying ? <Pause width={13} height={13} /> : <Play width={13} height={13} className="translate-x-px" />}
           </span>
-          {isPlaying ? "En écoute" : "Écouter l'extrait · 1 min 30"}
+          <span className="grid text-left">
+            <span className={`col-start-1 row-start-1 ${isPlaying ? "invisible" : ""}`}>Écouter l&apos;extrait · 1 min 30</span>
+            <span className={`col-start-1 row-start-1 ${isPlaying ? "" : "invisible"}`}>
+              En écoute
+            </span>
+          </span>
         </button>
       </div>
     </article>

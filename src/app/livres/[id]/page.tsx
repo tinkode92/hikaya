@@ -52,12 +52,12 @@ async function BookContent({ id }: { id: string }) {
   return (
     <main className="flex flex-col gap-16 sm:gap-20">
       <section className="px-3 pt-[88px] sm:px-6 sm:pt-[104px]">
-        <div className="mx-auto grid max-w-[1280px] gap-8 rounded-[2.25rem] bg-papier p-4 sm:p-6 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:p-8">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] lg:aspect-auto lg:min-h-[520px]">
+        <div className="mx-auto grid max-w-[1280px] gap-8 rounded-[2.25rem] bg-papier p-3 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] lg:aspect-auto lg:h-full lg:min-h-[520px]">
             <Image src={book.image} alt="" fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" />
           </div>
 
-          <div className="flex flex-col px-2 pb-4 sm:px-4 lg:py-8 lg:pr-8">
+          <div className="flex flex-col px-3 pb-6 sm:px-6 lg:py-8 lg:pr-12 lg:pl-0">
             <nav aria-label="Fil d'Ariane" className="text-[14px] text-encre/60">
               <ol className="flex flex-wrap items-center gap-2">
                 <li>
@@ -100,11 +100,11 @@ async function BookContent({ id }: { id: string }) {
 
             <p className="mt-6 max-w-[56ch] text-[17px] leading-relaxed text-encre/75">{book.summary}</p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ListenButton book={book} />
+            <div className="mt-8 grid max-w-[420px] gap-3">
+              <ListenButton book={book} className="w-full justify-center" />
               <Link
                 href="/abonnements"
-                className="group inline-flex h-14 items-center gap-2 rounded-full border border-encre/8 bg-white px-6 text-[17px] font-medium text-vert transition-[background-color,transform] hover:bg-creme active:scale-[0.98]"
+                className="group inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-encre/8 bg-white px-6 text-[17px] font-medium text-vert transition-[background-color,transform] hover:bg-creme active:scale-[0.98]"
               >
                 Choisir mon abonnement
                 <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

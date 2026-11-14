@@ -3,77 +3,101 @@ import Link from "next/link";
 import { alAndalus } from "@/lib/episodes";
 import { ArchOutline } from "./arch";
 import { HeroPlayer } from "./hero-player";
-import { ArrowUpRight } from "./icons";
+import { ArrowUpRight, Check } from "./icons";
 
+const promises = [
+  "Pour les 6–14 ans",
+  "Des extraits à écouter librement",
+  "Un même abonnement sur le site et dans l'application",
+];
+
+// Grille à 3 colonnes dès 1280 px : les personnages ont leur propre colonne et ne peuvent
+// plus recouvrir le texte ni le lecteur. En dessous, ils passent sous le lecteur.
+// Les piliers de l'arc tombent pile sur les bords du lecteur (largeur du lecteur / 0,65).
 export function Hero() {
   return (
     <section className="px-3 pt-[88px] sm:px-6 sm:pt-[104px]">
       <div className="relative mx-auto max-w-[1280px] overflow-hidden rounded-[2.25rem] bg-papier">
-        {/* Signature : l'arc de Cordoue en filigrane */}
-        <ArchOutline className="pointer-events-none absolute top-6 left-1/2 h-[118%] -translate-x-1/2 text-sable/45" />
-
-        {/* Personnages qui encadrent le titre */}
-        <Image
-          src="/characters/fatima.webp"
-          alt=""
-          width={900}
-          height={1381}
-          priority
-          className="pointer-events-none absolute bottom-0 left-[3%] hidden h-[300px] w-auto translate-y-[6%] md:block lg:h-[380px] xl:left-[6%]"
-        />
-        <Image
-          src="/characters/abd-al-rahman.webp"
-          alt=""
-          width={900}
-          height={1409}
-          priority
-          className="pointer-events-none absolute right-[2%] bottom-0 hidden h-[310px] w-auto translate-y-[6%] md:block lg:h-[400px] xl:right-[5%]"
+        <ArchOutline
+          className="pointer-events-none absolute top-12 bottom-0 left-1/2 hidden -translate-x-1/2 text-sable/45 sm:block"
+          style={{ width: "calc(min(600px, 100% - 40px) / 0.65)" }}
         />
 
-        <div className="relative px-5 pt-16 pb-10 text-center sm:pt-20 md:pb-28 lg:pt-24 lg:pb-32">
-          <h1 className="animate-rise mx-auto max-w-[18ch] text-[clamp(2.4rem,5.6vw,4.6rem)] leading-[1.04] font-light tracking-[-0.03em] text-balance italic sm:max-w-[22ch]">
-            <span className="block text-sable-ink">L&apos;histoire de la civilisation musulmane</span>
-            <span className="block text-vert">à découvrir en famille</span>
-          </h1>
-
-          <p className="animate-rise mx-auto mt-6 max-w-[52ch] text-[17px] leading-relaxed text-encre/65 [animation-delay:50ms]">
-            Des récits pour éveiller la curiosité des enfants, nourrir leur imagination et leur faire
-            rencontrer les femmes et les hommes qui ont marqué cet héritage.
-          </p>
-
-          <div className="animate-rise mt-9 flex flex-col items-center justify-center gap-4 [animation-delay:100ms] sm:flex-row sm:gap-7">
-            <Link
-              href="/abonnements"
-              className="group inline-flex h-14 items-center gap-2 rounded-full bg-vert px-7 text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
-            >
-              Choisir mon abonnement
-              <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-            <Link
-              href="/catalogue"
-              className="group inline-flex items-center gap-2 text-[16px] text-encre/65 transition-colors hover:text-vert"
-            >
-              Découvrir les livres audio
-              <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+        <div className="relative grid grid-cols-[minmax(0,1fr)] px-5 pt-16 sm:pt-20 lg:pt-24 xl:grid-cols-[1fr_minmax(0,680px)_1fr] xl:px-0">
+          <div aria-hidden className="hidden items-end justify-center xl:flex">
+            <Image
+              src="/characters/fatima.webp"
+              alt=""
+              width={900}
+              height={1381}
+              priority
+              className="h-auto max-h-[360px] w-auto max-w-[78%]"
+            />
           </div>
 
-          <p className="animate-rise mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[14px] text-encre/60 [animation-delay:150ms]">
-            <span>Pour les 6–14 ans</span>
-            <span aria-hidden>·</span>
-            <span>Des extraits à écouter librement</span>
-            <span aria-hidden>·</span>
-            <span>Un même abonnement sur le site et dans l&apos;application</span>
-          </p>
+          <div className="min-w-0 pb-10 text-center xl:pb-24">
+            <h1 className="animate-rise mx-auto max-w-[18ch] text-[clamp(2.4rem,5.2vw,4.4rem)] leading-[1.04] font-light tracking-[-0.03em] text-balance italic sm:max-w-[20ch]">
+              <span className="block text-sable-ink">L&apos;histoire de la civilisation musulmane</span>
+              <span className="block text-vert">à découvrir en famille</span>
+            </h1>
 
-          <div className="animate-rise mt-12 [animation-delay:200ms] md:mt-14">
-            <HeroPlayer episode={alAndalus[3]} />
+            <p className="animate-rise mx-auto mt-6 max-w-[50ch] text-[17px] leading-relaxed text-encre/65 [animation-delay:50ms]">
+              Des récits pour éveiller la curiosité des enfants, nourrir leur imagination et leur faire
+              rencontrer les femmes et les hommes qui ont marqué cet héritage.
+            </p>
+
+            <div className="animate-rise mt-8 flex flex-col items-center justify-center gap-4 [animation-delay:100ms] sm:flex-row sm:gap-6">
+              <Link
+                href="/abonnements"
+                className="group inline-flex h-14 items-center gap-2 rounded-full bg-vert px-7 text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
+              >
+                Choisir mon abonnement
+                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <Link
+                href="/catalogue"
+                className="group inline-flex h-14 items-center gap-2 rounded-full border border-encre/8 bg-white px-7 text-[17px] font-medium text-vert transition-[background-color,transform] hover:bg-creme active:scale-[0.98]"
+              >
+                Découvrir les livres audio
+                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
+
+            <ul className="animate-rise mx-auto mt-6 flex w-fit max-w-[280px] flex-col items-start gap-x-6 gap-y-2 text-left text-[14px] text-encre/65 [animation-delay:150ms] sm:w-auto sm:max-w-[600px] sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+              {promises.map((p) => (
+                <li key={p} className="flex items-start gap-2">
+                  <Check width={14} height={14} className="mt-[3px] shrink-0 text-vert" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+
+            <div className="animate-rise mt-12 [animation-delay:200ms]">
+              <HeroPlayer episode={alAndalus[3]} />
+            </div>
           </div>
 
-          {/* Mobile : les personnages passent sous le lecteur */}
-          <div aria-hidden className="-mx-2 -mb-10 mt-8 flex items-end justify-between md:hidden">
-            <Image src="/characters/fatima.webp" alt="" width={900} height={1381} className="h-44 w-auto" />
-            <Image src="/characters/abd-al-rahman.webp" alt="" width={900} height={1409} className="h-48 w-auto" />
+          <div aria-hidden className="hidden items-end justify-center xl:flex">
+            <Image
+              src="/characters/abd-al-rahman.webp"
+              alt=""
+              width={900}
+              height={1409}
+              priority
+              className="h-auto max-h-[370px] w-auto max-w-[78%]"
+            />
+          </div>
+
+          {/* Sous 1280 px : les personnages passent sous le lecteur, aux deux bords */}
+          <div aria-hidden className="-mx-2 flex items-end justify-between lg:-mt-48 xl:hidden">
+            <Image src="/characters/fatima.webp" alt="" width={900} height={1381} className="h-44 w-auto sm:h-52 lg:h-56" />
+            <Image
+              src="/characters/abd-al-rahman.webp"
+              alt=""
+              width={900}
+              height={1409}
+              className="h-48 w-auto sm:h-56 lg:h-60"
+            />
           </div>
         </div>
       </div>

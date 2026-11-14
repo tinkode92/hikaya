@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 // L'arc outrepassé (Cordoue) : la petite touche signature de HIKAYA.
 // <ArchDefs /> déclare le masque une fois ; on l'applique avec la classe [clip-path:url(#arch)].
 
@@ -13,9 +15,12 @@ export function ArchDefs() {
   );
 }
 
-export function ArchOutline({ className }: { className?: string }) {
+// Les piliers sont à 17,5 % et 82,5 % de la largeur : une largeur de « lecteur / 0,65 »
+// les aligne exactement sur les bords du lecteur. preserveAspectRatio="none" laisse l'arc
+// s'adapter à la hauteur du bloc sans déplacer les piliers.
+export function ArchOutline({ className, style }: { className?: string; style?: CSSProperties }) {
   return (
-    <svg viewBox="0 0 400 520" fill="none" className={className} aria-hidden>
+    <svg viewBox="0 0 400 520" fill="none" preserveAspectRatio="none" className={className} style={style} aria-hidden>
       <path
         d="M70 520 L70 320 A180 180 0 1 1 330 320 L330 520"
         stroke="currentColor"

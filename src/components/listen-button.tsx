@@ -37,7 +37,12 @@ export function ListenButton({
       >
         {isPlaying ? <Pause width={16} height={16} /> : <Play width={16} height={16} className="translate-x-px" />}
       </span>
-      {isPlaying ? "En écoute" : label}
+      <span className="grid text-center">
+        <span className={`col-start-1 row-start-1 ${isPlaying ? "invisible" : ""}`}>{label}</span>
+        <span className={`col-start-1 row-start-1 ${isPlaying ? "" : "invisible"}`}>
+          En écoute
+        </span>
+      </span>
     </button>
   );
 }
