@@ -11,6 +11,11 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
   const isCurrent = current?.id === episode.id;
   const pos = isCurrent ? position : 0;
   const isPlaying = isCurrent && playing;
+  // On peut se placer dans l'extrait avant même de l'avoir lancé
+  const seekHere = (ratio: number) => {
+    if (!isCurrent) toggle(episode);
+    seek(ratio);
+  };
 
   return (
     <div className="mx-auto w-full max-w-[600px] rounded-[1.75rem] border border-encre/8 bg-white p-3 text-left shadow-float">
@@ -24,17 +29,17 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
             Extrait · Épisode {episode.number}
           </p>
           <p className="line-clamp-2 text-[15px] leading-snug font-medium text-encre">{episode.title}</p>
-          <Waveform
-            progress={pos / EXTRACT_SECONDS}
-            onSeek={isCurrent ? seek : undefined}
-            className="mt-1 h-6 sm:hidden"
-          />
+          <div className="mt-1 flex items-center gap-3 sm:hidden">
+            <Waveform progress={pos / EXTRACT_SECONDS} duration={EXTRACT_SECONDS} onSeek={seekHere} className="h-8 flex-1" />
+            <span className="shrink-0 text-[12px] text-encre/55 tabular-nums">{formatTime(pos)}</span>
+          </div>
         </div>
 
         <Waveform
           progress={pos / EXTRACT_SECONDS}
-          onSeek={isCurrent ? seek : undefined}
-          className="hidden w-28 sm:flex"
+          duration={EXTRACT_SECONDS}
+          onSeek={seekHere}
+          className="hidden w-32 sm:flex"
         />
 
         <span className="hidden w-[72px] shrink-0 text-right text-[13px] text-encre/55 tabular-nums sm:block">

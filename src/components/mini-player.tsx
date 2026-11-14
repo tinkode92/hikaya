@@ -4,6 +4,7 @@ import Image from "next/image";
 import { EXTRACT_SECONDS } from "@/lib/episodes";
 import { ArrowUpRight, Close, Pause, Play } from "./icons";
 import { formatTime, usePlayer } from "./player";
+import { Scrubber } from "./scrubber";
 
 // Mini lecteur persistant (cahier des charges §03) : reste en bas de l'écran pendant la navigation.
 export function MiniPlayer() {
@@ -26,20 +27,9 @@ export function MiniPlayer() {
           ) : (
             <p className="truncate text-[14px] font-medium">{current.title}</p>
           )}
-          <div className="mt-2 flex items-center gap-3">
-            <div
-              className="relative h-1 flex-1 cursor-pointer rounded-full bg-white/15"
-              onClick={(e) => {
-                const r = e.currentTarget.getBoundingClientRect();
-                seek((e.clientX - r.left) / r.width);
-              }}
-            >
-              <div
-                className="absolute inset-y-0 left-0 rounded-full bg-sable"
-                style={{ width: `${progress * 100}%` }}
-              />
-            </div>
-            <span className="text-[11px] text-white/55 tabular-nums">
+          <div className="mt-1 flex items-center gap-3">
+            <Scrubber progress={progress} duration={EXTRACT_SECONDS} onSeek={seek} className="flex-1" />
+            <span className="shrink-0 text-[12px] text-white/60 tabular-nums">
               {formatTime(position)} / {formatTime(EXTRACT_SECONDS)}
             </span>
           </div>
