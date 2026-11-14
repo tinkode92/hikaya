@@ -2,8 +2,6 @@
 // En production : avis vérifiés laissés par des abonnés, validés puis sélectionnés dans le
 // back-office (« Mettre en avant »). Ceux-ci sont FICTIFS, pour la maquette uniquement.
 
-export const DEMO_REVIEWS = true; // à passer à false quand les vrais avis sont branchés
-
 export type Review = {
   id: string;
   name: string;

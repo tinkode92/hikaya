@@ -78,10 +78,6 @@ export default function AbonnementsPage() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-[15px] text-encre/60">
-            Un abonnement pris dans l&apos;application via l&apos;App Store ou Google Play donne aussi accès
-            au site. Sa gestion reste dans le store concerné.
-          </p>
         </div>
       </section>
 

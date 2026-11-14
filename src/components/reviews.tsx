@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getBook } from "@/lib/catalogue";
-import { DEMO_REVIEWS, featuredReviews, type Review } from "@/lib/reviews";
+import { featuredReviews, type Review } from "@/lib/reviews";
 import { ArrowUpRight, ShieldCheck, Star } from "./icons";
 import { SectionHeading } from "./section-heading";
 
@@ -61,11 +61,6 @@ export function Reviews({ reviews = featuredReviews }: { reviews?: Review[] }) {
               Des parents partagent leurs moments d&apos;écoute et leurs découvertes en famille.
             </p>
           </div>
-          {DEMO_REVIEWS && (
-            <p className="self-start rounded-full border border-dashed border-sable-ink/40 px-4 py-2 text-[13px] text-sable-ink md:self-auto">
-              Avis fictifs pour la maquette
-            </p>
-          )}
         </div>
 
         <div className="grid gap-4 lg:grid-cols-[minmax(0,360px)_1fr]">
@@ -80,15 +75,11 @@ export function Reviews({ reviews = featuredReviews }: { reviews?: Review[] }) {
               <p className="mt-4 text-[15px] text-white/70">{APP_STORE_RATING.count} notes · Catégorie Éducation</p>
             </div>
             <div>
-              <p className="text-[14px] leading-relaxed text-white/70">
-                Sur le site, seuls les abonnés peuvent laisser un avis. Chaque avis est relu par HIKAYA
-                avant d&apos;être publié.
-              </p>
               <a
                 href={APP_STORE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-papier px-5 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
+                className="group inline-flex h-12 items-center gap-2 rounded-full bg-papier px-5 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
               >
                 Voir la fiche de l&apos;app
                 <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

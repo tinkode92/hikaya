@@ -110,10 +110,6 @@ async function BookContent({ id }: { id: string }) {
                 <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
-            <p className="mt-4 text-[14px] text-encre/60">
-              Extrait de 1 min 30, sans compte. L&apos;histoire complète est réservée aux abonnés, sur le
-              site et dans l&apos;application.
-            </p>
           </div>
         </div>
       </section>
