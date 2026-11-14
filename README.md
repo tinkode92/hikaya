@@ -7,6 +7,9 @@ npm install
 npm run dev
 ```
 
+Aperçu en ligne (privé, mis à jour à chaque modif) : https://claude.ai/artifact/1c3JeyCwzNq7YoYA73jpFZ
+Il se reconstruit avec `npm run preview:export` (export statique dans `.preview/`).
+
 ## Direction artistique
 
 - Couleurs de la charte (NL Agence, 07/2025) : vert `#2D4731`, sable `#D4A373`. Dérivés web dans `src/app/globals.css` (`sable-ink` pour le texte sable lisible, `creme`, `papier`).
