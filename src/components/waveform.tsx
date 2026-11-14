@@ -36,7 +36,7 @@ export function Waveform({
       aria-valuenow={Math.round(progress * duration)}
       aria-valuetext={`${formatTime(progress * duration)} sur ${formatTime(duration)}`}
       {...handlers}
-      className={`group relative flex h-9 touch-none items-center gap-[3px] select-none ${onSeek ? "cursor-pointer" : ""} ${className}`}
+      className={`group relative flex h-9 min-w-0 touch-none items-center gap-[2px] select-none sm:gap-[3px] ${onSeek ? "cursor-pointer" : ""} ${className}`}
     >
       {BARS.map((h, i) => {
         const at = (i + 0.5) / BARS.length;
@@ -44,7 +44,7 @@ export function Waveform({
         return (
           <span
             key={i}
-            className={`w-[3px] flex-1 rounded-full transition-colors duration-150 ${tone}`}
+            className={`min-w-px flex-1 rounded-full transition-colors duration-150 ${tone}`}
             style={{ height: `${h * 100}%` }}
           />
         );

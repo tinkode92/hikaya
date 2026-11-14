@@ -20,19 +20,15 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
   return (
     <div className="mx-auto w-full max-w-[600px] rounded-[1.75rem] border border-encre/8 bg-white p-3 text-left shadow-float">
       <div className="flex items-center gap-3 sm:gap-4">
-        <div className="relative h-[84px] w-[64px] shrink-0 bg-sable-soft [clip-path:url(#arch)]">
+        <div className="relative h-[72px] w-[56px] shrink-0 bg-sable-soft [clip-path:url(#arch)] sm:h-[84px] sm:w-[64px]">
           <Image src={episode.image} alt="" fill sizes="192px" className="object-cover object-[50%_40%]" />
         </div>
 
         <div className="min-w-0 flex-1">
           <p className="text-[13px] font-medium text-sable-ink">
-            Extrait · Épisode {episode.number}
+            <span className="hidden min-[380px]:inline">Extrait · </span>Épisode {episode.number}
           </p>
-          <p className="line-clamp-2 text-[15px] leading-snug font-medium text-encre">{episode.title}</p>
-          <div className="mt-1 flex items-center gap-3 sm:hidden">
-            <Waveform progress={pos / EXTRACT_SECONDS} duration={EXTRACT_SECONDS} onSeek={seekHere} className="h-8 flex-1" />
-            <span className="shrink-0 text-[12px] text-encre/55 tabular-nums">{formatTime(pos)}</span>
-          </div>
+          <p className="line-clamp-3 text-[15px] leading-snug font-medium text-encre sm:line-clamp-2">{episode.title}</p>
         </div>
 
         <Waveform
@@ -50,10 +46,18 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
           type="button"
           onClick={() => toggle(episode)}
           aria-label={isPlaying ? "Mettre en pause l'extrait" : "Écouter l'extrait"}
-          className="flex size-14 shrink-0 items-center justify-center rounded-full bg-vert text-sable transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.97]"
+          className="flex size-12 shrink-0 items-center justify-center rounded-full bg-vert text-sable sm:size-14 transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.97]"
         >
           {isPlaying ? <Pause /> : <Play className="translate-x-px" />}
         </button>
+      </div>
+
+      {/* Mobile : la forme d'onde a sa propre ligne, sur toute la largeur du lecteur */}
+      <div className="mt-3 flex min-w-0 items-center gap-3 px-1 sm:hidden">
+        <Waveform progress={pos / EXTRACT_SECONDS} duration={EXTRACT_SECONDS} onSeek={seekHere} className="h-9 min-w-0 flex-1" />
+        <span className="shrink-0 text-[12px] text-encre/60 tabular-nums">
+          {formatTime(pos)} / {formatTime(EXTRACT_SECONDS)}
+        </span>
       </div>
 
       {isCurrent && ended && (

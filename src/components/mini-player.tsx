@@ -14,7 +14,7 @@ export function MiniPlayer() {
 
   return (
     <div className="fixed inset-x-0 bottom-3 z-50 px-3 sm:bottom-5">
-      <div className="animate-rise mx-auto flex max-w-[560px] items-center gap-3 rounded-full border border-white/8 bg-vert-deep p-2 text-white shadow-object">
+      <div className="animate-rise mx-auto flex max-w-[560px] items-center gap-2 rounded-full sm:gap-3 border border-white/8 bg-vert-deep p-2 text-white shadow-object">
         <div className="relative size-11 shrink-0 overflow-hidden rounded-full">
           <Image src={current.image} alt="" fill sizes="132px" className="object-cover" />
         </div>
@@ -30,7 +30,8 @@ export function MiniPlayer() {
           <div className="mt-1 flex items-center gap-3">
             <Scrubber progress={progress} duration={EXTRACT_SECONDS} onSeek={seek} className="flex-1" />
             <span className="shrink-0 text-[12px] text-white/60 tabular-nums">
-              {formatTime(position)} / {formatTime(EXTRACT_SECONDS)}
+              {formatTime(position)}
+              <span className="hidden min-[400px]:inline"> / {formatTime(EXTRACT_SECONDS)}</span>
             </span>
           </div>
         </div>
@@ -47,7 +48,7 @@ export function MiniPlayer() {
           type="button"
           onClick={close}
           aria-label="Fermer le lecteur"
-          className="flex size-9 shrink-0 items-center justify-center rounded-full text-white/60 hover:text-white"
+          className="flex size-9 shrink-0 items-center justify-center rounded-full text-white/60 hover:text-white max-[359px]:size-8"
         >
           <Close width={18} height={18} />
         </button>
