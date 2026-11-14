@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Aperçu statique (npm run preview:export)
+    ".next-preview/**",
+    ".preview/**",
   ]),
 ]);
 
