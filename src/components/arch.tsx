@@ -22,7 +22,6 @@ export function ArchOutline({ className, style }: { className?: string; style?: 
   return (
     <svg viewBox="0 0 400 520" fill="none" preserveAspectRatio="none" className={className} style={style} aria-hidden>
       <path
-        pathLength={1}
         d="M70 520 L70 320 A180 180 0 1 1 330 320 L330 520"
         stroke="currentColor"
         strokeWidth="1"

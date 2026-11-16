@@ -79,22 +79,13 @@ body {
 
 /* ───────── Animations de la page d'accueil (scope .lp) ───────── */
 
-/* Hero : l'arc se dessine, les personnages entrent par les côtés */
-@keyframes arch-draw {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
+/* Hero : l'arc se dévoile de haut en bas, les personnages entrent par les côtés */
+@keyframes arch-reveal {
+  from { clip-path: inset(0 0 100% 0); opacity: 0.2; }
+  to { clip-path: inset(0 0 0 0); opacity: 1; }
 }
-.lp .arch-draw path:first-child {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: arch-draw 1.8s var(--ease-out-soft) 0.15s forwards;
-}
-.lp .arch-draw path:last-child {
-  opacity: 0;
-  animation: fade-in 1s ease 0.9s forwards;
-}
-@keyframes fade-in {
-  to { opacity: 1; }
+.lp .arch-draw {
+  animation: arch-reveal 1.6s var(--ease-out-soft) 0.15s both;
 }
 @keyframes enter-left {
   from { opacity: 0; transform: translateX(-48px) rotate(-3deg); }
@@ -163,11 +154,11 @@ body {
   .animate-rise,
   .lp .enter-left,
   .lp .enter-right,
-  .lp .arch-draw path,
+  .lp .arch-draw,
   .wave-live > span {
     animation: none !important;
     opacity: 1 !important;
-    stroke-dashoffset: 0 !important;
+    clip-path: none !important;
   }
   .lp.reveal-ready [data-reveal] {
     opacity: 1;
