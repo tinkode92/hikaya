@@ -47,7 +47,7 @@ export function Footer() {
           </h2>
           <Link
             href="/abonnements"
-            className="group mt-8 inline-flex h-14 items-center gap-2 rounded-full bg-sable px-7 text-[17px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-sable-soft active:scale-[0.98]"
+            className="group mt-8 inline-flex h-14 items-center gap-2 rounded-full bg-sable px-6 text-[16px] whitespace-nowrap sm:px-7 sm:text-[17px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-sable-soft active:scale-[0.98]"
           >
             Choisir mon abonnement
             <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -77,7 +77,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="relative mx-6 flex flex-col gap-3 border-t border-white/8 py-6 pb-24 text-[13px] text-white/55 sm:mx-12 sm:flex-row sm:justify-between sm:pb-6 lg:mx-16">
+        <div className="relative mx-6 flex flex-col gap-3 border-t border-white/8 py-6 text-[13px] text-white/55 sm:mx-12 sm:flex-row sm:justify-between lg:mx-16">
           <p>© 2026 Hikaya Médias · Tous droits réservés</p>
           <p className="flex gap-5">
             <a href="#" className="hover:text-white">
@@ -91,6 +91,19 @@ export function Footer() {
             </a>
           </p>
         </div>
+
+        {/* Signature de l'agence */}
+        <a
+          href="https://bigbrowser.co"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative mx-6 block border-t border-white/8 pt-8 pb-24 sm:mx-12 sm:pb-12 lg:mx-16"
+        >
+          <span className="block text-[13px] text-white/50">Site conçu par</span>
+          <span className="mt-2 block text-[clamp(1.6rem,7.2vw,6.25rem)] leading-[0.95] font-light tracking-[-0.04em] whitespace-nowrap text-white/90 italic transition-colors group-hover:text-sable">
+            Made by <span className="text-sable">bigbrowser.co</span>
+          </span>
+        </a>
       </div>
     </footer>
   );
