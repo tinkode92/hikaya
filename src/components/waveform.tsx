@@ -4,7 +4,9 @@ import { formatTime } from "./player";
 import { useScrub } from "./use-scrub";
 
 // Forme d'onde déterministe (pas d'aléatoire -> pas d'écart serveur/client).
-const BARS = Array.from({ length: 40 }, (_, i) => {
+// 32 barres qui rétrécissent (min-w-0) : elles tiennent toujours dans la largeur, donc la tête
+// de lecture, placée en % de cette largeur, tombe pile sur la bonne barre.
+const BARS = Array.from({ length: 32 }, (_, i) => {
   const v = Math.abs(Math.sin(i * 1.7) * 0.6 + Math.sin(i * 0.43) * 0.4);
   return 0.22 + v * 0.78;
 });
@@ -36,7 +38,7 @@ export function Waveform({
       aria-valuenow={Math.round(progress * duration)}
       aria-valuetext={`${formatTime(progress * duration)} sur ${formatTime(duration)}`}
       {...handlers}
-      className={`group relative flex h-9 min-w-0 touch-none rounded-md focus-visible:outline-offset-4 items-center gap-[2px] select-none sm:gap-[3px] ${onSeek ? "cursor-pointer" : ""} ${className}`}
+      className={`group relative flex h-9 min-w-0 touch-none rounded-md focus-visible:outline-offset-4 items-center gap-[2px] select-none ${onSeek ? "cursor-pointer" : ""} ${className}`}
     >
       {BARS.map((h, i) => {
         const at = (i + 0.5) / BARS.length;
@@ -44,7 +46,7 @@ export function Waveform({
         return (
           <span
             key={i}
-            className={`min-w-px flex-1 rounded-full transition-colors duration-150 ${tone}`}
+            className={`min-w-0 flex-1 rounded-full transition-colors duration-150 ${tone}`}
             style={{ height: `${h * 100}%` }}
           />
         );
