@@ -40,7 +40,7 @@ const subscriptionFaq = faq.filter((f) =>
 
 export default function AbonnementsPage() {
   return (
-    <main className="flex flex-col gap-20 pt-[120px] sm:gap-28 sm:pt-[152px]">
+    <main className="flex flex-col gap-20 pt-[calc(120px+var(--banner-h))] sm:gap-28 sm:pt-[calc(152px+var(--banner-h))]">
       <Pricing as="h1" />
 
       <section className="px-3 sm:px-6">

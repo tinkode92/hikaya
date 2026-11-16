@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { AnnouncementBar } from "./announcement-bar";
 import { ArrowUpRight, Close, Menu, User } from "./icons";
 
 const links = [
@@ -18,7 +19,9 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-6">
+    <header className="fixed inset-x-0 top-0 z-50">
+      <AnnouncementBar />
+      <div className="px-3 pt-3 sm:px-6 sm:pt-4">
       <nav
         aria-label="Navigation principale"
         className="mx-auto flex max-w-[1340px] items-center justify-between rounded-full border border-encre/8 bg-papier py-2 pr-2 pl-6 shadow-float"
@@ -74,9 +77,10 @@ export function Nav() {
           </button>
         </div>
       </nav>
+      </div>
 
       {open && (
-        <div className="animate-rise mx-auto mt-2 max-w-[1340px] rounded-3xl border border-encre/8 bg-papier p-3 shadow-float lg:hidden">
+        <div className="animate-rise mx-3 mt-2 max-w-[1340px] sm:mx-6 lg:mx-auto rounded-3xl border border-encre/8 bg-papier p-3 shadow-float lg:hidden">
           <ul className="flex flex-col">
             {[...links, { href: "#connexion", label: "Se connecter" }].map((l) => (
               <li key={l.label}>

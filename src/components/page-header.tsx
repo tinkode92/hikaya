@@ -16,7 +16,7 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <section className="px-3 pt-[88px] sm:px-6 sm:pt-[104px]">
+    <section className="px-3 pt-[calc(88px+var(--banner-h))] sm:px-6 sm:pt-[calc(104px+var(--banner-h))]">
       <div className="mx-auto max-w-[1280px] rounded-[2.25rem] bg-papier px-6 pt-12 pb-12 sm:px-12 sm:pt-16 lg:px-16 lg:pb-16">
         {crumbs && (
           <nav aria-label="Fil d'Ariane" className="mb-8 text-[14px] text-encre/60">

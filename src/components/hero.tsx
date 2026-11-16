@@ -16,14 +16,14 @@ const promises = [
 // Les piliers de l'arc tombent pile sur les bords du lecteur (largeur du lecteur / 0,65).
 export function Hero() {
   return (
-    <section className="px-3 pt-[88px] sm:px-6 sm:pt-[104px]">
+    <section className="px-3 pt-[calc(88px+var(--banner-h))] sm:px-6 sm:pt-[calc(104px+var(--banner-h))] lg:pt-[calc(96px+var(--banner-h))]">
       <div className="relative mx-auto max-w-[1280px] overflow-hidden rounded-[2.25rem] bg-papier">
         <ArchOutline
           className="arch-draw pointer-events-none absolute top-12 bottom-0 left-1/2 hidden -translate-x-1/2 text-sable/45 sm:block"
           style={{ width: "calc(min(600px, 100% - 40px) / 0.65)" }}
         />
 
-        <div className="relative grid grid-cols-[minmax(0,1fr)] px-5 pt-16 sm:pt-20 lg:pt-[clamp(1.5rem,5vh,5rem)] xl:grid-cols-[1fr_minmax(0,680px)_1fr] xl:px-0">
+        <div className="relative grid grid-cols-[minmax(0,1fr)] px-5 pt-16 sm:pt-20 lg:pt-[clamp(1.25rem,4vh,5rem)] xl:grid-cols-[1fr_minmax(0,680px)_1fr] xl:px-0">
           <div aria-hidden className="hidden items-end justify-center xl:flex">
             <Image
               src="/characters/fatima.webp"
@@ -35,8 +35,8 @@ export function Hero() {
             />
           </div>
 
-          <div className="min-w-0 pb-10 text-center lg:pb-[clamp(1.5rem,5vh,5rem)]">
-            <h1 className="animate-rise mx-auto max-w-[18ch] text-[clamp(2.4rem,min(5.2vw,6.4vh),4.4rem)] leading-[1.04] font-light tracking-[-0.03em] text-balance italic sm:max-w-[20ch]">
+          <div className="min-w-0 pb-10 text-center lg:pb-[clamp(1.25rem,4vh,5rem)]">
+            <h1 className="animate-rise mx-auto max-w-[18ch] text-[clamp(2.4rem,min(5.2vw,6vh),4.4rem)] leading-[1.04] font-light tracking-[-0.03em] text-balance italic sm:max-w-[20ch]">
               <span className="block text-sable-ink">L&apos;histoire de la civilisation musulmane</span>
               <span className="block text-vert">à découvrir en famille</span>
             </h1>

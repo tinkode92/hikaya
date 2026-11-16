@@ -51,7 +51,7 @@ async function BookContent({ id }: { id: string }) {
 
   return (
     <main className="flex flex-col gap-16 sm:gap-20">
-      <section className="px-3 pt-[88px] sm:px-6 sm:pt-[104px]">
+      <section className="px-3 pt-[calc(88px+var(--banner-h))] sm:px-6 sm:pt-[calc(104px+var(--banner-h))]">
         <div className="mx-auto grid max-w-[1280px] gap-8 rounded-[2.25rem] bg-papier p-3 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] lg:aspect-auto lg:h-full lg:min-h-[520px]">
             <Image src={book.image} alt="" fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" />

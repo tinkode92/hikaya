@@ -22,6 +22,9 @@
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* Hauteur du bandeau d'offre en haut du site */
+  --banner-h: 2.25rem;
+
   /* Ombres neutres (pas de teinte verte) */
   --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.05);
   --shadow-float: 0 8px 24px rgb(0 0 0 / 0.06);
@@ -30,6 +33,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Ancres : le contenu ne passe pas sous le bandeau et la navigation */
+  scroll-padding-top: calc(var(--banner-h) + 6rem);
 }
 
 body {

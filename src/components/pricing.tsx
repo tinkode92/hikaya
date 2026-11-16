@@ -5,30 +5,31 @@ import { ArrowUpRight, Check, ShieldCheck } from "./icons";
 import { PaymentLogos } from "./payment-logos";
 import { SectionHeading } from "./section-heading";
 
-// Offres et prix du cahier des charges (§05). En production, les prix viennent de Stripe.
+// Offres et prix (validés par HIKAYA). En production, les prix viennent de Stripe.
 // Objectif : le récurrent mensuel. L'offre mensuelle passe en premier, présélectionnée, avec son
-// prix découverte ancré sur le prix normal (9,90 € barré). L'annuelle reste disponible, plus discrète,
-// affichée à l'année (79,20 €) pour ne pas cannibaliser le mensuel.
+// prix découverte ancré sur le prix normal (9,90 € barré). L'annuelle commence par 7 jours gratuits.
 const plans = [
   {
     id: "mensuel",
     name: "Mensuel",
     badge: "Offre découverte",
-    price: "7,90 €",
+    price: "4,90\u00a0€",
     period: "/ mois",
-    billing: "Les 3 premiers mois, puis 9,90 €/mois",
-    was: "9,90 €",
+    billing: "Pendant 3 mois, puis 9,90\u00a0€/mois",
+    was: "9,90\u00a0€",
     detail: "Sans engagement, résiliable à tout moment",
+    cta: "Commencer à 4,90\u00a0€/mois",
   },
   {
     id: "annuel",
     name: "Annuel",
-    badge: undefined,
-    price: "79,20 €",
+    badge: "7 jours offerts",
+    price: "79,20\u00a0€",
     period: "/ an",
-    billing: "Un seul paiement pour toute l'année",
+    billing: "7 jours gratuits, puis 79,20\u00a0€/an",
     was: undefined,
-    detail: "Soit 6,60 €/mois · 4 mois offerts",
+    detail: "Soit 6,60\u00a0€/mois",
+    cta: "Essayer 7 jours gratuitement",
   },
 ] as const;
 
@@ -130,7 +131,7 @@ export function Pricing({ as = "h2" }: { as?: "h1" | "h2" }) {
             href="#paiement"
             className="group mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-full bg-vert text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
           >
-            Continuer avec l&apos;offre {selected === "annuel" ? "annuelle" : "mensuelle"}
+            {plans.find((p) => p.id === selected)?.cta}
             <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
 
