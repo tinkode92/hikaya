@@ -19,7 +19,7 @@ export function Hero() {
     <section className="px-3 pt-[88px] sm:px-6 sm:pt-[104px]">
       <div className="relative mx-auto max-w-[1280px] overflow-hidden rounded-[2.25rem] bg-papier">
         <ArchOutline
-          className="pointer-events-none absolute top-12 bottom-0 left-1/2 hidden -translate-x-1/2 text-sable/45 sm:block"
+          className="arch-draw pointer-events-none absolute top-12 bottom-0 left-1/2 hidden -translate-x-1/2 text-sable/45 sm:block"
           style={{ width: "calc(min(600px, 100% - 40px) / 0.65)" }}
         />
 
@@ -31,7 +31,7 @@ export function Hero() {
               width={900}
               height={1381}
               priority
-              className="h-auto max-h-[360px] w-auto max-w-[78%]"
+              className="enter-left h-auto max-h-[360px] w-auto max-w-[78%]"
             />
           </div>
 
@@ -88,19 +88,19 @@ export function Hero() {
               width={900}
               height={1409}
               priority
-              className="h-auto max-h-[370px] w-auto max-w-[78%]"
+              className="enter-right h-auto max-h-[370px] w-auto max-w-[78%]"
             />
           </div>
 
           {/* Sous 1280 px : les personnages passent sous le lecteur, aux deux bords */}
           <div aria-hidden className="-mx-2 flex items-end justify-between lg:-mt-48 xl:hidden">
-            <Image src="/characters/fatima.webp" alt="" width={900} height={1381} className="h-44 w-auto sm:h-52 lg:h-56" />
+            <Image src="/characters/fatima.webp" alt="" width={900} height={1381} className="enter-left h-44 w-auto sm:h-52 lg:h-56" />
             <Image
               src="/characters/abd-al-rahman.webp"
               alt=""
               width={900}
               height={1409}
-              className="h-48 w-auto sm:h-56 lg:h-60"
+              className="enter-right h-48 w-auto sm:h-56 lg:h-60"
             />
           </div>
         </div>

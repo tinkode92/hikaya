@@ -7,6 +7,7 @@ import { Hero } from "@/components/hero";
 import { ArrowUpRight } from "@/components/icons";
 import { ListenButton } from "@/components/listen-button";
 import { Pricing } from "@/components/pricing";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { Reviews } from "@/components/reviews";
 import { SectionHeading } from "@/components/section-heading";
 import { Themes } from "@/components/themes";
@@ -19,7 +20,8 @@ export default function Home() {
   const nouveautes = booksByIds(newReleases);
 
   return (
-    <main className="flex flex-col gap-20 sm:gap-28">
+    <main className="lp flex flex-col gap-20 sm:gap-28">
+      <RevealOnScroll />
       <Hero />
 
       {/* Sélection de livres */}

@@ -60,7 +60,7 @@ export function Themes() {
             <Link
               key={t.href}
               href={t.href}
-              className={`group relative isolate flex min-h-[300px] flex-col justify-end overflow-hidden rounded-[1.75rem] bg-vert p-6 text-white sm:p-8 ${t.className}`}
+              className={`tile group relative isolate flex min-h-[300px] flex-col justify-end overflow-hidden rounded-[1.75rem] bg-vert p-6 text-white sm:p-8 ${t.className}`}
             >
               <Image
                 src={t.image}

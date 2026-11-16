@@ -17,11 +17,14 @@ export function Waveform({
   progress,
   duration,
   onSeek,
+  live = false,
   className = "",
 }: {
   progress: number;
   duration: number;
   onSeek?: (ratio: number) => void;
+  /** Lecture en cours : les barres respirent */
+  live?: boolean;
   className?: string;
 }) {
   const { trackRef, dragging, hover, handlers } = useScrub({ progress, duration, onSeek });
@@ -38,7 +41,7 @@ export function Waveform({
       aria-valuenow={Math.round(progress * duration)}
       aria-valuetext={`${formatTime(progress * duration)} sur ${formatTime(duration)}`}
       {...handlers}
-      className={`group relative flex h-9 min-w-0 touch-none rounded-md focus-visible:outline-offset-4 items-center gap-[2px] select-none ${onSeek ? "cursor-pointer" : ""} ${className}`}
+      className={`group relative flex h-9 min-w-0 touch-none rounded-md focus-visible:outline-offset-4 items-center gap-[2px] select-none ${onSeek ? "cursor-pointer" : ""} ${live ? "wave-live" : ""} ${className}`}
     >
       {BARS.map((h, i) => {
         const at = (i + 0.5) / BARS.length;
@@ -47,7 +50,7 @@ export function Waveform({
           <span
             key={i}
             className={`min-w-0 flex-1 rounded-full transition-colors duration-150 ${tone}`}
-            style={{ height: `${h * 100}%` }}
+            style={{ height: `${h * 100}%`, ["--bar-i" as string]: i }}
           />
         );
       })}

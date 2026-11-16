@@ -57,6 +57,7 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
                 progress={pos / EXTRACT_SECONDS}
                 duration={EXTRACT_SECONDS}
                 onSeek={seekHere}
+                live={isPlaying}
                 className="w-32 shrink-0"
               />
               <span className="w-[72px] shrink-0 text-right text-[13px] text-encre/55 tabular-nums">
@@ -88,7 +89,8 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
           </Link>
         ) : (
           <>
-            <Waveform progress={pos / EXTRACT_SECONDS} duration={EXTRACT_SECONDS} onSeek={seekHere} className="h-9 min-w-0 flex-1" />
+            <Waveform progress={pos / EXTRACT_SECONDS} duration={EXTRACT_SECONDS} onSeek={seekHere}
+                live={isPlaying} className="h-9 min-w-0 flex-1" />
             <span className="shrink-0 text-[12px] text-encre/60 tabular-nums">
               {formatTime(pos)} / {formatTime(EXTRACT_SECONDS)}
             </span>
