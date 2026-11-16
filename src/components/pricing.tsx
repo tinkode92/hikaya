@@ -6,27 +6,29 @@ import { PaymentLogos } from "./payment-logos";
 import { SectionHeading } from "./section-heading";
 
 // Offres et prix du cahier des charges (§05). En production, les prix viennent de Stripe.
-// Le prix mis en avant est le prix mensuel : 6,60 €/mois se compare directement à 7,90 € et 9,90 €.
+// Objectif : le récurrent mensuel. L'offre mensuelle passe en premier, présélectionnée, avec son
+// prix découverte ancré sur le prix normal (9,90 € barré). L'annuelle reste disponible, plus discrète,
+// affichée à l'année (79,20 €) pour ne pas cannibaliser le mensuel.
 const plans = [
-  {
-    id: "annuel",
-    name: "Annuel",
-    badge: "4 mois offerts",
-    price: "6,60 €",
-    period: "/ mois",
-    billing: "79,20 € facturés une fois par an",
-    was: "9,90 €",
-    detail: "Le meilleur prix pour toute l'année",
-  },
   {
     id: "mensuel",
     name: "Mensuel",
     badge: "Offre découverte",
-    price: "7,90 €",
+    price: "7,90 €",
     period: "/ mois",
-    billing: "Les 3 premiers mois, puis 9,90 €/mois",
-    was: undefined,
+    billing: "Les 3 premiers mois, puis 9,90 €/mois",
+    was: "9,90 €",
     detail: "Sans engagement, résiliable à tout moment",
+  },
+  {
+    id: "annuel",
+    name: "Annuel",
+    badge: undefined,
+    price: "79,20 €",
+    period: "/ an",
+    billing: "Un seul paiement pour toute l'année",
+    was: undefined,
+    detail: "Soit 6,60 €/mois · 4 mois offerts",
   },
 ] as const;
 
@@ -39,7 +41,7 @@ const included = [
 ];
 
 export function Pricing({ as = "h2" }: { as?: "h1" | "h2" }) {
-  const [selected, setSelected] = useState<(typeof plans)[number]["id"]>("annuel");
+  const [selected, setSelected] = useState<(typeof plans)[number]["id"]>("mensuel");
 
   return (
     <section id="abonnements" className="scroll-mt-24 px-3 sm:px-6">
@@ -88,13 +90,15 @@ export function Pricing({ as = "h2" }: { as?: "h1" | "h2" }) {
                     <span className="min-w-0">
                       <span className="flex flex-wrap items-center gap-2">
                         <span className="text-[20px] leading-6 font-medium">{plan.name}</span>
-                        <span
-                          className={`rounded-md px-2 py-1 text-[13px] leading-none font-medium ${
-                            active ? "bg-sable text-vert-deep" : "bg-sable-soft text-sable-ink"
-                          }`}
-                        >
-                          {plan.badge}
-                        </span>
+                        {plan.badge && (
+                          <span
+                            className={`rounded-md px-2 py-1 text-[13px] leading-none font-medium ${
+                              active ? "bg-sable text-vert-deep" : "bg-sable-soft text-sable-ink"
+                            }`}
+                          >
+                            {plan.badge}
+                          </span>
+                        )}
                       </span>
                       <span className={`mt-2 block text-[15px] ${active ? "text-white/80" : "text-encre/70"}`}>
                         {plan.billing}

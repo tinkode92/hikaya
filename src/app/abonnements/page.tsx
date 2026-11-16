@@ -9,7 +9,7 @@ import { Steps } from "@/components/steps";
 export const metadata: Metadata = {
   title: "Abonnements",
   description:
-    "Annuel ou mensuel : tout le catalogue de livres audio HIKAYA, sur le site et dans l'application, avec le même compte.",
+    "Mensuel ou annuel : tout le catalogue de livres audio HIKAYA, sur le site et dans l'application, avec le même compte.",
 };
 
 // Ce qu'on écoute sans et avec abonnement (cahier des charges §03)
@@ -21,7 +21,7 @@ const plans = [
   },
   {
     title: "Avec l'abonnement",
-    note: "Annuel ou mensuel",
+    note: "Mensuel sans engagement, ou annuel",
     highlight: true,
     items: [
       "Toutes les histoires en entier",

@@ -5,7 +5,7 @@ const steps = [
   {
     n: "01",
     title: "Choisissez votre offre",
-    text: "Annuel ou mensuel, réglé en toute sécurité par carte, PayPal, Apple Pay ou Google Pay.",
+    text: "Mensuel ou annuel, réglé en toute sécurité par carte, PayPal, Apple Pay ou Google Pay.",
   },
   {
     n: "02",
