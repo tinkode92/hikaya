@@ -36,7 +36,7 @@ export function Waveform({
       aria-valuenow={Math.round(progress * duration)}
       aria-valuetext={`${formatTime(progress * duration)} sur ${formatTime(duration)}`}
       {...handlers}
-      className={`group relative flex h-9 min-w-0 touch-none items-center gap-[2px] select-none sm:gap-[3px] ${onSeek ? "cursor-pointer" : ""} ${className}`}
+      className={`group relative flex h-9 min-w-0 touch-none rounded-md focus-visible:outline-offset-4 items-center gap-[2px] select-none sm:gap-[3px] ${onSeek ? "cursor-pointer" : ""} ${className}`}
     >
       {BARS.map((h, i) => {
         const at = (i + 0.5) / BARS.length;
