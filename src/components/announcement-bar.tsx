@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ArrowUpRight } from "./icons";
+import { siteHref } from "@/lib/site-mode";
 
 // Bandeau d'offre en haut de toutes les pages. Hauteur fixe (--banner-h dans globals.css) :
 // les pages décalent leur contenu de cette hauteur.
 export function AnnouncementBar() {
   return (
     <Link
-      href="/abonnements"
+      href={siteHref("/abonnements")!}
       className="group flex h-[var(--banner-h)] items-center justify-center gap-2 bg-vert-deep px-4 text-[13px] whitespace-nowrap text-white transition-colors hover:bg-vert sm:text-[14px]"
     >
       <span className="rounded-md bg-sable px-1.5 py-0.5 text-[12px] leading-none font-medium text-vert-deep max-[359px]:hidden">

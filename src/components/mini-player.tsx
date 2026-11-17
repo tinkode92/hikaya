@@ -5,6 +5,7 @@ import { EXTRACT_SECONDS } from "@/lib/episodes";
 import { ArrowUpRight, Close, Pause, Play } from "./icons";
 import { formatTime, usePlayer } from "./player";
 import { Scrubber } from "./scrubber";
+import { siteHref } from "@/lib/site-mode";
 
 // Mini lecteur persistant (cahier des charges §03) : reste en bas de l'écran pendant la navigation.
 export function MiniPlayer() {
@@ -21,7 +22,7 @@ export function MiniPlayer() {
 
         <div className="min-w-0 flex-1">
           {ended ? (
-            <a href="/abonnements" className="flex items-center gap-1 text-[14px] font-medium text-sable">
+            <a href={siteHref("/abonnements")!} className="flex items-center gap-1 text-[14px] font-medium text-sable">
               La suite avec l&apos;abonnement <ArrowUpRight />
             </a>
           ) : (

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { AnnouncementBar } from "./announcement-bar";
 import { ArrowUpRight, Close, Menu, User } from "./icons";
+import { LP_ONLY, siteHref } from "@/lib/site-mode";
 
 const links = [
   { href: "/catalogue", label: "Catalogue" },
@@ -41,7 +42,7 @@ export function Nav() {
           {links.map((l) => (
             <li key={l.label}>
               <Link
-                href={l.href}
+                href={siteHref(l.href)!}
                 aria-current={pathname.startsWith(l.href) ? "page" : undefined}
                 className="transition-colors hover:text-vert aria-[current=page]:text-vert"
               >
@@ -52,15 +53,17 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#connexion"
-            aria-label="Se connecter"
-            className="hidden size-11 items-center justify-center rounded-full text-encre/70 transition-colors hover:bg-vert/5 hover:text-vert sm:flex"
-          >
-            <User />
-          </a>
+          {!LP_ONLY && (
+            <a
+              href="#connexion"
+              aria-label="Se connecter"
+              className="hidden size-11 items-center justify-center rounded-full text-encre/70 transition-colors hover:bg-vert/5 hover:text-vert sm:flex"
+            >
+              <User />
+            </a>
+          )}
           <Link
-            href="/abonnements"
+            href={siteHref("/abonnements")!}
             className="group inline-flex h-11 items-center gap-2 rounded-full bg-vert px-5 text-[15px] font-medium text-white transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
           >
             S&apos;abonner
@@ -82,10 +85,10 @@ export function Nav() {
       {open && (
         <div className="animate-rise mx-3 mt-2 max-w-[1340px] sm:mx-6 lg:mx-auto rounded-3xl border border-encre/8 bg-papier p-3 shadow-float lg:hidden">
           <ul className="flex flex-col">
-            {[...links, { href: "#connexion", label: "Se connecter" }].map((l) => (
+            {[...links, ...(LP_ONLY ? [] : [{ href: "#connexion", label: "Se connecter" }])].map((l) => (
               <li key={l.label}>
                 <Link
-                  href={l.href}
+                  href={siteHref(l.href)!}
                   onClick={() => setOpen(false)}
                   className="block rounded-2xl px-4 py-3 text-lg text-encre/80 hover:bg-creme"
                 >

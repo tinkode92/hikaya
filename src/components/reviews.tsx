@@ -1,8 +1,9 @@
-import Link from "next/link";
+import { MaybeLink } from "./maybe-link";
 import { getBook } from "@/lib/catalogue";
 import { featuredReviews, type Review } from "@/lib/reviews";
 import { ArrowUpRight, ShieldCheck, Star } from "./icons";
 import { SectionHeading } from "./section-heading";
+import { siteHref } from "@/lib/site-mode";
 
 // « HIKAYA dans leur quotidien » (textes HIKAYA) : note App Store + avis mis en avant
 // depuis le back-office. Chaque avis renvoie à l'histoire qu'il note.
@@ -29,12 +30,12 @@ function ReviewCard({ review }: { review: Review }) {
       </div>
       <blockquote className="mt-5 flex-1 text-[18px] leading-relaxed text-encre/85">« {review.text} »</blockquote>
       {book && (
-        <Link
-          href={`/livres/${book.id}`}
+        <MaybeLink
+          href={siteHref(`/livres/${book.id}`)}
           className="mt-6 inline-flex items-center gap-2 self-start rounded-full bg-creme px-4 py-2 text-[14px] font-medium text-vert transition-colors hover:bg-sable-soft"
         >
           A écouté : {book.title}
-        </Link>
+        </MaybeLink>
       )}
       <div className="mt-6 flex items-end justify-between gap-4 border-t border-encre/8 pt-6">
         <div>

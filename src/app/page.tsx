@@ -13,6 +13,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { Themes } from "@/components/themes";
 import { Values } from "@/components/values";
 import { booksByIds, homeSelection, newReleases } from "@/lib/catalogue";
+import { LP_ONLY, siteHref } from "@/lib/site-mode";
 
 // Ordre et textes des sections : « Textes_site_HIKAYA » (Drive), partie Accueil.
 export default function Home() {
@@ -37,13 +38,15 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap gap-3">
               <ListenButton book={selection[0]} label="Écouter un extrait" />
-              <Link
-                href="/catalogue"
-                className="group inline-flex h-14 items-center gap-2 rounded-full border border-encre/8 bg-papier px-6 text-[17px] font-medium text-vert transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
-              >
-                Voir tout le catalogue
-                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
+              {!LP_ONLY && (
+                <Link
+                  href={siteHref("/catalogue")!}
+                  className="group inline-flex h-14 items-center gap-2 rounded-full border border-encre/8 bg-papier px-6 text-[17px] font-medium text-vert transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
+                >
+                  Voir tout le catalogue
+                  <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              )}
             </div>
           </div>
           <EpisodeCarousel episodes={selection} />

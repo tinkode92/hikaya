@@ -6,6 +6,7 @@ import { EXTRACT_SECONDS, type Episode } from "@/lib/episodes";
 import { ArrowUpRight, Pause, Play } from "./icons";
 import { formatTime, usePlayer } from "./player";
 import { Waveform } from "./waveform";
+import { siteHref } from "@/lib/site-mode";
 
 export function HeroPlayer({ episode }: { episode: Episode }) {
   const { current, playing, position, ended, toggle, seek } = usePlayer();
@@ -45,7 +46,7 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
         <div className="hidden h-11 w-[216px] shrink-0 items-center gap-4 sm:flex">
           {atEnd ? (
             <Link
-              href="/abonnements"
+              href={siteHref("/abonnements")!}
               className="group inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-creme text-[15px] font-medium text-vert transition-colors hover:bg-sable-soft"
             >
               Écouter la suite
@@ -81,7 +82,7 @@ export function HeroPlayer({ episode }: { episode: Episode }) {
       <div className="mt-3 flex h-9 min-w-0 items-center gap-3 px-1 sm:hidden">
         {atEnd ? (
           <Link
-            href="/abonnements"
+            href={siteHref("/abonnements")!}
             className="group inline-flex h-9 w-full items-center justify-center gap-2 rounded-full bg-creme text-[14px] font-medium whitespace-nowrap text-vert"
           >
             Écouter la suite

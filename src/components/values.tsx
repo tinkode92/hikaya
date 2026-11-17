@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "./icons";
+import { LP_ONLY, siteHref } from "@/lib/site-mode";
 
 // « Présentation de HIKAYA » (Textes_site_HIKAYA)
 export function Values() {
@@ -25,13 +26,15 @@ export function Values() {
                 d&apos;explorer cet héritage en famille. Chaque récit associe un travail de recherche à
                 une écriture accessible aux plus jeunes.
               </p>
-              <Link
-                href="/qui-sommes-nous"
-                className="group mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-papier px-5 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
-              >
-                Découvrir notre histoire
-                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
+              {!LP_ONLY && (
+                <Link
+                  href={siteHref("/qui-sommes-nous")!}
+                  className="group mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-papier px-5 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
+                >
+                  Découvrir notre histoire
+                  <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              )}
             </div>
           </div>
 

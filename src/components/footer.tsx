@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "./icons";
+import { siteHref } from "@/lib/site-mode";
 
 const columns = [
   {
@@ -46,7 +47,7 @@ export function Footer() {
             <span className="block">histoire ce soir ?</span>
           </h2>
           <Link
-            href="/abonnements"
+            href={siteHref("/abonnements")!}
             className="group mt-8 inline-flex h-14 items-center gap-2 rounded-full bg-sable px-6 text-[16px] whitespace-nowrap sm:px-7 sm:text-[17px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-sable-soft active:scale-[0.98]"
           >
             Choisir mon abonnement
@@ -67,7 +68,7 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {c.links.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-[15px] text-white/70 transition-colors hover:text-white">
+                    <Link href={siteHref(l.href) ?? "/"} className="text-[15px] text-white/70 transition-colors hover:text-white">
                       {l.label}
                     </Link>
                   </li>

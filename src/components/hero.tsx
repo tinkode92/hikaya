@@ -4,6 +4,7 @@ import { alAndalus } from "@/lib/episodes";
 import { ArchOutline } from "./arch";
 import { HeroPlayer } from "./hero-player";
 import { ArrowUpRight, Check, Star } from "./icons";
+import { siteHref } from "@/lib/site-mode";
 
 const promises = [
   "Pour les 6–14 ans",
@@ -48,14 +49,14 @@ export function Hero() {
 
             <div className="animate-rise mt-8 flex flex-col items-center lg:mt-[clamp(1rem,3vh,2rem)] justify-center gap-4 [animation-delay:100ms] sm:flex-row sm:gap-6">
               <Link
-                href="/abonnements"
+                href={siteHref("/abonnements")!}
                 className="group inline-flex h-14 items-center gap-2 rounded-full bg-vert px-7 text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
               >
                 Choisir mon abonnement
                 <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
-                href="/catalogue"
+                href={siteHref("/catalogue")!}
                 className="group inline-flex h-14 items-center gap-2 rounded-full border border-encre/8 bg-white px-7 text-[17px] font-medium text-vert transition-[background-color,transform] hover:bg-creme active:scale-[0.98]"
               >
                 Découvrir les livres audio

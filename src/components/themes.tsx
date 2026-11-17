@@ -3,6 +3,7 @@ import Link from "next/link";
 import { categories, series, seriesEpisodes } from "@/lib/catalogue";
 import { ArrowUpRight } from "./icons";
 import { SectionHeading } from "./section-heading";
+import { LP_ONLY, siteHref } from "@/lib/site-mode";
 
 // « Catégories et séries » (textes HIKAYA) : les 3 catégories + la série Al-Andalus.
 export function Themes() {
@@ -37,29 +38,31 @@ export function Themes() {
               villes qui ont fait rayonner la civilisation musulmane.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/catalogue"
-              className="group inline-flex h-12 items-center gap-2 rounded-full bg-vert px-5 text-[15px] font-medium text-white transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
-            >
-              Explorer les catégories
-              <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-            <Link
-              href={`/series/${andalus.id}`}
-              className="group inline-flex h-12 items-center gap-2 rounded-full border border-encre/8 bg-papier px-5 text-[15px] font-medium text-vert transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
-            >
-              Découvrir les séries
-              <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-          </div>
+          {!LP_ONLY && (
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href={siteHref("/catalogue")!}
+                className="group inline-flex h-12 items-center gap-2 rounded-full bg-vert px-5 text-[15px] font-medium text-white transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
+              >
+                Explorer les catégories
+                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <Link
+                href={siteHref(`/series/${andalus.id}`)!}
+                className="group inline-flex h-12 items-center gap-2 rounded-full border border-encre/8 bg-papier px-5 text-[15px] font-medium text-vert transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
+              >
+                Découvrir les séries
+                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
+          )}
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:h-[640px] lg:grid-cols-3 lg:grid-rows-2">
           {tiles.map((t) => (
             <Link
               key={t.href}
-              href={t.href}
+              href={LP_ONLY ? "/#histoires" : t.href}
               className={`tile group relative isolate flex min-h-[300px] flex-col justify-end overflow-hidden rounded-[1.75rem] bg-vert p-6 text-white sm:p-8 ${t.className}`}
             >
               <Image

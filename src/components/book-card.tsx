@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { MaybeLink } from "./maybe-link";
 import { bookLabel, bookMeta, type Book } from "@/lib/catalogue";
 import { Pause, Play } from "./icons";
 import { usePlayer } from "./player";
+import { siteHref } from "@/lib/site-mode";
 
 // Carte de livre audio (textes fournis par HIKAYA : titre, « Histoire complète · durée »,
 // « Écouter l'extrait · 1 min 30 »). Pour un abonné, le dev affichera « Écouter » ou « Reprendre l'écoute ».
@@ -20,7 +21,7 @@ export function BookCard({
   const { current, playing, toggle } = usePlayer();
   const isPlaying = current?.id === book.id && playing;
   const dark = tone === "dark";
-  const href = `/livres/${book.id}`;
+  const href = siteHref(`/livres/${book.id}`);
 
   return (
     <article
@@ -28,7 +29,7 @@ export function BookCard({
         dark ? "bg-vert text-white" : "border border-encre/8 bg-papier text-encre"
       } ${className}`}
     >
-      <Link href={href} tabIndex={-1} aria-hidden className="relative block aspect-[4/3] shrink-0 overflow-hidden">
+      <MaybeLink href={href} tabIndex={-1} aria-hidden className="relative block aspect-[4/3] shrink-0 overflow-hidden">
         <Image
           src={book.image}
           alt=""
@@ -36,7 +37,7 @@ export function BookCard({
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 80vw"
           className="object-cover"
         />
-      </Link>
+      </MaybeLink>
 
       <div className="relative flex flex-1 flex-col p-6">
         {dark && book.number && (
@@ -53,9 +54,9 @@ export function BookCard({
             dark && book.number ? "pr-16" : ""
           }`}
         >
-          <Link href={href} className={`transition-colors ${dark ? "hover:text-sable" : "hover:text-vert"}`}>
+          <MaybeLink href={href} className={`transition-colors ${dark ? "hover:text-sable" : "hover:text-vert"}`}>
             {book.title}
-          </Link>
+          </MaybeLink>
         </h3>
         <p className={`mt-2 mb-6 text-[14px] ${dark ? "text-white/70" : "text-encre/60"}`}>{bookMeta(book)}</p>
 
