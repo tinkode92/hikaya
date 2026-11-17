@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Faq, faq } from "@/components/faq";
+import { Faq } from "@/components/faq";
+import { faq } from "@/lib/faq";
 import { Check } from "@/components/icons";
 import { Pricing } from "@/components/pricing";
 import { Reviews } from "@/components/reviews";
