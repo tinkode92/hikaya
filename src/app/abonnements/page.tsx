@@ -26,17 +26,19 @@ const plans = [
     highlight: true,
     items: [
       "Toutes les histoires en entier",
-      "Les nouveaux récits ajoutés chaque mois",
+      "De nouveaux livres audio chaque mois",
       "Sur le site et dans l'application, avec le même compte",
       "L'écoute reprend là où elle s'était arrêtée",
+      "L'écoute écran verrouillé",
       "Le mode hors ligne dans l'application",
+      "AirPlay et Chromecast pour la télé et vos enceintes compatibles",
     ],
   },
 ];
 
 // Questions liées à l'abonnement, reprises de la FAQ fournie par HIKAYA
 const subscriptionFaq = faq.filter((f) =>
-  /s'abonner|comprend l'abonnement|application après un achat|résilier|paiement/.test(f.q),
+  /s'abonner|comprend l'abonnement|application après un achat|musique|résilier|paiement/.test(f.q),
 );
 
 export default function AbonnementsPage() {

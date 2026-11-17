@@ -105,3 +105,30 @@ export const Search = (p: P) => (
     <path d="m20 20-4.2-4.2" />
   </svg>
 );
+
+export const Lock = (p: P) => (
+  <svg viewBox="0 0 24 24" width={18} height={18} {...base} {...p}>
+    <rect x="5" y="11" width="14" height="10" rx="2" />
+    <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+  </svg>
+);
+
+export const Download = (p: P) => (
+  <svg viewBox="0 0 24 24" width={18} height={18} {...base} {...p}>
+    <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
+  </svg>
+);
+
+export const Mic = (p: P) => (
+  <svg viewBox="0 0 24 24" width={18} height={18} {...base} {...p}>
+    <rect x="9" y="3" width="6" height="11" rx="3" />
+    <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
+  </svg>
+);
+
+export const Gift = (p: P) => (
+  <svg viewBox="0 0 24 24" width={18} height={18} {...base} {...p}>
+    <rect x="3.5" y="8" width="17" height="4" rx="1" />
+    <path d="M5 12v8h14v-8M12 8v12M12 8c-1.5-3-5-3.5-5.5-1.5S9 8 12 8Zm0 0c1.5-3 5-3.5 5.5-1.5S15 8 12 8Z" />
+  </svg>
+);

@@ -3,6 +3,7 @@ import { AppDownload } from "@/components/app-download";
 import { BookCard } from "@/components/book-card";
 import { EpisodeCarousel } from "@/components/episode-carousel";
 import { Faq } from "@/components/faq";
+import { FeaturedBook } from "@/components/featured-book";
 import { Hero } from "@/components/hero";
 import { ArrowUpRight } from "@/components/icons";
 import { ListenButton } from "@/components/listen-button";
@@ -12,6 +13,7 @@ import { Reviews } from "@/components/reviews";
 import { SectionHeading } from "@/components/section-heading";
 import { Themes } from "@/components/themes";
 import { Values } from "@/components/values";
+import { VideoTestimonial } from "@/components/video-testimonial";
 import { booksByIds, homeSelection, newReleases } from "@/lib/catalogue";
 import { LP_ONLY, siteHref } from "@/lib/site-mode";
 
@@ -53,6 +55,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* À la une / En avant-première (réglé dans le back-office) */}
+      <FeaturedBook />
+
       {/* Nouveautés */}
       <section className="px-3 sm:px-6">
         <div className="mx-auto max-w-[1280px]">
@@ -73,6 +78,7 @@ export default function Home() {
 
       <Themes />
       <Values />
+      <VideoTestimonial />
       <Reviews />
       <Pricing />
       <AppDownload />

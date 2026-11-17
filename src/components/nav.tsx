@@ -13,6 +13,7 @@ const links = [
   { href: "/series/al-andalus", label: "Séries" },
   { href: "/abonnements", label: "Abonnements" },
   { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
+  { href: "/offrir", label: "Offrir HIKAYA" },
 ];
 
 export function Nav() {

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "./icons";
+import { ArrowUpRight, Mic } from "./icons";
+import { VOICE_ONLY } from "@/lib/voice";
 import { LP_ONLY, siteHref } from "@/lib/site-mode";
 
 // « Présentation de HIKAYA » (Textes_site_HIKAYA)
@@ -25,6 +26,10 @@ export function Values() {
                 façonnée. Nous créons des histoires pour éveiller leur curiosité et leur donner le goût
                 d&apos;explorer cet héritage en famille. Chaque récit associe un travail de recherche à
                 une écriture accessible aux plus jeunes.
+              </p>
+              <p className="mt-6 inline-flex items-start gap-3 rounded-2xl bg-white/10 px-4 py-3 text-[16px] leading-snug text-white">
+                <Mic className="mt-0.5 shrink-0 text-sable" />
+                {VOICE_ONLY}
               </p>
               {!LP_ONLY && (
                 <Link

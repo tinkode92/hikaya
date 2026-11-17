@@ -1,14 +1,13 @@
 import { MaybeLink } from "./maybe-link";
 import { getBook } from "@/lib/catalogue";
 import { featuredReviews, type Review } from "@/lib/reviews";
-import { ArrowUpRight, ShieldCheck, Star } from "./icons";
+import { ShieldCheck, Star } from "./icons";
 import { SectionHeading } from "./section-heading";
+import { ratings } from "@/lib/ratings";
 import { siteHref } from "@/lib/site-mode";
 
-// « HIKAYA dans leur quotidien » (textes HIKAYA) : note App Store + avis mis en avant
+// « HIKAYA dans leur quotidien » (textes HIKAYA) : notes App Store et Google Play + avis mis en avant
 // depuis le back-office. Chaque avis renvoie à l'histoire qu'il note.
-const APP_STORE = "https://apps.apple.com/fr/app/hikaya/id6754205548";
-const APP_STORE_RATING = { value: 4.6, count: 33 }; // relevé sur la fiche App Store
 
 function Stars({ rating, className = "" }: { rating: number; className?: string }) {
   return (
@@ -63,25 +62,23 @@ export function Reviews({ reviews = featuredReviews }: { reviews?: Review[] }) {
             </p>
           </div>
 
-          {/* Note de l'app : un bandeau compact, pas une colonne vide */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-4 rounded-[1.75rem] bg-vert px-6 py-5 text-white sm:px-8">
-            <p className="text-[56px] leading-none font-light tracking-[-0.04em] tabular-nums">4,6</p>
-            <div>
-              <Stars rating={APP_STORE_RATING.value} className="text-sable" />
-              <p className="mt-2 text-[14px] text-white/75">
-                {APP_STORE_RATING.count} notes sur l&apos;App Store
-              </p>
-            </div>
-            <a
-              href={APP_STORE}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex h-11 items-center gap-2 rounded-full bg-papier px-5 text-[15px] font-medium text-vert-deep transition-[background-color,transform] hover:bg-white active:scale-[0.98]"
-            >
-              Voir l&apos;app
-              <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-          </div>
+          {/* Notes des deux stores, côte à côte */}
+          <dl className="grid grid-cols-2 divide-x divide-white/15 rounded-[1.75rem] bg-vert py-5 text-white">
+            {[ratings.appStore, ratings.googlePlay].map((r) => (
+              <div key={r.label} className="px-6 sm:px-8">
+                <dt className="text-[14px] text-white/75">{r.label}</dt>
+                <dd className="mt-1">
+                  <span className="text-[44px] leading-none font-light tracking-[-0.04em] tabular-nums sm:text-[52px]">
+                    {r.value}
+                  </span>
+                  <span className="text-[18px] text-white/55"> / 5</span>
+                  <div className="mt-2">
+                    <Stars rating={r.stars} className="text-sable" />
+                  </div>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         <ul className="grid gap-4 md:grid-cols-2">

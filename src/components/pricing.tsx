@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Check, ShieldCheck } from "./icons";
+import { ArrowUpRight, Check, Download, Lock, ShieldCheck } from "./icons";
 import { PaymentLogos } from "./payment-logos";
 import { SectionHeading } from "./section-heading";
 
@@ -15,7 +15,7 @@ const plans = [
     badge: "Offre découverte",
     price: "4,90\u00a0€",
     period: "/ mois",
-    billing: "Pendant 3 mois, puis 9,90\u00a0€/mois",
+    billing: "4,90\u00a0€/mois pendant les 3 premiers mois, puis 9,90\u00a0€/mois",
     was: "9,90\u00a0€",
     detail: "Sans engagement, résiliable à tout moment",
     cta: "Commencer à 4,90\u00a0€/mois",
@@ -26,7 +26,7 @@ const plans = [
     badge: "7 jours offerts",
     price: "79,20\u00a0€",
     period: "/ an",
-    billing: "7 jours gratuits, puis 79,20\u00a0€/an",
+    billing: "7 jours gratuits, puis 79,20\u00a0€ facturés en une fois pour un\u00a0an",
     was: undefined,
     detail: "Soit 6,60\u00a0€/mois",
     cta: "Essayer 7 jours gratuitement",
@@ -34,11 +34,17 @@ const plans = [
 ] as const;
 
 const included = [
-  "Toutes les histoires en entier, en illimité",
-  "De nouveaux récits chaque mois",
+  "Tout le catalogue en illimité, les histoires en entier",
+  "De nouveaux livres audio chaque mois",
   "Sur le site et dans l'application, avec le même compte",
   "L'écoute reprend là où elle s'était arrêtée",
-  "AirPlay et Chromecast pour écouter sur la télé",
+  "AirPlay et Chromecast pour écouter sur la télé, vos enceintes et appareils compatibles",
+];
+
+// Usages pratiques mis en avant (voiture, coucher)
+const practical = [
+  { icon: Lock, title: "Écoute écran verrouillé", text: "L'histoire continue, téléphone posé et écran éteint." },
+  { icon: Download, title: "Mode hors ligne dans l'application", text: "Téléchargez les histoires pour la voiture ou les voyages." },
 ];
 
 export function Pricing({ as = "h2" }: { as?: "h1" | "h2" }) {
@@ -145,16 +151,29 @@ export function Pricing({ as = "h2" }: { as?: "h1" | "h2" }) {
           </div>
         </div>
 
-        <ul className="space-y-4 lg:col-start-1 lg:row-start-2">
-          {included.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-[16px] text-encre/80">
-              <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-vert text-sable">
-                <Check width={13} height={13} />
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
+        <div className="lg:col-start-1 lg:row-start-2">
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {practical.map(({ icon: Icon, title, text }) => (
+              <li key={title} className="rounded-[1.25rem] border border-encre/8 bg-papier p-5">
+                <span className="flex size-10 items-center justify-center rounded-full bg-vert text-sable">
+                  <Icon />
+                </span>
+                <p className="mt-4 text-[16px] font-medium text-encre">{title}</p>
+                <p className="mt-1 text-[14px] leading-relaxed text-encre/65">{text}</p>
+              </li>
+            ))}
+          </ul>
+          <ul className="mt-6 space-y-4">
+            {included.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-[16px] text-encre/80">
+                <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-vert text-sable">
+                  <Check width={13} height={13} />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

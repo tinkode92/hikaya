@@ -19,6 +19,7 @@ const columns = [
     links: [
       { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
       { label: "Abonnements", href: "/abonnements" },
+      { label: "Offrir HIKAYA", href: "/offrir" },
       { label: "Questions fréquentes", href: "/#faq" },
       { label: "Contact", href: "#contact" },
     ],
