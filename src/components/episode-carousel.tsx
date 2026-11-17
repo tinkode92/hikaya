@@ -39,7 +39,7 @@ export function EpisodeCarousel({ episodes }: { episodes: Book[] }) {
       <div
         ref={track}
         onScroll={update}
-        className="no-scrollbar -mx-3 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-3 px-3 sm:-mx-6 sm:scroll-px-6 sm:px-6 xl:mx-0 xl:scroll-px-0 xl:px-0"
+        className="no-scrollbar -mx-3 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-3 px-3 sm:-mx-6 sm:scroll-px-6 sm:px-6 xl:mx-0 xl:scroll-px-0 xl:px-0"
       >
         {episodes.map((b) => (
           <BookCard

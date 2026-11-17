@@ -121,6 +121,11 @@ main.reveal-ready [data-reveal] {
     transform 0.7s var(--ease-out-soft);
   transition-delay: calc(var(--reveal-i, 0) * 90ms);
 }
+/* Dans un carrousel (défilement horizontal), les cartes arrivent de côté : un décalage vertical
+   rendrait le carrousel défilable en hauteur et capterait la molette pendant l'apparition. */
+main.reveal-ready .no-scrollbar > [data-reveal] {
+  transform: translateX(32px);
+}
 main.reveal-ready [data-reveal].is-visible {
   opacity: 1;
   transform: none;
