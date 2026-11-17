@@ -4,34 +4,8 @@ import { useState } from "react";
 import { ArrowUpRight, Check, Download, Lock, ShieldCheck } from "./icons";
 import { PaymentLogos } from "./payment-logos";
 import { SectionHeading } from "./section-heading";
+import { plans, type PlanId } from "@/lib/plans";
 
-// Offres et prix (validés par HIKAYA). En production, les prix viennent de Stripe.
-// Objectif : le récurrent mensuel. L'offre mensuelle passe en premier, présélectionnée, avec son
-// prix découverte ancré sur le prix normal (9,90 € barré). L'annuelle commence par 7 jours gratuits.
-const plans = [
-  {
-    id: "mensuel",
-    name: "Mensuel",
-    badge: "Offre découverte",
-    price: "4,90\u00a0€",
-    period: "/ mois",
-    billing: "4,90\u00a0€/mois pendant les 3 premiers mois, puis 9,90\u00a0€/mois",
-    was: "9,90\u00a0€",
-    detail: "Sans engagement, résiliable à tout moment",
-    cta: "Commencer à 4,90\u00a0€/mois",
-  },
-  {
-    id: "annuel",
-    name: "Annuel",
-    badge: "7 jours offerts",
-    price: "79,20\u00a0€",
-    period: "/ an",
-    billing: "7 jours gratuits, puis 79,20\u00a0€ facturés en une fois pour un\u00a0an",
-    was: undefined,
-    detail: "Soit 6,60\u00a0€/mois",
-    cta: "Essayer 7 jours gratuitement",
-  },
-] as const;
 
 const included = [
   "Tout le catalogue en illimité, les histoires en entier",
@@ -48,7 +22,7 @@ const practical = [
 ];
 
 export function Pricing({ as = "h2" }: { as?: "h1" | "h2" }) {
-  const [selected, setSelected] = useState<(typeof plans)[number]["id"]>("mensuel");
+  const [selected, setSelected] = useState<PlanId>("mensuel");
 
   return (
     <section id="abonnements" className="scroll-mt-24 px-3 sm:px-6">
@@ -134,7 +108,7 @@ export function Pricing({ as = "h2" }: { as?: "h1" | "h2" }) {
           </fieldset>
 
           <a
-            href="#paiement"
+            href={`/paiement?offre=${selected}`}
             className="group mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-full bg-vert text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]"
           >
             {plans.find((p) => p.id === selected)?.cta}

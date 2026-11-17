@@ -96,6 +96,13 @@ export function Reviews({ reviews = featuredReviews }: { reviews?: Review[] }) {
             ))}
           </ul>
         </div>
+
+        {/* Mention exigée pour les avis en ligne (CDC §07) */}
+        <p className="mt-6 max-w-[90ch] text-[13px] leading-relaxed text-encre/55">
+          Avis vérifiés : seuls les abonnés peuvent laisser un avis, depuis l&apos;e-mail reçu après leur abonnement
+          ou depuis leur compte. Chaque avis est lu par HIKAYA avant publication et ne donne lieu à aucune
+          contrepartie. Les notes affichées sont celles de l&apos;App Store et de Google Play.
+        </p>
       </div>
     </section>
   );
