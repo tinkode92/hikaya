@@ -164,9 +164,18 @@ export default function ComptePage() {
                       Passer à l&apos;annuel · 6,60&nbsp;€/mois
                     </a>
                   </div>
-                  <p className="mt-4 text-[13px] text-white/60">
-                    Changement d&apos;offre, carte, factures et résiliation se font sur l&apos;espace sécurisé Stripe.
-                    En cas de résiliation, vous gardez l&apos;accès jusqu&apos;à la fin de la période payée.
+                  {/* CGV art. 11 et 12 : résiliation et rétractation en ligne, accessibles directement */}
+                  <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/12 pt-5 text-[15px]">
+                    <a href="#resiliation" className="font-medium text-white underline-offset-4 hover:underline">
+                      Résilier mon abonnement
+                    </a>
+                    <a href="#retractation" className="font-medium text-white underline-offset-4 hover:underline">
+                      Me rétracter (jusqu&apos;au {sub.withdrawalUntil})
+                    </a>
+                  </div>
+                  <p className="mt-3 text-[13px] text-white/60">
+                    En cas de résiliation, vous gardez l&apos;accès jusqu&apos;à la fin de la période payée. Changement
+                    d&apos;offre, carte et factures se font sur l&apos;espace sécurisé Stripe.
                   </p>
                 </>
               )}

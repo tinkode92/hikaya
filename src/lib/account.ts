@@ -14,6 +14,7 @@ export const account = {
     detail: "Offre découverte jusqu'au 17 février 2027, puis 9,90 €/mois",
     nextCharge: "17 décembre 2026",
     since: "17 novembre 2026",
+    withdrawalUntil: "1er décembre 2026", // 14 jours après la souscription (CGV art. 12)
   },
   card: { brand: "Visa", last4: "4242", expires: "08/28" },
   invoices: [

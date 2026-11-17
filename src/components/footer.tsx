@@ -103,7 +103,7 @@ export function Footer() {
 
         <div className="relative mx-6 flex flex-col gap-3 border-t border-white/8 py-6 pb-24 text-[13px] text-white/55 sm:mx-12 sm:flex-row sm:justify-between sm:pb-6 lg:mx-16">
           <p className="flex flex-wrap gap-x-2 gap-y-1">
-            <span>© 2026 Hikaya Médias · Tous droits réservés</span>
+            <span>© 2026 HIKAYA MEDIAS · Tous droits réservés</span>
             <span aria-hidden className="hidden sm:inline">
               ·
             </span>

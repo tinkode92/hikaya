@@ -220,20 +220,35 @@ export function Checkout() {
               <input autoComplete="cc-name" className={inputClass} placeholder="Prénom Nom" />
             </Field>
 
+            {/* CGV art. 3 : case dédiée, non précochée, obligatoire avant de confirmer */}
+            <label className="mt-2 flex cursor-pointer items-start gap-3 text-[15px] leading-snug text-encre/75">
+              <input type="checkbox" name="cgv" required className="peer sr-only" />
+              <span
+                aria-hidden
+                className="mt-px flex size-5 shrink-0 items-center justify-center rounded-md border-2 border-vert/30 text-transparent transition-colors peer-checked:border-vert peer-checked:bg-vert peer-checked:text-sable peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-vert"
+              >
+                <Check width={12} height={12} />
+              </span>
+              <span>
+                J&apos;ai lu et j&apos;accepte les{" "}
+                <Link href="/cgv" className="font-medium text-vert underline underline-offset-2">
+                  conditions générales de vente
+                </Link>
+                .
+              </span>
+            </label>
+
             <button type="submit" className={`${primaryButton} mt-2`}>
               <Lock width={17} height={17} />
-              {monthly ? "Payer 4,90 € et commencer" : "Commencer mes 7 jours gratuits"}
+              {monthly ? "Payer 4,90 € et commencer" : "Commencer l'essai, puis 79,20 €/an"}
               <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
             <p className="text-[13px] leading-relaxed text-encre/60">
               {monthly
                 ? "4,90 €/mois pendant 3 mois, puis 9,90 €/mois. "
                 : `Aucun prélèvement aujourd'hui. Sans résiliation avant la fin de l'essai, 79,20 € sont prélevés ${trialEnd} pour un an. `}
-              Résiliable à tout moment depuis Mon compte. En payant, vous acceptez les{" "}
-              <Link href="/cgv" className="underline underline-offset-2 hover:text-vert">
-                conditions générales de vente
-              </Link>
-              .
+              Résiliable à tout moment depuis Mon compte. Vous disposez d&apos;un droit de rétractation de 14 jours
+              (article 12 des CGV).
             </p>
           </form>
 

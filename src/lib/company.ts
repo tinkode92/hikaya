@@ -1,6 +1,6 @@
-// Coordonnées de HIKAYA (cahier des charges). L'adresse e-mail et les liens des réseaux sont à confirmer.
+// Coordonnées de HIKAYA (CGV / CGU du Drive). Les liens des réseaux sociaux sont à compléter.
 export const company = {
-  name: "Hikaya Médias",
+  name: "HIKAYA MEDIAS",
   address: ["61 rue Gustave Delory", "59155 Faches-Thumesnil", "France"],
   siren: "991 776 501",
   email: "contact@hikayamedias.com",
