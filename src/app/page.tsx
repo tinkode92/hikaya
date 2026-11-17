@@ -13,7 +13,6 @@ import { Reviews } from "@/components/reviews";
 import { SectionHeading } from "@/components/section-heading";
 import { Themes } from "@/components/themes";
 import { Values } from "@/components/values";
-import { VideoTestimonial } from "@/components/video-testimonial";
 import { booksByIds, homeSelection, newReleases } from "@/lib/catalogue";
 import { LP_ONLY, siteHref } from "@/lib/site-mode";
 
@@ -78,7 +77,6 @@ export default function Home() {
 
       <Themes />
       <Values />
-      <VideoTestimonial />
       <Reviews />
       <Pricing />
       <AppDownload />

@@ -187,3 +187,9 @@ svg {
     transform: none;
   }
 }
+
+/* Vidéo en plein écran : toujours affichée en entier, jamais recadrée */
+video:fullscreen,
+video:-webkit-full-screen {
+  object-fit: contain !important;
+}
