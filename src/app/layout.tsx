@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import { ArchDefs } from "@/components/arch";
 import { Footer } from "@/components/footer";
 import { MiniPlayer } from "@/components/mini-player";
+import { NoImageDrag } from "@/components/no-image-drag";
 import { Nav } from "@/components/nav";
 import { PlayerProvider } from "@/components/player";
 import "./globals.css";
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* Le lecteur vit dans le layout : la lecture continue pendant la navigation (CDC §03) */}
         <PlayerProvider>
           <ArchDefs />
+          <NoImageDrag />
           <Nav />
           {children}
           <div className="mt-20 sm:mt-28">
