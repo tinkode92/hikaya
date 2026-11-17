@@ -5,7 +5,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookCard } from "@/components/book-card";
 import { EpisodeList } from "@/components/episode-list";
-import { ArrowUpRight } from "@/components/icons";
+import { ArrowUpRight, Mic } from "@/components/icons";
+import { VOICE_ONLY } from "@/lib/voice";
 import { ListenButton } from "@/components/listen-button";
 import {
   bookLabel,
@@ -97,6 +98,11 @@ async function BookContent({ id }: { id: string }) {
                 </div>
               ))}
             </dl>
+
+            <p className="mt-4 flex items-start gap-2 text-[15px] text-vert">
+              <Mic width={16} height={16} className="mt-0.5 shrink-0" />
+              {VOICE_ONLY}
+            </p>
 
             <p className="mt-6 max-w-[56ch] text-[17px] leading-relaxed text-encre/75">{book.summary}</p>
 

@@ -8,6 +8,7 @@ export const LP_ONLY = process.env.NEXT_PUBLIC_LP_ONLY === "1";
 export function siteHref(path: string): string | null {
   if (!LP_ONLY) return path;
   if (path === "/" || path.startsWith("/#") || path.startsWith("#") || path.startsWith("http")) return path;
+  if (path.startsWith("/offrir")) return path;
   if (path.startsWith("/abonnements")) return "/#abonnements";
   if (path.startsWith("/catalogue")) return "/#histoires";
   if (path.startsWith("/series") || path.startsWith("/categories")) return "/#themes";

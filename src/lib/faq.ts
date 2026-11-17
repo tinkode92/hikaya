@@ -15,6 +15,10 @@ export const faq: FaqItem[] = [
     a: "Nos récits s'appuient notamment sur les sources classiques de l'islam et de la civilisation musulmane.",
   },
   {
+    q: "Les histoires contiennent-elles de la musique ?",
+    a: "Non. Les histoires ne contiennent aucune musique instrumentale : toutes les ambiances sonores sont réalisées à la voix.",
+  },
+  {
     q: "Peut-on écouter avant de s'abonner ?",
     a: "Oui. Chaque livre audio propose un extrait de 1 minute 30, accessible sur le site sans créer de compte. Vous pouvez ainsi découvrir la narration et l'univers de l'histoire avec votre enfant.",
   },

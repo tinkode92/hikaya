@@ -4,12 +4,14 @@ import { alAndalus } from "@/lib/episodes";
 import { ArchOutline } from "./arch";
 import { HeroPlayer } from "./hero-player";
 import { ArrowUpRight, Check, Star } from "./icons";
+import { ratings } from "@/lib/ratings";
 import { siteHref } from "@/lib/site-mode";
 
+// Principaux avantages, visibles dès le premier écran (demande HIKAYA)
 const promises = [
-  "Pour les 6–14 ans",
-  "Des extraits à écouter librement",
-  "Un même abonnement sur le site et dans l'application",
+  "Tout le catalogue en illimité",
+  "De nouveaux livres audio chaque mois",
+  "Sur le site et dans l'application",
 ];
 
 // Grille à 3 colonnes dès 1280 px : les personnages ont leur propre colonne et ne peuvent
@@ -37,14 +39,14 @@ export function Hero() {
           </div>
 
           <div className="min-w-0 pb-10 text-center lg:pb-[clamp(1.25rem,4vh,5rem)]">
-            <h1 className="animate-rise mx-auto max-w-[18ch] text-[clamp(2.4rem,min(5.2vw,6vh),4.4rem)] leading-[1.04] font-light tracking-[-0.03em] text-balance italic sm:max-w-[20ch]">
-              <span className="block text-sable-ink">L&apos;histoire de la civilisation musulmane</span>
-              <span className="block text-vert">à découvrir en famille</span>
+            <h1 className="animate-rise mx-auto max-w-[18ch] text-[clamp(2.2rem,min(4.8vw,5.2vh),4.1rem)] leading-[1.04] font-light tracking-[-0.03em] text-balance italic sm:max-w-[22ch]">
+              <span className="block text-sable-ink">Faites voyager vos enfants</span>
+              <span className="block text-vert">dans l&apos;histoire de la civilisation musulmane</span>
             </h1>
 
-            <p className="animate-rise mx-auto mt-6 max-w-[50ch] text-[17px] lg:mt-[clamp(1rem,2.5vh,1.5rem)] leading-relaxed text-encre/65 [animation-delay:50ms]">
-              Des récits pour éveiller la curiosité des enfants, nourrir leur imagination et leur faire
-              rencontrer les femmes et les hommes qui ont marqué cet héritage.
+            <p className="animate-rise mx-auto mt-6 max-w-[54ch] text-[17px] lg:mt-[clamp(1rem,2.5vh,1.5rem)] leading-relaxed text-encre/65 [animation-delay:50ms]">
+              Des livres audio immersifs pour les 6–14 ans (mais pas que&nbsp;!), à écouter en famille.
+              Partez à la rencontre des femmes, des hommes et des villes qui ont marqué cet héritage.
             </p>
 
             <div className="animate-rise mt-8 flex flex-col items-center lg:mt-[clamp(1rem,3vh,2rem)] justify-center gap-4 [animation-delay:100ms] sm:flex-row sm:gap-6">
@@ -64,11 +66,7 @@ export function Hero() {
               </Link>
             </div>
 
-            <ul className="animate-rise mx-auto mt-6 flex lg:mt-[clamp(0.75rem,2.5vh,1.5rem)] w-fit max-w-[280px] flex-col items-start gap-x-6 gap-y-2 text-left text-[14px] text-encre/65 [animation-delay:150ms] sm:w-auto sm:max-w-[600px] sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
-              <li className="flex items-start gap-2">
-                <Star width={14} height={14} className="mt-[3px] shrink-0 text-sable-ink" />
-                Noté 4,6 sur l&apos;App Store
-              </li>
+            <ul className="animate-rise mx-auto mt-6 flex w-fit max-w-[300px] flex-col items-start gap-x-6 gap-y-2 text-left text-[14px] text-encre/70 [animation-delay:150ms] sm:w-auto sm:max-w-[640px] sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:mt-[clamp(0.75rem,2.5vh,1.5rem)]">
               {promises.map((p) => (
                 <li key={p} className="flex items-start gap-2">
                   <Check width={14} height={14} className="mt-[3px] shrink-0 text-vert" />
@@ -76,8 +74,16 @@ export function Hero() {
                 </li>
               ))}
             </ul>
+            <ul className="animate-rise mx-auto mt-3 flex flex-wrap lg:mt-2 items-center justify-center gap-x-5 gap-y-2 text-[14px] text-encre/70 [animation-delay:150ms]">
+              {[ratings.appStore, ratings.googlePlay].map((r) => (
+                <li key={r.label} className="inline-flex items-center gap-2">
+                  <Star width={14} height={14} className="text-sable-ink" />
+                  <strong className="font-medium text-encre">{r.value}/5</strong> sur {r.label === "App Store" ? "l'App Store" : r.label}
+                </li>
+              ))}
+            </ul>
 
-            <div className="animate-rise mt-12 [animation-delay:200ms] lg:mt-[clamp(1.25rem,4vh,3rem)]">
+            <div className="animate-rise mt-12 [animation-delay:200ms] lg:mt-[clamp(1rem,3vh,3rem)]">
               <HeroPlayer episode={alAndalus[3]} />
             </div>
           </div>
