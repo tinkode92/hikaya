@@ -5,6 +5,8 @@ import { ShieldCheck, Star } from "./icons";
 import { SectionHeading } from "./section-heading";
 import { ratings } from "@/lib/ratings";
 import { siteHref } from "@/lib/site-mode";
+import { testimonialVideo } from "@/lib/video";
+import { VideoTestimonial } from "./video-testimonial";
 
 // « HIKAYA dans leur quotidien » (textes HIKAYA) : notes App Store et Google Play + avis mis en avant
 // depuis le back-office. Chaque avis renvoie à l'histoire qu'il note.
@@ -22,12 +24,12 @@ function Stars({ rating, className = "" }: { rating: number; className?: string 
 function ReviewCard({ review }: { review: Review }) {
   const book = getBook(review.bookId);
   return (
-    <li className="flex flex-col rounded-[1.75rem] border border-encre/8 bg-papier p-8">
+    <li className="flex flex-col rounded-[1.75rem] border border-encre/8 bg-papier p-8 lg:p-6 xl:p-8">
       <div className="flex items-center justify-between gap-4">
         <Stars rating={review.rating} className="text-sable-ink" />
         <span className="text-[13px] text-encre/55">{review.date}</span>
       </div>
-      <blockquote className="mt-5 flex-1 text-[18px] leading-relaxed text-encre/85">« {review.text} »</blockquote>
+      <blockquote className="mt-5 flex-1 text-[18px] leading-relaxed text-encre/85 lg:text-[16px] xl:text-[18px]">« {review.text} »</blockquote>
       {book && (
         <MaybeLink
           href={siteHref(`/livres/${book.id}`)}
@@ -81,11 +83,19 @@ export function Reviews({ reviews = featuredReviews }: { reviews?: Review[] }) {
           </dl>
         </div>
 
-        <ul className="grid gap-4 md:grid-cols-2">
-          {reviews.map((r) => (
-            <ReviewCard key={r.id} review={r} />
-          ))}
-        </ul>
+        {/* Le témoignage vidéo à gauche, les avis à droite (empilés en mobile) */}
+        <div
+          className={`grid gap-4 ${
+            testimonialVideo.src ? "lg:grid-cols-[300px_minmax(0,1fr)] xl:grid-cols-[340px_minmax(0,1fr)]" : ""
+          }`}
+        >
+          <VideoTestimonial className="mx-auto w-full max-w-[360px] lg:max-w-none" />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {reviews.map((r) => (
+              <ReviewCard key={r.id} review={r} />
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
