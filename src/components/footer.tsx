@@ -78,7 +78,21 @@ export function Footer() {
         </div>
 
         <div className="relative mx-6 flex flex-col gap-3 border-t border-white/8 py-6 text-[13px] text-white/55 sm:mx-12 sm:flex-row sm:justify-between lg:mx-16">
-          <p>© 2026 Hikaya Médias · Tous droits réservés</p>
+          <p className="flex flex-wrap gap-x-2 gap-y-1">
+            <span>© 2026 Hikaya Médias · Tous droits réservés</span>
+            <span aria-hidden className="hidden sm:inline">·</span>
+            <span>
+              Site réalisé par{" "}
+              <a
+                href="https://bigbrowser.co"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-sable underline-offset-4 hover:underline"
+              >
+                bigbrowser.co
+              </a>
+            </span>
+          </p>
           <p className="flex gap-5">
             <a href="#" className="hover:text-white">
               Instagram
