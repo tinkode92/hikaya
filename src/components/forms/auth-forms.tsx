@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ArrowUpRight, Check, GoogleG, Mail } from "../icons";
 import { Divider, Field, inputClass, primaryButton, secondaryButton } from "./fields";
@@ -9,9 +10,11 @@ import { PasswordInput } from "./password-input";
 // Formulaires de compte (CDC §04). L'authentification est celle de l'application HIKAYA :
 // le dev branche ici la connexion par e-mail, Google, et le retour à la page d'origine (?retour=).
 
-function GoogleButton() {
+// En démo : la connexion mène à Mon compte, l'inscription au choix de l'offre.
+function GoogleButton({ to }: { to: string }) {
+  const router = useRouter();
   return (
-    <button type="button" className={secondaryButton}>
+    <button type="button" onClick={() => router.push(to)} className={secondaryButton}>
       <GoogleG />
       Continuer avec Google
     </button>
@@ -23,11 +26,18 @@ const Arrow = () => (
 );
 
 export function LoginForm() {
+  const router = useRouter();
   return (
     <div className="grid gap-6">
-      <GoogleButton />
+      <GoogleButton to="/compte" />
       <Divider>ou avec votre e-mail</Divider>
-      <form onSubmit={(e) => e.preventDefault()} className="grid gap-5">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          router.push("/compte");
+        }}
+        className="grid gap-5"
+      >
         <Field label="E-mail">
           <input type="email" name="email" autoComplete="email" required className={inputClass} placeholder="prenom@exemple.fr" />
         </Field>
@@ -57,11 +67,18 @@ export function LoginForm() {
 }
 
 export function SignupForm() {
+  const router = useRouter();
   return (
     <div className="grid gap-6">
-      <GoogleButton />
+      <GoogleButton to="/abonnements" />
       <Divider>ou avec votre e-mail</Divider>
-      <form onSubmit={(e) => e.preventDefault()} className="grid gap-5">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          router.push("/abonnements");
+        }}
+        className="grid gap-5"
+      >
         <Field label="Prénom">
           <input name="prenom" autoComplete="given-name" required className={inputClass} placeholder="Votre prénom" />
         </Field>
