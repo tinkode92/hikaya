@@ -51,7 +51,7 @@ export default function ContactPage() {
               <ul className="mt-8 flex flex-wrap gap-2 border-t border-white/12 pt-6">
                 {company.socials.map((s) => (
                   <li key={s.label}>
-                    <a href={s.href} className="inline-flex h-10 items-center rounded-full bg-white/10 px-4 text-[15px] transition-colors hover:bg-white/20">
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="inline-flex h-10 items-center rounded-full bg-white/10 px-4 text-[15px] transition-colors hover:bg-white/20">
                       {s.label}
                     </a>
                   </li>

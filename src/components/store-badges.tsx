@@ -1,6 +1,7 @@
 import { AppleLogo, GooglePlayLogo } from "./payment-logos";
 
 export const APP_STORE = "https://apps.apple.com/fr/app/hikaya/id6754205548";
+export const GOOGLE_PLAY = "https://play.google.com/store/apps/details?id=com.hikaya.app&hl=fr";
 
 // Badges au format des stores : fond noir, logo officiel, libellés officiels FR
 export function StoreBadges({ className = "" }: { className?: string }) {
@@ -19,7 +20,9 @@ export function StoreBadges({ className = "" }: { className?: string }) {
         </span>
       </a>
       <a
-        href="#google-play"
+        href={GOOGLE_PLAY}
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-flex h-14 items-center gap-3 rounded-xl bg-black pr-5 pl-4 text-white transition-[background-color,transform] hover:bg-encre active:scale-[0.98]"
       >
         <GooglePlayLogo className="h-6 w-auto" />

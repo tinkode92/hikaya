@@ -1,4 +1,4 @@
-// Coordonnées de HIKAYA (CGV / CGU du Drive). Les liens des réseaux sociaux sont à compléter.
+// Coordonnées de HIKAYA (CGV / CGU du Drive) et réseaux sociaux officiels.
 export const company = {
   name: "HIKAYA MEDIAS",
   address: ["61 rue Gustave Delory", "59155 Faches-Thumesnil", "France"],
@@ -6,8 +6,8 @@ export const company = {
   email: "contact@hikayamedias.com",
   site: "www.hikayamedias.com",
   socials: [
-    { label: "Instagram", href: "#instagram" },
-    { label: "YouTube", href: "#youtube" },
-    { label: "TikTok", href: "#tiktok" },
+    { label: "Instagram", href: "https://www.instagram.com/hikaya_officiel/" },
+    { label: "YouTube", href: "https://www.youtube.com/@HIKAYA_OFFICIEL" },
+    { label: "TikTok", href: "https://www.tiktok.com/@hikaya_officiel" },
   ],
 };

@@ -121,7 +121,7 @@ export function Footer() {
           </p>
           <p className="flex flex-wrap gap-x-5 gap-y-2">
             {company.socials.map((s) => (
-              <a key={s.label} href={s.href} className="inline-block py-1.5 hover:text-white">
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-white">
                 {s.label}
               </a>
             ))}
