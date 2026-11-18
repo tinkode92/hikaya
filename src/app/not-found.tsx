@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArchOutline } from "@/components/arch";
 import { ArrowUpRight } from "@/components/icons";
 import { categories } from "@/lib/catalogue";
+
+export const metadata: Metadata = { title: "Page introuvable" };
 
 // Page 404 (CDC §01) : page introuvable, retour au catalogue.
 export default function NotFound() {

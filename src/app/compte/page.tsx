@@ -101,7 +101,7 @@ export default function ComptePage() {
                   return (
                     <li key={book.id}>
                       <article className="flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-encre/8 bg-white">
-                        <Link href={`/livres/${book.id}`} className="relative block aspect-[16/10] overflow-hidden">
+                        <Link href={`/livres/${book.id}`} tabIndex={-1} aria-hidden className="relative block aspect-[16/10] overflow-hidden">
                           <Image src={book.image} alt="" fill sizes="(min-width: 768px) 30vw, 100vw" className="object-cover" />
                         </Link>
                         <div className="flex flex-1 flex-col p-5">

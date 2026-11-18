@@ -166,6 +166,13 @@ main article {
   transform-origin: center;
 }
 
+/* Fil d'Ariane : liens plus faciles à toucher, sans changer la mise en page */
+nav[aria-label="Fil d'Ariane"] a {
+  display: inline-block;
+  padding-block: 0.375rem;
+  margin-block: -0.375rem;
+}
+
 /* En-têtes des pages intérieures : les éléments montent l'un après l'autre */
 .page-enter > * {
   animation: rise 0.7s var(--ease-out-soft) both;

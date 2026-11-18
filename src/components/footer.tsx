@@ -85,12 +85,12 @@ export function Footer() {
           {columns.map((c) => (
             <div key={c.title}>
               <p className="text-[15px] font-medium text-sable">{c.title}</p>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-3 space-y-1">
                 {c.links.map((l) => (
                   <li key={l.label}>
                     <Link
                       href={siteHref(l.href) ?? "/"}
-                      className="text-[15px] text-white/70 transition-colors hover:text-white"
+                      className="inline-block py-1.5 text-[15px] text-white/70 transition-colors hover:text-white"
                     >
                       {l.label}
                     </Link>
@@ -121,11 +121,11 @@ export function Footer() {
           </p>
           <p className="flex flex-wrap gap-x-5 gap-y-2">
             {company.socials.map((s) => (
-              <a key={s.label} href={s.href} className="hover:text-white">
+              <a key={s.label} href={s.href} className="inline-block py-1.5 hover:text-white">
                 {s.label}
               </a>
             ))}
-            <ManageCookiesButton className="hover:text-white" />
+            <ManageCookiesButton className="py-1.5 hover:text-white" />
           </p>
         </div>
       </div>

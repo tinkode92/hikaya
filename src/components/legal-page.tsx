@@ -78,10 +78,10 @@ export function LegalPage({ slug }: { slug: string }) {
               {long && (
                 <nav aria-label="Sommaire" className="mb-12 rounded-[1.25rem] border border-encre/8 bg-white p-5 sm:p-6">
                   <p className="text-[14px] font-medium text-sable-ink">Sommaire</p>
-                  <ol className="mt-3 grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
+                  <ol className="mt-3 grid gap-x-6 sm:grid-cols-2">
                     {sections.map((s) => (
                       <li key={s.id}>
-                        <a href={`#${s.id}`} className="text-[14px] leading-snug text-encre/70 transition-colors hover:text-vert">
+                        <a href={`#${s.id}`} className="inline-block py-1 text-[14px] leading-snug text-encre/70 transition-colors hover:text-vert">
                           {s.title}
                         </a>
                       </li>

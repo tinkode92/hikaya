@@ -14,7 +14,7 @@ export function StoreBadges({ className = "" }: { className?: string }) {
       >
         <AppleLogo className="h-7 w-auto" />
         <span className="text-left leading-tight">
-          <span className="block text-[11px] text-white/80">Télécharger dans</span>
+          <span className="block text-[12px] text-white/80">Télécharger dans</span>
           <span className="block text-[18px] font-medium tracking-[-0.01em]">l&apos;App Store</span>
         </span>
       </a>
@@ -24,7 +24,7 @@ export function StoreBadges({ className = "" }: { className?: string }) {
       >
         <GooglePlayLogo className="h-6 w-auto" />
         <span className="text-left leading-tight">
-          <span className="block text-[11px] text-white/80">Disponible sur</span>
+          <span className="block text-[12px] text-white/80">Disponible sur</span>
           <span className="block text-[18px] font-medium tracking-[-0.01em]">Google Play</span>
         </span>
       </a>

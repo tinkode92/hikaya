@@ -14,7 +14,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/categories/[id]">): Promise<Metadata> {
   const category = getCategory((await params).id);
   if (!category) return {};
-  return { title: category.name, description: category.description };
+  return {
+    title: category.name,
+    description: category.description,
+    openGraph: { title: category.name, description: category.description, images: [category.image] },
+  };
 }
 
 async function CategoryContent({ id }: { id: string }) {
