@@ -153,7 +153,7 @@ export function VoyagesMap() {
 
       <div className="mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 lg:grid-cols-[minmax(0,1.75fr)_minmax(0,1fr)]">
         {/* Carte */}
-        <div className="relative flex flex-col justify-center overflow-hidden rounded-[1.75rem] bg-creme">
+        <div className="relative flex flex-col justify-center overflow-hidden rounded-[1.75rem] bg-creme lg:min-h-[580px]">
           {/* Mobile : les villes en boutons, plus faciles à toucher que les points */}
           <div className="no-scrollbar flex gap-2 self-stretch overflow-x-auto px-3 pt-3 lg:hidden">
             {placesByTime.map((p) => {
@@ -239,7 +239,7 @@ export function VoyagesMap() {
         </div>
 
         {/* Panneau des histoires */}
-        <aside className="flex min-h-0 flex-col overflow-hidden rounded-[1.75rem] bg-white" aria-live="polite">
+        <aside className="flex flex-col overflow-hidden rounded-[1.75rem] bg-white lg:h-0 lg:min-h-full" aria-live="polite">
           <div className="relative aspect-[16/5.5] shrink-0 overflow-hidden">
             <Image key={cover} src={cover} alt="" fill sizes="(min-width: 1024px) 34vw, 100vw" className="animate-rise object-cover" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(34_56_38_/_0.05)_30%,rgb(34_56_38_/_0.88))]" />
@@ -275,7 +275,7 @@ export function VoyagesMap() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between gap-3 px-5 pt-4 text-[14px] text-encre/60">
+          <div className="flex h-12 shrink-0 items-center justify-between gap-3 px-5 pt-3 text-[14px] text-encre/60">
             <span>
               {stories.length} histoire{stories.length > 1 ? "s" : ""}
               {era && place ? ` · ${era}` : ""}
@@ -295,7 +295,7 @@ export function VoyagesMap() {
             )}
           </div>
 
-          <ul className="grid max-h-[340px] grid-cols-[minmax(0,1fr)] content-start gap-2 overflow-y-auto p-3 pt-3 pb-6 [mask-image:linear-gradient(#000_calc(100%-28px),transparent)]">
+          <ul className="grid h-[320px] grid-cols-[minmax(0,1fr)] content-start gap-2 overflow-y-auto lg:h-auto lg:min-h-0 lg:flex-1 p-3 pt-3 pb-6 [mask-image:linear-gradient(#000_calc(100%-28px),transparent)]">
             {stories.map((s) => (
               <li key={s.book.id} className="group relative flex items-center gap-3 rounded-2xl border border-encre/6 bg-papier p-2.5 pr-3 transition-colors hover:border-vert/20 hover:bg-creme">
                 <div className="relative size-16 shrink-0 overflow-hidden rounded-xl">
