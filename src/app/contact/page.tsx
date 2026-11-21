@@ -31,7 +31,7 @@ export default function ContactPage() {
           </div>
 
           <div className="grid gap-3 lg:self-start">
-            <div className="rounded-[2.25rem] bg-vert p-6 text-white sm:p-10">
+            <div className="rounded-[2.25rem] bg-vert p-6 text-white sm:p-8">
               <p className="text-[15px] font-medium text-sable">Nous écrire directement</p>
               <a href={`mailto:${company.email}`} className="mt-4 flex items-center gap-3 text-[18px] font-medium break-all hover:text-sable">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-sable">
