@@ -9,7 +9,8 @@ import { useEffect } from "react";
 export function RevealOnScroll({ scope = "main" }: { scope?: string }) {
   const pathname = usePathname();
   useEffect(() => {
-    const root = document.querySelector<HTMLElement>(scope);
+    // La page précédente peut rester dans le DOM, masquée : on prend la page affichée
+    const root = [...document.querySelectorAll<HTMLElement>(scope)].find((el) => el.offsetParent !== null) ?? null;
     if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const targets: HTMLElement[] = [];
@@ -52,7 +53,8 @@ export function RevealOnScroll({ scope = "main" }: { scope?: string }) {
             io.unobserve(el);
           });
         }),
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      // Seuil à 0 : un bloc plus haut que l'écran (texte légal, liste longue) apparaît dès qu'il entre
+      { rootMargin: "0px 0px -8% 0px", threshold: 0 },
     );
     targets.forEach((t) => io.observe(t));
 
