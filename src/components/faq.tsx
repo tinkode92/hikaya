@@ -38,7 +38,7 @@ export function Faq({ items = faq }: { items?: FaqItem[] }) {
           <SectionHeading eyebrow="Questions fréquentes" first="Une question ?" second="On vous répond" />
           <p className="mt-6 max-w-[34ch] text-[16px] leading-relaxed text-encre/60">
             Vous ne trouvez pas votre réponse ?{" "}
-            <a href="#contact" className="font-medium text-vert underline underline-offset-4 hover:no-underline">
+            <a href="/contact" className="font-medium text-vert underline underline-offset-4 hover:no-underline">
               Écrivez-nous
             </a>
             .

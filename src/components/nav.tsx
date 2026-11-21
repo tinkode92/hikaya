@@ -56,7 +56,7 @@ export function Nav() {
         <div className="flex items-center gap-2">
           {!LP_ONLY && (
             <a
-              href="#connexion"
+              href="/connexion"
               aria-label="Se connecter"
               className="hidden size-11 items-center justify-center rounded-full text-encre/70 transition-colors hover:bg-vert/5 hover:text-vert sm:flex"
             >
@@ -86,7 +86,7 @@ export function Nav() {
       {open && (
         <div className="animate-rise mx-3 mt-2 max-w-[1340px] sm:mx-6 lg:mx-auto rounded-3xl border border-encre/8 bg-papier p-3 shadow-float lg:hidden">
           <ul className="flex flex-col">
-            {[...links, ...(LP_ONLY ? [] : [{ href: "#connexion", label: "Se connecter" }])].map((l) => (
+            {[...links, ...(LP_ONLY ? [] : [{ href: "/connexion", label: "Se connecter" }])].map((l) => (
               <li key={l.label}>
                 <Link
                   href={siteHref(l.href)!}

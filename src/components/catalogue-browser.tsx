@@ -96,6 +96,7 @@ export function CatalogueBrowser() {
           )}
         </div>
 
+        <h2 className="sr-only">Séries et histoires</h2>
         {showSeries && (
           <div className="mt-8 grid gap-4">
             {visibleSeries.map((s) => (

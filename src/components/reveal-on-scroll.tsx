@@ -1,11 +1,13 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-// Apparition au défilement, pour la page d'accueil uniquement.
+// Apparition au défilement, sur toutes les pages (posé dans le layout, relancé à chaque navigation).
 // Repère les blocs de chaque section (titres, cartes, listes) et les fait monter en fondu,
 // les cartes d'une même grille l'une après l'autre. Sans JavaScript, tout reste visible.
-export function RevealOnScroll({ scope = "main.lp" }: { scope?: string }) {
+export function RevealOnScroll({ scope = "main" }: { scope?: string }) {
+  const pathname = usePathname();
   useEffect(() => {
     const root = document.querySelector<HTMLElement>(scope);
     if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -22,7 +24,7 @@ export function RevealOnScroll({ scope = "main.lp" }: { scope?: string }) {
       return (el.tagName === "UL" || d === "grid" || (d === "flex" && el.children.length >= 3)) && el.children.length >= 2;
     };
 
-    // Le hero a sa propre entrée : on commence à la deuxième section
+    // Le hero et les en-têtes de page ont leur propre entrée : on commence à la deuxième section
     [...root.children].slice(1).forEach((section) => {
       const inner = section.firstElementChild;
       if (!inner) return;
@@ -58,7 +60,7 @@ export function RevealOnScroll({ scope = "main.lp" }: { scope?: string }) {
       io.disconnect();
       root.classList.remove("reveal-ready");
     };
-  }, [scope]);
+  }, [scope, pathname]);
 
   return null;
 }

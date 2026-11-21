@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import { ArchDefs } from "@/components/arch";
+import { CookieBanner } from "@/components/cookie-banner";
 import { Footer } from "@/components/footer";
 import { MiniPlayer } from "@/components/mini-player";
 import { NoImageDrag } from "@/components/no-image-drag";
 import { Nav } from "@/components/nav";
 import { PlayerProvider } from "@/components/player";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import "./globals.css";
 
 const urbanist = Urbanist({
@@ -39,6 +41,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Footer />
           </div>
           <MiniPlayer />
+          <RevealOnScroll />
+          <CookieBanner />
         </PlayerProvider>
       </body>
     </html>

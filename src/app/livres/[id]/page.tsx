@@ -43,12 +43,13 @@ async function BookContent({ id }: { id: string }) {
   const episodes = series ? seriesEpisodes(series.id) : [];
   const related = relatedBooks(book);
 
+  // Une info absente du back-office n'est pas affichée
   const details = [
-    { label: "Durée", value: book.duration ?? "À venir" },
+    { label: "Durée", value: book.duration },
     { label: "Âge", value: book.age },
     { label: "Auteur", value: book.author },
-    { label: "Narration", value: book.narrator ?? "À renseigner" },
-  ];
+    { label: "Narration", value: book.narrator },
+  ].filter((d): d is { label: string; value: string } => Boolean(d.value));
 
   return (
     <main className="flex flex-col gap-16 sm:gap-20">

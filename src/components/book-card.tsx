@@ -12,10 +12,12 @@ import { siteHref } from "@/lib/site-mode";
 export function BookCard({
   book,
   tone = "light",
+  subscriber = false,
   className = "",
 }: {
   book: Book;
   tone?: "light" | "dark";
+  subscriber?: boolean; // abonné : « Écouter » l'histoire complète au lieu de l'extrait
   className?: string;
 }) {
   const { current, playing, toggle } = usePlayer();
@@ -54,7 +56,10 @@ export function BookCard({
             dark && book.number ? "pr-16" : ""
           }`}
         >
-          <MaybeLink href={href} className={`transition-colors ${dark ? "hover:text-sable" : "hover:text-vert"}`}>
+          <MaybeLink
+            href={href}
+            className={`transition-colors after:absolute after:inset-0 after:content-[''] ${dark ? "hover:text-sable" : "hover:text-vert"}`}
+          >
             {book.title}
           </MaybeLink>
         </h3>
@@ -63,8 +68,8 @@ export function BookCard({
         <button
           type="button"
           onClick={() => toggle(book)}
-          aria-label={`${isPlaying ? "Mettre en pause l'extrait de" : "Écouter l'extrait de"} ${book.title}`}
-          className={`mt-auto inline-flex h-11 items-center gap-2 self-start rounded-full pr-5 pl-2 text-[15px] font-medium transition-[background-color,transform] active:scale-[0.98] ${
+          aria-label={`${isPlaying ? "Mettre en pause" : "Écouter"} ${subscriber ? "" : "l'extrait de "}${book.title}`}
+          className={`relative z-10 mt-auto inline-flex h-11 items-center gap-2 self-start rounded-full pr-5 pl-2 text-[15px] font-medium transition-[background-color,transform] active:scale-[0.98] ${
             dark ? "bg-papier text-vert-deep hover:bg-white" : "bg-vert text-white hover:bg-vert-deep"
           }`}
         >
@@ -76,7 +81,9 @@ export function BookCard({
             {isPlaying ? <Pause width={13} height={13} /> : <Play width={13} height={13} className="translate-x-px" />}
           </span>
           <span className="grid text-left">
-            <span className={`col-start-1 row-start-1 ${isPlaying ? "invisible" : ""}`}>Écouter l&apos;extrait · 1 min 30</span>
+            <span className={`col-start-1 row-start-1 ${isPlaying ? "invisible" : ""}`}>
+              {subscriber ? "Écouter l'histoire" : "Écouter l'extrait · 1 min 30"}
+            </span>
             <span className={`col-start-1 row-start-1 ${isPlaying ? "" : "invisible"}`}>
               En écoute
             </span>

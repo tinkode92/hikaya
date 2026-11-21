@@ -18,7 +18,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/series/[id]">): Promise<Metadata> {
   const s = getSeries((await params).id);
   if (!s) return {};
-  return { title: `Série ${s.title}`, description: s.summary };
+  return {
+    title: `Série ${s.title}`,
+    description: s.summary,
+    openGraph: { title: `Série ${s.title}`, description: s.summary, images: [s.image] },
+  };
 }
 
 async function SeriesContent({ id }: { id: string }) {
