@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { bookLabel } from "@/lib/catalogue";
 import { century, places, timeline } from "@/lib/voyages";
-import { CITY_POSITIONS, GRATICULE_PATH, LAND_PATH, MAP_HEIGHT, MAP_WIDTH, SEA_LABELS } from "@/lib/voyages-map";
+import { GRATICULE_PATH, LAND_PATH, MAP_HEIGHT, MAP_WIDTH, SEA_LABELS, projectPoint } from "@/lib/voyages-map";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Close, Pause, Play } from "./icons";
 import { usePlayer } from "./player";
 
@@ -99,7 +99,7 @@ export function VoyagesMap() {
     setPlaceId(next.id);
   };
 
-  const cover = stories[0]?.book.image ?? "/themes/cites-merveilles.webp";
+  const cover = place?.image ?? stories[0]?.book.image ?? "/themes/cites-merveilles.webp";
   const centuriesShown = [...new Set(stories.map((s) => century(s.year).replace(" siècle", "")))];
 
   return (
@@ -197,7 +197,7 @@ export function VoyagesMap() {
             </div>
 
             {places.map((p) => {
-              const pos = CITY_POSITIONS[p.id];
+              const pos = projectPoint(p.lon, p.lat);
               const active = p.id === placeId;
               const dim = !placeInEra(p.id);
               const count = p.stops.filter((s) => inEra(s.year)).length;
@@ -208,13 +208,14 @@ export function VoyagesMap() {
                   onClick={() => choosePlace(p.id)}
                   aria-pressed={active}
                   aria-label={`${p.name} : ${p.stops.length} histoire${p.stops.length > 1 ? "s" : ""}`}
-                  className={`group absolute flex size-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center transition-opacity duration-300 ${
+                  className={`group absolute flex size-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center transition-opacity duration-300 ${
                     dim ? "opacity-35" : ""
                   }`}
-                  style={{ left: `${pos.x}%`, top: `${pos.y}%`, zIndex: active ? 3 : 2 }}
+                  // Les petits points restent au-dessus du point actif : les villes voisines (Cordoue, Séville) restent cliquables
+                  style={{ left: `${pos.x}%`, top: `${pos.y}%`, zIndex: active ? 2 : 3 }}
                 >
                   {active && (
-                    <span className="absolute size-9 animate-ping rounded-full bg-vert/25 [animation-duration:1.8s] motion-reduce:animate-none" />
+                    <span className="pointer-events-none absolute size-9 animate-ping rounded-full bg-vert/25 [animation-duration:1.8s] motion-reduce:animate-none" />
                   )}
                   <span
                     className={`relative flex items-center justify-center rounded-full font-semibold tabular-nums transition-all duration-300 ease-[var(--ease-out-soft)] ${
@@ -226,11 +227,21 @@ export function VoyagesMap() {
                     {active ? count || p.stops.length : null}
                   </span>
                   <span
-                    className={`pointer-events-none absolute text-[13px] font-semibold whitespace-nowrap max-lg:hidden ${halo} ${labelClass[p.label]} ${
-                      active ? "text-vert" : "text-encre/75 group-hover:text-vert"
+                    className={`pointer-events-none absolute flex flex-col whitespace-nowrap max-lg:hidden ${halo} ${labelClass[p.label]} ${
+                      p.label.startsWith("left") ? "items-end text-right" : p.label === "below" ? "items-center" : "items-start"
                     }`}
                   >
-                    {shortName(p.name)}
+                    <span className={`text-[13px] font-semibold ${active ? "text-vert" : "text-encre/75 group-hover:text-vert"}`}>
+                      {shortName(p.name)}
+                    </span>
+                    {/* Nom arabe : sur la ville choisie et au survol, pour ne pas surcharger la carte */}
+                    <span
+                      lang="ar"
+                      dir="rtl"
+                      className={`font-arabic -mt-0.5 text-[15px] leading-tight text-sable-ink ${active ? "" : "hidden group-hover:block"}`}
+                    >
+                      {p.arabic}
+                    </span>
                   </span>
                 </button>
               );
@@ -248,8 +259,15 @@ export function VoyagesMap() {
                 <p className="text-[13px] font-medium text-sable">
                   {place ? place.region : "Toutes les villes"} · {centuriesShown.map((c) => `${c} s.`).join(", ")}
                 </p>
-                <h3 className="mt-1 truncate text-[clamp(1.7rem,2.4vw,2.2rem)] leading-tight font-light tracking-[-0.02em] italic">
-                  {place ? place.name : era}
+                <h3 className="mt-1 flex min-w-0 items-baseline gap-3">
+                  <span className="truncate text-[clamp(1.7rem,2.4vw,2.2rem)] leading-tight font-light tracking-[-0.02em] italic">
+                    {place ? place.name : era}
+                  </span>
+                  {place && (
+                    <span lang="ar" dir="rtl" className="font-arabic shrink-0 text-[clamp(1.4rem,2vw,1.8rem)] leading-none text-sable">
+                      {place.arabic}
+                    </span>
+                  )}
                 </h3>
               </div>
               {place && (

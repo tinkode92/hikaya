@@ -166,6 +166,13 @@ main article {
   transform-origin: center;
 }
 
+/* Noms en arabe (carte des voyages) */
+.font-arabic {
+  font-family: var(--font-arabic), "Noto Naskh Arabic", "Geeza Pro", serif;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
 /* Fil d'Ariane : liens plus faciles à toucher, sans changer la mise en page */
 nav[aria-label="Fil d'Ariane"] a {
   display: inline-block;

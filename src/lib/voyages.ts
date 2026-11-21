@@ -1,14 +1,21 @@
 import { getBook, type Book } from "./catalogue";
 
 // Carte des voyages : où et quand se passe chaque histoire.
-// En production, deux champs à ajouter dans le back-office pour chaque livre : le lieu et l'année (ou le siècle).
+// En production, tout vient du back-office (voir docs/NOTES-DEVELOPPEURS.md) :
+// - les lieux (nom, nom arabe, région, latitude, longitude, position du nom sur la carte) ;
+// - pour chaque livre : son lieu, son année et le libellé de la date.
+// Un nouveau lieu se place tout seul sur la carte à partir de sa latitude et de sa longitude.
 // Dates : repères historiques établis ; « vers » quand la date est approximative.
 
 export type Stop = { bookId: string; year: number; date: string };
 export type Place = {
   id: string;
   name: string;
+  arabic: string; // nom en arabe, affiché à côté du nom français
+  lat: number;
+  lon: number;
   region: string;
+  image?: string; // photo du lieu pour le bandeau du panneau (sinon : couverture de la première histoire)
   label: "left" | "right" | "below" | "left-up" | "left-down"; // position du nom sur la carte
   stops: Stop[];
 };
@@ -16,6 +23,9 @@ export type Place = {
 export const places: Place[] = [
   {
     id: "gibraltar",
+    arabic: "جبل طارق",
+    lat: 36.14,
+    lon: -5.35,
     name: "Détroit de Gibraltar",
     region: "Al-Andalus",
     label: "left-down",
@@ -23,6 +33,9 @@ export const places: Place[] = [
   },
   {
     id: "cordoue",
+    arabic: "قرطبة",
+    lat: 37.88,
+    lon: -4.78,
     name: "Cordoue",
     region: "Al-Andalus",
     label: "right",
@@ -39,6 +52,9 @@ export const places: Place[] = [
   },
   {
     id: "seville",
+    arabic: "إشبيلية",
+    lat: 37.39,
+    lon: -5.98,
     name: "Séville",
     region: "Al-Andalus",
     label: "left-up",
@@ -46,6 +62,9 @@ export const places: Place[] = [
   },
   {
     id: "fes",
+    arabic: "فاس",
+    lat: 34.03,
+    lon: -4.99,
     name: "Fès",
     region: "Maroc",
     label: "right",
@@ -56,6 +75,9 @@ export const places: Place[] = [
   },
   {
     id: "tunis",
+    arabic: "تونس",
+    lat: 36.8,
+    lon: 10.18,
     name: "Tunis",
     region: "Ifriqiya",
     label: "below",
@@ -63,6 +85,9 @@ export const places: Place[] = [
   },
   {
     id: "le-caire",
+    arabic: "القاهرة",
+    lat: 30.04,
+    lon: 31.24,
     name: "Le Caire",
     region: "Égypte",
     label: "left",
@@ -73,6 +98,9 @@ export const places: Place[] = [
   },
   {
     id: "jerusalem",
+    arabic: "القدس",
+    lat: 31.77,
+    lon: 35.21,
     name: "Jérusalem",
     region: "Bilad al-Sham",
     label: "right",
@@ -80,6 +108,9 @@ export const places: Place[] = [
   },
   {
     id: "medine",
+    arabic: "المدينة المنورة",
+    lat: 24.47,
+    lon: 39.61,
     name: "Médine",
     region: "Hijaz",
     label: "right",
@@ -87,6 +118,9 @@ export const places: Place[] = [
   },
   {
     id: "la-mecque",
+    arabic: "مكة المكرمة",
+    lat: 21.42,
+    lon: 39.83,
     name: "La Mecque",
     region: "Hijaz",
     label: "right",
@@ -94,6 +128,9 @@ export const places: Place[] = [
   },
   {
     id: "bagdad",
+    arabic: "بغداد",
+    lat: 33.31,
+    lon: 44.36,
     name: "Bagdad",
     region: "Irak",
     label: "left",
@@ -104,6 +141,9 @@ export const places: Place[] = [
   },
   {
     id: "istanbul",
+    arabic: "إسطنبول",
+    lat: 41.01,
+    lon: 28.98,
     name: "Istanbul",
     region: "Empire ottoman",
     label: "right",

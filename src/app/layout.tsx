@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
+import { Amiri, Urbanist } from "next/font/google";
 import { ArchDefs } from "@/components/arch";
 import { CookieBanner } from "@/components/cookie-banner";
 import { Footer } from "@/components/footer";
@@ -9,6 +9,14 @@ import { Nav } from "@/components/nav";
 import { PlayerProvider } from "@/components/player";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import "./globals.css";
+
+// Écriture arabe (noms des villes sur la carte des voyages) : naskh classique, chargée seulement si utilisée
+const amiri = Amiri({
+  variable: "--font-arabic",
+  subsets: ["arabic"],
+  weight: ["400"],
+  preload: false,
+});
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -29,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fr" className={`${urbanist.variable} h-full`}>
+    <html lang="fr" className={`${urbanist.variable} ${amiri.variable} h-full`}>
       <body className="min-h-full">
         {/* Le lecteur vit dans le layout : la lecture continue pendant la navigation (CDC §03) */}
         <PlayerProvider>
