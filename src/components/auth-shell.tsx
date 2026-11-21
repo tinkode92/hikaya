@@ -1,6 +1,5 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
-import { ArchOutline } from "./arch";
+import { CharacterFill } from "./character-fill";
 import { Check } from "./icons";
 
 const promises = [
@@ -56,18 +55,8 @@ export function AuthShell({
                 </li>
               ))}
             </ul>
-            {/* Le personnage s'adapte à la hauteur de l'écran : il ne rallonge jamais la page */}
-            <div className="relative mx-auto mt-auto pt-6">
-              <ArchOutline className="absolute inset-x-[-30%] bottom-0 h-[108%] w-[160%] text-sable/45" />
-              <Image
-                src="/characters/ibn-khaldun.webp"
-                alt=""
-                width={900}
-                height={1311}
-                sizes="300px"
-                className="relative h-[min(34vh,320px)] w-auto"
-              />
-            </div>
+            {/* Le personnage prend toute la place restante : pas de vide dans le bloc vert */}
+            <CharacterFill src="/characters/ibn-khaldun.webp" width={900} height={1311} className="mt-[clamp(0.5rem,2vh,1.5rem)]" />
           </aside>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CharacterFill } from "@/components/character-fill";
 import { ReviewForm } from "@/components/forms/review-form";
 import { Check } from "@/components/icons";
 import { account } from "@/lib/account";
@@ -37,12 +38,12 @@ export default function AvisPage() {
             </div>
           </div>
 
-          <aside className="rounded-[2.25rem] bg-vert px-6 py-10 text-white sm:px-12 lg:px-12 lg:py-[clamp(1.5rem,4.5vh,3.5rem)]">
+          <aside className="flex flex-col overflow-hidden rounded-[2.25rem] bg-vert px-6 py-10 text-white sm:px-12 lg:px-12 lg:pt-[clamp(1.5rem,4.5vh,3.5rem)] lg:pb-0">
             <p className="text-[15px] font-medium text-sable">Avis vérifiés</p>
-            <h2 className="mt-4 text-[clamp(1.8rem,2.6vw,2.4rem)] leading-[1.08] font-light tracking-[-0.02em] italic">
+            <h2 className="mt-2 text-[clamp(1.8rem,min(2.6vw,5vh),2.4rem)] leading-[1.08] font-light tracking-[-0.02em] italic">
               Comment les avis sont publiés
             </h2>
-            <ul className="mt-8 space-y-4">
+            <ul className="mt-[clamp(1rem,3vh,2rem)] space-y-3">
               {rules.map((r) => (
                 <li key={r} className="flex items-start gap-3 text-[16px] leading-snug text-white/85">
                   <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-sable text-vert-deep">
@@ -52,6 +53,8 @@ export default function AvisPage() {
                 </li>
               ))}
             </ul>
+            {/* Le personnage occupe la place restante (desktop) : pas de vide dans le bloc vert */}
+            <CharacterFill src="/characters/fatima.webp" width={900} height={1381} className="mt-[clamp(0.5rem,2vh,1.5rem)] max-lg:hidden" />
           </aside>
         </div>
       </section>
