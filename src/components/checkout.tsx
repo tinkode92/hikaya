@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { account } from "@/lib/account";
 import { brandPaths } from "@/lib/brand-paths";
 import { getPlan, plans, type PlanId } from "@/lib/plans";
-import { Divider, Field, inputClass, primaryButton } from "./forms/fields";
+import { Divider, primaryButton } from "./forms/fields";
 import { ArrowUpRight, Check, Close, Lock, ShieldCheck, Tag } from "./icons";
 
 // Paiement (CDC §05) : Stripe aux couleurs de HIKAYA. Le dev remplace les champs par le Payment
@@ -20,7 +20,7 @@ const included = [
 
 function ExpressButton({ label, className, children }: { label: string; className: string; children: React.ReactNode }) {
   return (
-    <button type="button" aria-label={label} className={`flex h-12 items-center justify-center rounded-xl transition-opacity hover:opacity-90 ${className}`}>
+    <button type="button" aria-label={label} className={`flex h-11 items-center sm:h-12 justify-center rounded-xl transition-opacity hover:opacity-90 ${className}`}>
       {children}
     </button>
   );
@@ -58,7 +58,7 @@ export function Checkout() {
   return (
     <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_420px]">
       {/* Récapitulatif : en premier sur mobile, à droite en desktop */}
-      <aside className="rounded-[1.75rem] bg-vert p-6 text-white sm:p-8 lg:sticky lg:top-[calc(var(--banner-h)+7rem)] lg:col-start-2 lg:row-start-1 lg:self-start">
+      <aside className="order-2 rounded-[1.75rem] bg-vert p-6 text-white sm:p-8 lg:order-none lg:sticky lg:top-[calc(var(--banner-h)+7rem)] lg:col-start-2 lg:row-start-1 lg:self-start">
         <h2 className="text-[15px] font-medium text-sable">Votre offre</h2>
 
         <fieldset className="mt-4">
@@ -168,19 +168,43 @@ export function Checkout() {
       </aside>
 
       {/* Paiement */}
-      <div className="rounded-[1.75rem] bg-papier p-6 sm:p-10 lg:col-start-1 lg:row-start-1">
-        <div className="mx-auto max-w-[520px]">
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-encre/8 bg-white px-5 py-4 text-[15px]">
-            <span className="text-encre/65">
-              Connecté avec <span className="font-medium text-encre">{account.email}</span>
-            </span>
+      <div className="order-1 rounded-[1.75rem] bg-papier px-5 py-6 sm:px-10 sm:py-7 lg:order-none lg:col-start-1 lg:row-start-1 lg:py-[clamp(1.5rem,4vh,2.75rem)]">
+        <div className="page-enter mx-auto max-w-[520px]">
+          <p className="text-[15px] font-medium text-sable-ink">Abonnement</p>
+          <h1 className="mt-2 text-[clamp(1.65rem,min(3.2vw,4.8vh),2.6rem)] leading-[1.06] font-light tracking-[-0.03em] italic">
+            <span className="text-sable-ink">Plus qu&apos;une étape</span> <span className="text-vert">avant l&apos;écoute</span>
+          </h1>
+          <p className="mt-2 text-[14px] text-encre/60">
+            Connecté avec <span className="font-medium text-encre">{account.email}</span> ·{" "}
             <Link href="/connexion" className="font-medium text-vert underline-offset-4 hover:underline">
               Changer
             </Link>
+          </p>
+
+          {/* Téléphone : rappel de l'offre (le détail est sous le formulaire) */}
+          <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl bg-vert px-4 py-3 text-white lg:hidden">
+            <div className="grid grid-cols-2 gap-1 rounded-full bg-white/10 p-1">
+              {plans.map((p) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => setPlanId(p.id)}
+                  aria-pressed={planId === p.id}
+                  className={`rounded-full px-3 py-1.5 text-[14px] font-medium transition-colors ${
+                    planId === p.id ? "bg-papier text-vert-deep" : "text-white/80"
+                  }`}
+                >
+                  {p.name}
+                </button>
+              ))}
+            </div>
+            <p className="text-right leading-tight">
+              <span className="block text-[12px] text-white/70">Aujourd&apos;hui</span>
+              <span className="text-[20px] font-light tabular-nums">{monthly ? "4,90\u00a0€" : "0,00\u00a0€"}</span>
+            </p>
           </div>
 
-          <h2 className="mt-8 text-[22px] font-medium text-vert">Paiement express</h2>
-          <div className="mt-4 grid gap-2 sm:grid-cols-3">
+          <div className="mt-[clamp(1rem,3vh,1.75rem)] grid grid-cols-3 gap-2">
             <ExpressButton label="Payer avec Apple Pay" className="bg-black text-white">
               <svg viewBox="0 0 24 24" className="h-11 w-auto" aria-hidden><path d={brandPaths.applePay} fill="currentColor" /></svg>
             </ExpressButton>
@@ -192,7 +216,7 @@ export function Checkout() {
             </ExpressButton>
           </div>
 
-          <div className="my-8">
+          <div className="my-[clamp(0.75rem,2.5vh,1.5rem)]">
             <Divider>ou par carte</Divider>
           </div>
 
@@ -201,11 +225,11 @@ export function Checkout() {
               e.preventDefault();
               router.push("/confirmation");
             }}
-            className="grid gap-5"
+            className="grid gap-[clamp(0.75rem,2vh,1.25rem)]"
           >
             <div>
               <p className="text-[15px] font-medium text-encre">Carte bancaire</p>
-              <div className="mt-2 overflow-hidden rounded-xl border border-encre/10 bg-white focus-within:border-vert/50">
+              <div className="mt-1.5 overflow-hidden rounded-xl border border-encre/10 bg-white focus-within:border-vert/50">
                 <label className="sr-only" htmlFor="cb-numero">Numéro de carte</label>
                 <input id="cb-numero" inputMode="numeric" autoComplete="cc-number" placeholder="1234 1234 1234 1234" className={`${cardInput} border-b border-encre/10`} />
                 <div className="grid grid-cols-2">
@@ -216,12 +240,9 @@ export function Checkout() {
                 </div>
               </div>
             </div>
-            <Field label="Nom sur la carte">
-              <input autoComplete="cc-name" className={inputClass} placeholder="Prénom Nom" />
-            </Field>
 
             {/* CGV art. 3 : case dédiée, non précochée, obligatoire avant de confirmer */}
-            <label className="mt-2 flex cursor-pointer items-start gap-3 text-[15px] leading-snug text-encre/75">
+            <label className="flex cursor-pointer items-start gap-3 text-[14px] leading-snug text-encre/75">
               <input type="checkbox" name="cgv" required className="peer sr-only" />
               <span
                 aria-hidden
@@ -238,7 +259,7 @@ export function Checkout() {
               </span>
             </label>
 
-            <button type="submit" className={`${primaryButton} mt-2`}>
+            <button type="submit" className={primaryButton}>
               <Lock width={17} height={17} />
               {monthly ? "Payer 4,90 € et commencer" : "Commencer l'essai, puis 79,20 €/an"}
               <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -252,7 +273,7 @@ export function Checkout() {
             </p>
           </form>
 
-          <p className="mt-8 flex items-center justify-center gap-2 border-t border-encre/8 pt-6 text-[14px] text-encre/60">
+          <p className="mt-5 flex items-center justify-center gap-2 border-t border-encre/8 pt-5 text-[14px] text-encre/60">
             <ShieldCheck className="shrink-0 text-vert" />
             Paiement sécurisé par Stripe · 3D Secure
           </p>

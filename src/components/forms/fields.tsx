@@ -2,13 +2,13 @@ import type { ReactNode } from "react";
 
 // Champs et boutons partagés par les formulaires (compte, paiement, avis, contact).
 export const inputClass =
-  "mt-2 h-12 w-full rounded-xl border border-encre/10 bg-white px-4 text-[16px] font-normal text-encre placeholder:text-encre/40 transition-colors focus:border-vert/50 focus:outline-none focus-visible:ring-4 focus-visible:ring-vert/10";
+  "mt-1.5 h-12 w-full rounded-xl border border-encre/10 bg-white px-4 text-[16px] font-normal text-encre placeholder:text-encre/40 transition-colors focus:border-vert/50 focus:outline-none focus-visible:ring-4 focus-visible:ring-vert/10";
 
 export const primaryButton =
-  "group inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-vert px-6 text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]";
+  "group inline-flex h-[clamp(3rem,6.5vh,3.5rem)] w-full items-center justify-center gap-2 rounded-full bg-vert px-6 text-[17px] font-medium text-white shadow-soft transition-[background-color,transform] hover:bg-vert-deep active:scale-[0.98]";
 
 export const secondaryButton =
-  "inline-flex h-14 w-full items-center justify-center gap-3 rounded-full border border-encre/10 bg-white px-6 text-[16px] font-medium text-encre transition-[background-color,transform] hover:bg-creme active:scale-[0.98]";
+  "inline-flex h-[clamp(3rem,6.5vh,3.5rem)] w-full items-center justify-center gap-3 rounded-full border border-encre/10 bg-white px-6 text-[16px] font-medium text-encre transition-[background-color,transform] hover:bg-creme active:scale-[0.98]";
 
 export function Field({
   label,

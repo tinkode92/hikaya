@@ -53,13 +53,13 @@ async function BookContent({ id }: { id: string }) {
 
   return (
     <main className="flex flex-col gap-16 sm:gap-20">
-      <section className="px-3 pt-[calc(88px+var(--banner-h))] sm:px-6 sm:pt-[calc(104px+var(--banner-h))]">
+      <section className="px-3 pt-[calc(80px+var(--banner-h))] sm:px-6 sm:pt-[calc(96px+var(--banner-h))]">
         <div className="mx-auto grid max-w-[1280px] gap-8 rounded-[2.25rem] bg-papier p-3 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] lg:aspect-auto lg:h-full lg:min-h-[520px]">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[420px]">
             <Image src={book.image} alt="" fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" />
           </div>
 
-          <div className="flex flex-col px-3 pb-6 sm:px-6 lg:py-8 lg:pr-12 lg:pl-0">
+          <div className="flex flex-col px-3 pb-6 sm:px-6 lg:py-[clamp(1rem,3vh,2rem)] lg:pr-12 lg:pl-0">
             <nav aria-label="Fil d'Ariane" className="text-[14px] text-encre/60">
               <ol className="flex flex-wrap items-center gap-2">
                 <li>
@@ -86,12 +86,12 @@ async function BookContent({ id }: { id: string }) {
               </ol>
             </nav>
 
-            <p className="mt-8 text-[15px] font-medium text-sable-ink">{bookLabel(book)}</p>
-            <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.6rem)] leading-[1.05] font-light tracking-[-0.03em] text-balance text-vert italic">
+            <p className="mt-[clamp(1rem,3vh,2rem)] text-[15px] font-medium text-sable-ink">{bookLabel(book)}</p>
+            <h1 className="mt-2 text-[clamp(2rem,min(4vw,6vh),3.4rem)] leading-[1.05] font-light tracking-[-0.03em] text-balance text-vert italic">
               {book.title}
             </h1>
 
-            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-y border-encre/8 py-6 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+            <dl className="mt-[clamp(1rem,3vh,2rem)] grid grid-cols-2 gap-x-6 gap-y-3 border-y border-encre/8 py-[clamp(0.75rem,2.2vh,1.5rem)] sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
               {details.map((d) => (
                 <div key={d.label}>
                   <dt className="text-[13px] text-encre/55">{d.label}</dt>
@@ -105,9 +105,9 @@ async function BookContent({ id }: { id: string }) {
               {VOICE_ONLY}
             </p>
 
-            <p className="mt-6 max-w-[56ch] text-[17px] leading-relaxed text-encre/75">{book.summary}</p>
+            <p className="mt-4 max-w-[56ch] text-[17px] leading-relaxed text-encre/75">{book.summary}</p>
 
-            <div className="mt-8 grid max-w-[420px] gap-3">
+            <div className="mt-[clamp(1rem,3vh,2rem)] grid max-w-[420px] gap-3">
               <ListenButton book={book} className="w-full justify-center" />
               <Link
                 href="/abonnements"

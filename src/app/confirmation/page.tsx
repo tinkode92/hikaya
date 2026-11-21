@@ -19,14 +19,14 @@ const firstListens = ["al-andalus-01", "fatima-al-fihriyya", "ibn-al-haytham", "
 export default function ConfirmationPage() {
   return (
     <main className="flex flex-col gap-20 sm:gap-28">
-      <section className="px-3 pt-[calc(88px+var(--banner-h))] sm:px-6 sm:pt-[calc(104px+var(--banner-h))]">
+      <section className="px-3 pt-[calc(80px+var(--banner-h))] sm:px-6 sm:pt-[calc(96px+var(--banner-h))]">
         <div className="relative mx-auto grid max-w-[1280px] overflow-hidden rounded-[2.25rem] bg-vert text-white lg:grid-cols-[1.2fr_1fr]">
-          <div className="page-enter px-6 py-14 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+          <div className="page-enter px-6 py-12 sm:px-12 sm:py-[clamp(2.5rem,7vh,5rem)] lg:px-16">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[14px] font-medium text-sable">
               <Check width={14} height={14} />
               Abonnement actif
             </p>
-            <h1 className="mt-6 text-[clamp(2.4rem,5.2vw,4.4rem)] leading-[1.02] font-light tracking-[-0.03em] text-balance italic">
+            <h1 className="mt-6 text-[clamp(2.2rem,min(5.2vw,7vh),4.4rem)] leading-[1.02] font-light tracking-[-0.03em] text-balance italic">
               <span className="block text-sable">Bienvenue {account.firstName},</span>
               <span className="block">les histoires vous attendent</span>
             </h1>

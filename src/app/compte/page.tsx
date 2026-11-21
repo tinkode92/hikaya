@@ -47,7 +47,7 @@ export default function ComptePage() {
   return (
     <main className="flex flex-col gap-3">
       {/* En-tête */}
-      <section className="px-3 pt-[calc(88px+var(--banner-h))] sm:px-6 sm:pt-[calc(104px+var(--banner-h))]">
+      <section className="px-3 pt-[calc(80px+var(--banner-h))] sm:px-6 sm:pt-[calc(96px+var(--banner-h))]">
         <div className="mx-auto flex max-w-[1280px] flex-wrap items-end justify-between gap-6 rounded-[2.25rem] bg-papier px-6 py-12 sm:px-12 sm:py-14 lg:px-16">
           <div className="page-enter">
             <p className="text-[15px] font-medium text-sable-ink">Mon compte</p>

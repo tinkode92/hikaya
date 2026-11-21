@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactForm } from "@/components/forms/contact-form";
 import { ArrowUpRight, Mail, MapPin } from "@/components/icons";
-import { PageHeader } from "@/components/page-header";
 import { company } from "@/lib/company";
 
 export const metadata: Metadata = {
@@ -12,18 +11,23 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="flex flex-col gap-3">
-      <PageHeader eyebrow="Contact" first="Une question ?" second="Écrivez-nous">
-        <p className="mt-6 max-w-[52ch] text-[17px] leading-relaxed text-encre/65">
-          Abonnement, compte, histoires ou partenariat : l&apos;équipe HIKAYA vous répond par e-mail.
-        </p>
-      </PageHeader>
-
-      <section className="px-3 sm:px-6">
+    <main>
+      {/* Titre et formulaire dans la même carte : le bouton d'envoi reste visible sans défiler */}
+      <section className="px-3 pt-[calc(80px+var(--banner-h))] sm:px-6 sm:pt-[calc(96px+var(--banner-h))]">
         <div className="mx-auto grid max-w-[1280px] gap-3 lg:grid-cols-[1.4fr_1fr]">
-          <div className="rounded-[2.25rem] bg-papier px-6 py-10 sm:px-12 sm:py-12 lg:px-16">
-            <h2 className="mb-8 text-[22px] font-medium text-vert">Envoyer un message</h2>
-            <ContactForm />
+          <div className="rounded-[2.25rem] bg-papier px-5 py-6 sm:px-12 sm:py-8 lg:px-16 lg:py-[clamp(1.5rem,4.5vh,3.5rem)]">
+            <div className="page-enter">
+              <p className="text-[15px] font-medium text-sable-ink">Contact</p>
+              <h1 className="mt-2 text-[clamp(1.65rem,min(3.2vw,5vh),2.75rem)] leading-[1.06] font-light tracking-[-0.03em] italic">
+                <span className="text-sable-ink">Une question ?</span> <span className="text-vert">Écrivez-nous</span>
+              </h1>
+              <p className="mt-2 max-w-[52ch] text-[15px] leading-snug text-encre/65 [@media(max-height:760px)]:hidden">
+                Abonnement, compte, histoires ou partenariat : l&apos;équipe HIKAYA vous répond par e-mail.
+              </p>
+              <div className="mt-[clamp(1rem,3.5vh,2rem)]">
+                <ContactForm />
+              </div>
+            </div>
           </div>
 
           <div className="grid gap-3 lg:self-start">
