@@ -12,6 +12,7 @@ import { Reviews } from "@/components/reviews";
 import { SectionHeading } from "@/components/section-heading";
 import { Themes } from "@/components/themes";
 import { Values } from "@/components/values";
+import { VoyagesSection } from "@/components/voyages-section";
 import { booksByIds, homeSelection, newReleases } from "@/lib/catalogue";
 import { LP_ONLY, siteHref } from "@/lib/site-mode";
 
@@ -73,6 +74,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* La carte des voyages, puis les catégories (demandées sur l'accueil par le cahier des charges) */}
+      <VoyagesSection />
       <Themes />
       <Values />
       <Reviews />

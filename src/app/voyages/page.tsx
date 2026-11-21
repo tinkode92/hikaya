@@ -15,8 +15,8 @@ export default function VoyagesPage() {
     <main className="flex flex-col gap-3">
       <PageHeader crumbs={[{ label: "Catalogue", href: "/catalogue" }, { label: "La carte des voyages" }]} eyebrow="La carte des voyages" first="De Cordoue à Bagdad," second="huit siècles d'histoires">
         <p className="mt-6 max-w-[56ch] text-[17px] leading-relaxed text-encre/65">
-          Choisissez une ville sur la carte ou une époque sur la frise : retrouvez les {timeline.length} histoires HIKAYA là
-          où elles se sont passées, et écoutez un extrait.
+          Les {timeline.length} histoires HIKAYA, là où elles se sont passées : d&apos;Al-Andalus à l&apos;Irak, du VIIIe au
+          XVIe siècle. Touchez une ville et écoutez un extrait.
         </p>
       </PageHeader>
       <section className="px-3 sm:px-6">
