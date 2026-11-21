@@ -29,7 +29,7 @@ export function ContactForm() {
         e.preventDefault();
         setSent(true);
       }}
-      className="grid gap-5 sm:grid-cols-2"
+      className="grid grid-cols-2 gap-x-3 gap-y-[clamp(0.75rem,2.2vh,1.25rem)] sm:gap-x-4"
     >
       <Field label="Prénom">
         <input name="prenom" autoComplete="given-name" required className={inputClass} />
@@ -37,7 +37,7 @@ export function ContactForm() {
       <Field label="E-mail">
         <input type="email" name="email" autoComplete="email" required className={inputClass} placeholder="prenom@exemple.fr" />
       </Field>
-      <Field label="Sujet" className="sm:col-span-2">
+      <Field label="Sujet" className="col-span-2">
         <span className="relative block">
           <select name="sujet" defaultValue={subjects[0]} className={`${inputClass} appearance-none pr-12`}>
             {subjects.map((s) => (
@@ -47,10 +47,10 @@ export function ContactForm() {
           <ChevronRight width={18} height={18} className="pointer-events-none absolute top-1/2 right-4 mt-1 -translate-y-1/2 rotate-90 text-vert" />
         </span>
       </Field>
-      <Field label="Message" className="sm:col-span-2">
-        <textarea name="message" required className={`${inputClass} h-40 resize-none py-3 leading-relaxed`} />
+      <Field label="Message" className="col-span-2">
+        <textarea name="message" required className={`${inputClass} h-[clamp(6rem,16vh,9rem)] resize-none py-3 leading-relaxed`} />
       </Field>
-      <button type="submit" className={`${primaryButton} sm:col-span-2`}>
+      <button type="submit" className={`${primaryButton} col-span-2 mt-1`}>
         Envoyer le message
         <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </button>

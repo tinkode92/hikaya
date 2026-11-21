@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Page introuvable" };
 export default function NotFound() {
   return (
     <main>
-      <section className="px-3 pt-[calc(88px+var(--banner-h))] sm:px-6 sm:pt-[calc(104px+var(--banner-h))]">
+      <section className="px-3 pt-[calc(80px+var(--banner-h))] sm:px-6 sm:pt-[calc(96px+var(--banner-h))]">
         <div className="mx-auto grid max-w-[1280px] items-end overflow-hidden rounded-[2.25rem] bg-papier lg:grid-cols-[1.3fr_1fr]">
           <div className="page-enter px-6 py-14 sm:px-12 sm:py-20 lg:px-16">
             <p className="text-[15px] font-medium text-sable-ink">Erreur 404</p>

@@ -28,7 +28,7 @@ const Arrow = () => (
 export function LoginForm() {
   const router = useRouter();
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-[clamp(0.75rem,2.2vh,1.5rem)]">
       <GoogleButton to="/compte" />
       <Divider>ou avec votre e-mail</Divider>
       <form
@@ -36,7 +36,7 @@ export function LoginForm() {
           e.preventDefault();
           router.push("/compte");
         }}
-        className="grid gap-5"
+        className="grid gap-[clamp(0.75rem,2vh,1.25rem)]"
       >
         <Field label="E-mail">
           <input type="email" name="email" autoComplete="email" required className={inputClass} placeholder="prenom@exemple.fr" />
@@ -51,7 +51,7 @@ export function LoginForm() {
         >
           <PasswordInput />
         </Field>
-        <button type="submit" className={`${primaryButton} mt-2`}>
+        <button type="submit" className={`${primaryButton} mt-1`}>
           Se connecter
           <Arrow />
         </button>
@@ -69,7 +69,7 @@ export function LoginForm() {
 export function SignupForm() {
   const router = useRouter();
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-[clamp(0.75rem,2.2vh,1.5rem)]">
       <GoogleButton to="/abonnements" />
       <Divider>ou avec votre e-mail</Divider>
       <form
@@ -77,20 +77,22 @@ export function SignupForm() {
           e.preventDefault();
           router.push("/abonnements");
         }}
-        className="grid gap-5"
+        className="grid gap-[clamp(0.75rem,2vh,1.25rem)]"
       >
-        <Field label="Prénom">
-          <input name="prenom" autoComplete="given-name" required className={inputClass} placeholder="Votre prénom" />
-        </Field>
-        <Field label="E-mail">
-          <input type="email" name="email" autoComplete="email" required className={inputClass} placeholder="prenom@exemple.fr" />
-        </Field>
-        <Field label="Mot de passe" hint="8 caractères minimum">
-          <PasswordInput autoComplete="new-password" minLength={8} />
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <Field label="Prénom">
+            <input name="prenom" autoComplete="given-name" required className={inputClass} placeholder="Votre prénom" />
+          </Field>
+          <Field label="E-mail">
+            <input type="email" name="email" autoComplete="email" required className={inputClass} placeholder="prenom@exemple.fr" />
+          </Field>
+        </div>
+        <Field label="Mot de passe">
+          <PasswordInput autoComplete="new-password" minLength={8} placeholder="8 caractères minimum" />
         </Field>
 
         {/* Accord marketing : jamais coché par défaut (CDC §04) */}
-        <label className="flex cursor-pointer items-start gap-3 text-[15px] leading-snug text-encre/75">
+        <label className="flex cursor-pointer items-start gap-3 text-[14px] leading-snug text-encre/75">
           <input type="checkbox" name="newsletter" className="peer sr-only" />
           <span
             aria-hidden
@@ -101,7 +103,7 @@ export function SignupForm() {
           Je souhaite recevoir les nouveautés et les offres HIKAYA par e-mail.
         </label>
 
-        <button type="submit" className={`${primaryButton} mt-2`}>
+        <button type="submit" className={`${primaryButton} mt-1`}>
           Créer mon compte
           <Arrow />
         </button>
@@ -152,18 +154,18 @@ export function ResetForm() {
     );
 
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-[clamp(0.75rem,2.2vh,1.5rem)]">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           setSentTo(String(new FormData(e.currentTarget).get("email") ?? ""));
         }}
-        className="grid gap-5"
+        className="grid gap-[clamp(0.75rem,2vh,1.25rem)]"
       >
         <Field label="E-mail">
           <input type="email" name="email" autoComplete="email" required className={inputClass} placeholder="prenom@exemple.fr" />
         </Field>
-        <button type="submit" className={`${primaryButton} mt-2`}>
+        <button type="submit" className={`${primaryButton} mt-1`}>
           Recevoir le lien
           <Arrow />
         </button>

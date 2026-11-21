@@ -40,12 +40,15 @@ export function ReviewForm({ firstName }: { firstName: string }) {
         e.preventDefault();
         if (rating) setSent(true);
       }}
-      className="grid gap-6"
+      className="grid gap-[clamp(0.75rem,2.2vh,1.25rem)]"
     >
-      <fieldset>
-        <legend className="text-[15px] font-medium text-encre">Votre note</legend>
-        <div className="mt-3 flex flex-wrap items-center gap-4">
-          <div className="flex gap-1" onMouseLeave={() => setHover(0)}>
+      {/* Note et histoire sur une même ligne : le formulaire tient dans un écran de portable */}
+      <div className="grid gap-[clamp(0.75rem,2.2vh,1.25rem)] sm:grid-cols-[auto_minmax(0,1fr)] sm:items-end sm:gap-6">
+        <fieldset>
+          <legend className="text-[15px] font-medium text-encre">
+            Votre note <span className="font-normal text-encre/55">· {shown ? labels[shown - 1] : "touchez une étoile"}</span>
+          </legend>
+          <div className="mt-1 -ml-1 flex" onMouseLeave={() => setHover(0)}>
             {[1, 2, 3, 4, 5].map((n) => (
               <label
                 key={n}
@@ -55,58 +58,57 @@ export function ReviewForm({ firstName }: { firstName: string }) {
                 <input type="radio" name="note" value={n} checked={rating === n} onChange={() => setRating(n)} required className="sr-only" />
                 <span className="sr-only">{n} sur 5</span>
                 <Star
-                  width={34}
-                  height={34}
+                  width={32}
+                  height={32}
                   className={`transition-[color,transform] duration-200 ${n <= shown ? "scale-105 text-sable" : "text-encre/15"}`}
                 />
               </label>
             ))}
           </div>
-          <span className="min-w-[9rem] text-[15px] text-encre/60" aria-live="polite">
-            {shown ? labels[shown - 1] : "Touchez une étoile"}
+        </fieldset>
+
+        <Field label="L'histoire écoutée">
+          <span className="relative block">
+            <select name="histoire" defaultValue="" className={`${inputClass} appearance-none pr-12`}>
+              <option value="">HIKAYA en général</option>
+              {books.map((b) => (
+                <option key={b.id} value={b.id}>
+                  {b.series ? `${b.series} · ${b.title}` : b.title}
+                </option>
+              ))}
+            </select>
+            <ChevronRight width={18} height={18} className="pointer-events-none absolute top-1/2 right-4 mt-[3px] -translate-y-1/2 rotate-90 text-vert" />
           </span>
-        </div>
-      </fieldset>
-
-      <Field label="L'histoire écoutée" hint="Facultatif : votre avis s'affichera avec cette histoire.">
-        <span className="relative block">
-          <select name="histoire" defaultValue="" className={`${inputClass} appearance-none pr-12`}>
-            <option value="">HIKAYA en général</option>
-            {books.map((b) => (
-              <option key={b.id} value={b.id}>
-                {b.series ? `${b.series} · ${b.title}` : b.title}
-              </option>
-            ))}
-          </select>
-          <ChevronRight width={18} height={18} className="pointer-events-none absolute top-1/2 right-4 mt-1 -translate-y-1/2 rotate-90 text-vert" />
-        </span>
-      </Field>
-
-      <Field label="Votre avis">
-        <textarea
-          name="commentaire"
-          required
-          minLength={20}
-          value={text}
-          onChange={(e) => setText(e.target.value.slice(0, MAX))}
-          placeholder="Qu'est-ce qui a plu à vos enfants ? Dans quels moments écoutez-vous HIKAYA ?"
-          className={`${inputClass} h-36 resize-none py-3 leading-relaxed`}
-        />
-        <span className="mt-1 block text-right text-[13px] font-normal text-encre/50 tabular-nums">
-          {text.length}/{MAX}
-        </span>
-      </Field>
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Prénom affiché">
-          <input name="prenom" defaultValue={firstName} required className={inputClass} />
-        </Field>
-        <Field label="Qui écoute ?" hint="Facultatif">
-          <input name="contexte" placeholder="Deux enfants, 7 et 10 ans" className={inputClass} />
         </Field>
       </div>
 
-      <button type="submit" className={`${primaryButton} mt-2`}>
+      <Field label="Votre avis">
+        <span className="relative block">
+          <textarea
+            name="commentaire"
+            required
+            minLength={20}
+            value={text}
+            onChange={(e) => setText(e.target.value.slice(0, MAX))}
+            placeholder="Qu'est-ce qui a plu à vos enfants ? Dans quels moments écoutez-vous HIKAYA ?"
+            className={`${inputClass} h-[clamp(5rem,13vh,8rem)] resize-none py-3 pb-7 leading-relaxed`}
+          />
+          <span className="pointer-events-none absolute right-3 bottom-2 text-[12px] font-normal text-encre/45 tabular-nums">
+            {text.length}/{MAX}
+          </span>
+        </span>
+      </Field>
+
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        <Field label="Prénom affiché">
+          <input name="prenom" defaultValue={firstName} required className={inputClass} />
+        </Field>
+        <Field label="Qui écoute ?">
+          <input name="contexte" placeholder="Ex. : 2 enfants, 7 et 10 ans" className={inputClass} />
+        </Field>
+      </div>
+
+      <button type="submit" className={`${primaryButton} mt-1`}>
         Envoyer mon avis
         <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </button>
